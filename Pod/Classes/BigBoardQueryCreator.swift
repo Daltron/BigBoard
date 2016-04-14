@@ -27,18 +27,18 @@ class BigBoardQueryCreator: NSObject {
     // @param symbols: An array of stock symbols for the desired stocks. Google -> GOOG, Tesla -> TSLA, etc...
     class func queryForStockSymbols(var symbols symbols:[String]) -> String {
         for symbol in symbols {
-            symbols[symbols.indexOf(symbol)!] = "'\(symbol)'"
+            symbols[symbols.indexOf(symbol)!] = "'\(symbol)'".uppercaseString
         }
         
         let symbolsString = symbols.joinWithSeparator(",")
-        let query = "\(YQL_QUERY_PREFIX)\(YQL_SYMBOL_QUERY) (\(symbolsString)) \(YQL_QUERY_SUFFIX)"
-        return percentEscapedQuery(query: query)
+        let symbolsQuery = percentEscapedQuery(query: "\(YQL_SYMBOL_QUERY) (\(symbolsString))")
+        return "\(YQL_QUERY_PREFIX)\(symbolsQuery)\(YQL_QUERY_SUFFIX)"
     }
     
     // Returns a query string that is percent escaped encoded
     // @param query: Any query that needs to be percent escaped encoded
     private class func percentEscapedQuery(query query:String) -> String {
-        return query.stringByAddingPercentEscapesUsingEncoding(NSASCIIStringEncoding)!
+        return query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import BigBoard
 
 class BigBoardQueryCreatorTests: XCTestCase {
     
@@ -20,16 +21,15 @@ class BigBoardQueryCreatorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testThatQueryStringIsCorrectlyCreatedForOneStockSymbol(){
+        let bigBoardQuery = BigBoardQueryCreator.queryForStockSymbol(symbol: "GOOG")
+        let yqlQuery = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('GOOG')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+        XCTAssertEqual(bigBoardQuery, yqlQuery)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testThatQueryStringIsCorrectlyCreatedForMultipleStockSymbols(){
+        let bigBoardQuery = BigBoardQueryCreator.queryForStockSymbols(symbols: ["GOOG", "AAPL", "TSLA"])
+        let yqlQuery = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('GOOG','AAPL','TSLA')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+        XCTAssertEqual(bigBoardQuery, yqlQuery)
     }
-    
 }

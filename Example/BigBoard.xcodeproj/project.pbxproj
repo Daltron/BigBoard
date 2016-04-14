@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		40E749D441A24BE1107A672E /* Pods_BigBoard_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2098D1D3CD0B5A2FF1E2D8 /* Pods_BigBoard_Example.framework */; };
+		5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
+		5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
+		5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
+		5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
+		5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
+		5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
+		5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
+		5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
 		5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		CDDA4CF5D71BC8C71D7D1A66 /* Pods_BigBoard_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB125E5E90362B6FA855E6E /* Pods_BigBoard_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +39,10 @@
 		0640CC95C99D6FC5BF4E8BCB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0B0B2E655EA8DB4F0BFF61A2 /* Pods-BigBoard_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBoard_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigBoard_Tests/Pods-BigBoard_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3638779B75CFAADFFDD0E7DB /* Pods-BigBoard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBoard_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigBoard_Example/Pods-BigBoard_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5C71E6E41CC027AF00DEB166 /* BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoard.swift; path = ../../Pod/Classes/BigBoard.swift; sourceTree = "<group>"; };
+		5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardQueryCreator.swift; path = ../../Pod/Classes/BigBoardQueryCreator.swift; sourceTree = "<group>"; };
+		5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardRequestManager.swift; path = ../../Pod/Classes/BigBoardRequestManager.swift; sourceTree = "<group>"; };
+		5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardStock.swift; path = ../../Pod/Classes/BigBoardStock.swift; sourceTree = "<group>"; };
 		5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardQueryCreatorTests.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BigBoard_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBoard_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,7 +53,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* BigBoard_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigBoard_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6A0073D69C0512F3A7D7F098 /* Pods-BigBoard_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBoard_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigBoard_Example/Pods-BigBoard_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8E2098D1D3CD0B5A2FF1E2D8 /* Pods_BigBoard_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigBoard_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F5A5789003425F48B1A3CE /* BigBoard.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BigBoard.podspec; path = ../BigBoard.podspec; sourceTree = "<group>"; };
@@ -71,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C71E6E31CC0279D00DEB166 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5C71E6E41CC027AF00DEB166 /* BigBoard.swift */,
+				5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */,
+				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
+				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +116,7 @@
 		607FACD21AFB9204008FA782 /* Example for BigBoard */ = {
 			isa = PBXGroup;
 			children = (
+				5C71E6E31CC0279D00DEB166 /* Source */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -117,7 +139,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */,
 			);
@@ -362,7 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */,
+				5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */,
+				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,8 +396,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */,
+				5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */,
+				5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */,
+				5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
