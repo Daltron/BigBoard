@@ -1,0 +1,14 @@
+PODS:
+  - BigBoard (0.1.0)
+
+DEPENDENCIES:
+  - BigBoard (from `../`)
+
+EXTERNAL SOURCES:
+  BigBoard:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BigBoard: 8c4be282bff2b8a9edb23d835733a5bc7c54fd21
+
+COCOAPODS: 0.39.0

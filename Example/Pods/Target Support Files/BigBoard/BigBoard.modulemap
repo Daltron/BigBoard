@@ -1,0 +1,6 @@
+framework module BigBoard {
+  umbrella header "BigBoard-umbrella.h"
+
+  export *
+  module * { export * }
+}
