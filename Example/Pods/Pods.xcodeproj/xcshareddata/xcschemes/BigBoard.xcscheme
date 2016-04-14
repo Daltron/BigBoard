@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '46FC0028C3D886F1220BBE6A'
+               BlueprintIdentifier = '1EA5FE340FB4615DC50FE304'
                BlueprintName = 'BigBoard'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'BigBoard.framework'>

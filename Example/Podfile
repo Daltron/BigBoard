@@ -3,6 +3,7 @@ use_frameworks!
 
 target 'BigBoard_Example', :exclusive => true do
   pod 'BigBoard', :path => '../'
+  pod 'AlamofireObjectMapper', '~> 3.0'
 end
 
 target 'BigBoard_Tests', :exclusive => true do

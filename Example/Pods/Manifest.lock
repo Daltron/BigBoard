@@ -1,7 +1,14 @@
 PODS:
-  - BigBoard (0.1.0)
+  - Alamofire (3.3.1)
+  - AlamofireObjectMapper (3.0.0):
+    - Alamofire (~> 3.2)
+    - ObjectMapper (~> 1.0)
+  - BigBoard (0.1.0):
+    - AlamofireObjectMapper (~> 3.0)
+  - ObjectMapper (1.2.0)
 
 DEPENDENCIES:
+  - AlamofireObjectMapper (~> 3.0)
   - BigBoard (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,6 +16,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigBoard: 8c4be282bff2b8a9edb23d835733a5bc7c54fd21
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
+  BigBoard: adea3440e04725d07a50a0695283ca31940df1af
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
 
 COCOAPODS: 0.39.0

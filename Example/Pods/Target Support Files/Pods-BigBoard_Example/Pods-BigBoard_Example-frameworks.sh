@@ -84,8 +84,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-BigBoard_Example/Alamofire.framework"
+  install_framework "Pods-BigBoard_Example/AlamofireObjectMapper.framework"
   install_framework "Pods-BigBoard_Example/BigBoard.framework"
+  install_framework "Pods-BigBoard_Example/ObjectMapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-BigBoard_Example/Alamofire.framework"
+  install_framework "Pods-BigBoard_Example/AlamofireObjectMapper.framework"
   install_framework "Pods-BigBoard_Example/BigBoard.framework"
+  install_framework "Pods-BigBoard_Example/ObjectMapper.framework"
 fi

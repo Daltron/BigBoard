@@ -21,5 +21,10 @@
     "BigBoard": [
       "Pod/Assets/*.png"
     ]
+  },
+  "dependencies": {
+    "AlamofireObjectMapper": [
+      "~> 3.0"
+    ]
   }
 }
