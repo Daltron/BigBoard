@@ -12,7 +12,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        BigBoard.stocksWithSymbols(symbols: ["GOOG", "BLAHBLAH", "TSLA", "JIMMY", "JONESSSS"], success: { (stocks) in
+            
+        }) { (error) in
+            print(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {

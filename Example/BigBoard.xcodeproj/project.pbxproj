@@ -16,6 +16,8 @@
 		5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
 		5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
 		5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
+		5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E04641CC0385000F47699 /* BigBoardError.swift */; };
+		5C9E04661CC039D900F47699 /* BigBoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E04641CC0385000F47699 /* BigBoardError.swift */; };
 		5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -43,6 +45,7 @@
 		5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardQueryCreator.swift; path = ../../Pod/Classes/BigBoardQueryCreator.swift; sourceTree = "<group>"; };
 		5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardRequestManager.swift; path = ../../Pod/Classes/BigBoardRequestManager.swift; sourceTree = "<group>"; };
 		5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardStock.swift; path = ../../Pod/Classes/BigBoardStock.swift; sourceTree = "<group>"; };
+		5C9E04641CC0385000F47699 /* BigBoardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardError.swift; path = ../../Pod/Classes/BigBoardError.swift; sourceTree = "<group>"; };
 		5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardQueryCreatorTests.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BigBoard_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBoard_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				5C71E6E41CC027AF00DEB166 /* BigBoard.swift */,
+				5C9E04641CC0385000F47699 /* BigBoardError.swift */,
 				5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */,
 				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
 				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
@@ -386,6 +390,7 @@
 				5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */,
+				5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */,
 				5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -398,6 +403,7 @@
 			files = (
 				5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */,
+				5C9E04661CC039D900F47699 /* BigBoardError.swift in Sources */,
 				5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */,
 				5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */,

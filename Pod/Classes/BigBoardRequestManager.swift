@@ -21,7 +21,7 @@ class BigBoardRequestManager: NSObject {
                 _manager!.startRequestsImmediately = true
             }
             
-            return manager
+            return _manager!
         }
     }
     
@@ -29,19 +29,61 @@ class BigBoardRequestManager: NSObject {
         return manager.request(method, urlString, parameters: nil, headers: nil).validate()
     }
     
-    class func mapBigBoardStock(symbol symbol:String, success:((BigBoardStock) -> Void)?, failure:((NSError) -> Void)?) -> Request {
+    class func callSuccessCallback(success success:((BigBoardStock) -> Void)?, stock:BigBoardStock){
+        if let success = success {
+            success(stock)
+        }
+    }
+    
+    class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, error:NSError){
+        let bigBoardError = BigBoardError(nsError: error)
+        if let failure = failure {
+            failure(bigBoardError)
+        }
+    }
+    
+    class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, bigBoardError:BigBoardError){
+        if let failure = failure {
+            failure(bigBoardError)
+        }
+    }
+    
+    class func mapBigBoardStock(symbol symbol:String, success:((BigBoardStock) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request {
         let queryString = BigBoardQueryCreator.queryForStockSymbol(symbol: symbol)
-        return generalRequest(.GET, urlString: queryString).responseObject(completionHandler: { (response:Response<BigBoardStock, NSError>) in
+        return generalRequest(.GET, urlString: queryString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardStock, NSError>) in
             switch response.result {
                 case .Success:
-                    if let success = success {
-                        success(response.result.value!)
+                    let stock = response.result.value!
+                    if stock.isReal() {
+                        callSuccessCallback(success: success, stock: stock)
+                    } else {
+                        let bigBoardError = BigBoardError(invalidSymbol: symbol)
+                        callErrorCallback(failure: failure, bigBoardError:bigBoardError)
                     }
-                case .Failure(let error) :
-                    if let failure = failure {
-                        failure(error)
-                    }
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+            } 
+        })
+    }
+    
+    class func mapBigBoardStocks(symbols symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request {
+        let queryString = BigBoardQueryCreator.queryForStockSymbols(symbols: symbols)
+        return generalRequest(.GET, urlString: queryString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
+            switch response.result {
+                case .Success:
+                    let stocks = response.result.value!
+                    let invalidSymbols = BigBoardStock.invalidSymbolsForStocks(stocks: stocks)
+                    if invalidSymbols.isEmpty {
+                        if let success = success {
+                            success(response.result.value!)
+                        }
+                    } else {
+                        let bigBoardError = BigBoardError(invalidSymbols: invalidSymbols)
+                        callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+                }
+        
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
             }
         })
     }
+
 }

@@ -25,12 +25,13 @@ class BigBoardQueryCreator: NSObject {
     
     // Returns a query for multiple stocks with the given symbols
     // @param symbols: An array of stock symbols for the desired stocks. Google -> GOOG, Tesla -> TSLA, etc...
-    class func queryForStockSymbols(var symbols symbols:[String]) -> String {
-        for symbol in symbols {
-            symbols[symbols.indexOf(symbol)!] = "'\(symbol)'".uppercaseString
+    class func queryForStockSymbols(symbols symbols:[String]) -> String {
+        var symbolsArray = symbols
+        for symbol in symbolsArray {
+            symbolsArray[symbols.indexOf(symbol)!] = "'\(symbol)'".uppercaseString
         }
         
-        let symbolsString = symbols.joinWithSeparator(",")
+        let symbolsString = symbolsArray.joinWithSeparator(",")
         let symbolsQuery = percentEscapedQuery(query: "\(YQL_SYMBOL_QUERY) (\(symbolsString))")
         return "\(YQL_QUERY_PREFIX)\(symbolsQuery)\(YQL_QUERY_SUFFIX)"
     }

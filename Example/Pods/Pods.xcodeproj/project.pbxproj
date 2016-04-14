@@ -28,6 +28,7 @@
 		51616DAE72C9E1E4A9DED12035986B93 /* Pods-BigBoard_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B483DDC252C403609C98641A6705930C /* Pods-BigBoard_Example-dummy.m */; };
 		5567680F41E2467D317BA97FC370804B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2F09FCF36DD8F2F3A80C8B42A3BC9D /* Foundation.framework */; };
 		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52052CED1D5FCCD478171BCB7390EBC2 /* Upload.swift */; };
+		5C9E04631CC0383F00F47699 /* BigBoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E04621CC0383F00F47699 /* BigBoardError.swift */; };
 		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBF555A94ED458B8C8580D9D790A75 /* Download.swift */; };
 		61E9A786510BCDF54E7EABDA96E7ECD3 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F8C2394B6C9A71DCA4C819308A90 /* BigBoardStock.swift */; };
 		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663699FCA6CE375D7A2BD0D6A46BDF2 /* Response.swift */; };
@@ -189,6 +190,7 @@
 		53DE60DE9DC07D80C840949844B5A9FB /* BigBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FE31169D511FC0747D5DEC5CF37335 /* Mappable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mappable.swift; path = ObjectMapper/Core/Mappable.swift; sourceTree = "<group>"; };
 		550ED3BEBA0481F6C5C953071EAF4D68 /* BigBoard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigBoard-prefix.pch"; sourceTree = "<group>"; };
+		5C9E04621CC0383F00F47699 /* BigBoardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardError.swift; sourceTree = "<group>"; };
 		5ECD135E541B67A544F3A7695D69C2F2 /* BigBoard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BigBoard.modulemap; sourceTree = "<group>"; };
 		5FEEC74EF205D68C957962B7B0F9A852 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		698F010EAAE48559F682C06F59C9E85D /* Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Map.swift; path = ObjectMapper/Core/Map.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				46471165B3736B3F46E40BE89A2C2B37 /* BigBoardQueryCreator.swift */,
 				0D7205245F82DA7DB00F2BECA1947D02 /* BigBoardRequestManager.swift */,
 				E4D5F8C2394B6C9A71DCA4C819308A90 /* BigBoardStock.swift */,
+				5C9E04621CC0383F00F47699 /* BigBoardError.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 			files = (
 				B561A10E432381DF4B231183F0D03E02 /* BigBoard-dummy.m in Sources */,
 				6D86287811FCD35020514413A728BDDA /* BigBoard.swift in Sources */,
+				5C9E04631CC0383F00F47699 /* BigBoardError.swift in Sources */,
 				B6B1B56E1D64ABE06A6F6DDD465CE99B /* BigBoardQueryCreator.swift in Sources */,
 				683C3F277B68F5787DE75F1008D73880 /* BigBoardRequestManager.swift in Sources */,
 				61E9A786510BCDF54E7EABDA96E7ECD3 /* BigBoardStock.swift in Sources */,
