@@ -1,3 +1,10 @@
+//
+//  BigBoardStock.swift
+//  BigBoard
+//
+//  Created by Dalton Hinterscher on 4/14/16.
+//  Copyright © 2016 CocoaPods. All rights reserved.
+//
 
 import UIKit
 import ObjectMapper
