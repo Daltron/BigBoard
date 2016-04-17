@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BigBoard.stocksWithSymbols(symbols: ["GOOG", "BLAHBLAH", "TSLA", "JIMMY", "JONESSSS"], success: { (stocks) in
-            
+        BigBoard.stocksWithSymbols(symbols: ["GOOG"], success: { (stocks) in
+            print(stocks)
         }) { (error) in
             print(error)
         }
+
     }
 
     override func didReceiveMemoryWarning() {

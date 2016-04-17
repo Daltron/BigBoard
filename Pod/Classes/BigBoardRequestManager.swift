@@ -67,8 +67,16 @@ class BigBoardRequestManager: NSObject {
     
     class func mapBigBoardStocks(symbols symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request {
         let queryString = BigBoardQueryCreator.queryForStockSymbols(symbols: symbols)
-        return generalRequest(.GET, urlString: queryString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
-            switch response.result {
+
+    
+        /* If symbols array only contains one symbol, then we need to call the mapBigBoardStock function because Yahoo
+           will return just a single object, not an array with a single value, thus ObjectMapper can not perform the
+           mapping.
+         */
+        if symbols.count > 1 {
+            
+            return generalRequest(.GET, urlString: queryString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
+                switch response.result {
                 case .Success:
                     let stocks = response.result.value!
                     let invalidSymbols = BigBoardStock.invalidSymbolsForStocks(stocks: stocks)
@@ -79,11 +87,21 @@ class BigBoardRequestManager: NSObject {
                     } else {
                         let bigBoardError = BigBoardError(invalidSymbols: invalidSymbols)
                         callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-                }
-        
+                    }
+                    
                 case .Failure(let error): callErrorCallback(failure: failure, error: error)
-            }
-        })
+                }
+            })
+
+        } else {
+            return mapBigBoardStock(symbol: symbols.first!, success: { (stock:BigBoardStock) in
+                if let success = success {
+                    success([stock])
+                }
+            }, failure: failure)
+        }
+        
+        
     }
 
 }
