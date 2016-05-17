@@ -115,6 +115,30 @@ class BigBoardMainClassTests: XCTestCase {
         waitForRequestToFinish()
         
     }
+    
+    func testThatHistoricalDataIsReturnedWhenTheGoogleStockSymbolIsUsed(){
+        
+        BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
+            stock.mapHistoricalData(startDate: BigBoardTestsHelper.sampleStartDate(), endDate: BigBoardTestsHelper.sampleEndDate(), success: {
+                if stock.historicalData?.isEmpty == false {
+                    self.validationExpectation.fulfill()
+                    XCTAssert(true)
+                } else {
+                    self.validationExpectation.fulfill()
+                    XCTFail("historicalData array is empty")
+                }
+            }, failure: { (error) in
+                self.validationExpectation.fulfill()
+                XCTFail(error.description)
+            })
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
 
     // MARK: Helpers
     

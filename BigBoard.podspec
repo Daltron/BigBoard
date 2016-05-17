@@ -38,4 +38,5 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
     s.dependency 'AlamofireObjectMapper', '~> 3.0'
+    s.dependency 'Timepiece'
 end

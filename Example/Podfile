@@ -8,6 +8,5 @@ end
 
 target 'BigBoard_Tests', :exclusive => true do
   pod 'BigBoard', :path => '../'
-
   
 end

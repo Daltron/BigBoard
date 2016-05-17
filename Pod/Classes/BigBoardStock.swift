@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Alamofire
 
 class BigBoardStock: NSObject, Mappable {
 
@@ -93,6 +94,7 @@ class BigBoardStock: NSObject, Mappable {
     var yearHigh:String?
     var yearLow:String?
     var yearRange:String?
+    var historicalData:[BigBoardHistoricalData]?
     
     required init?(_ map: Map) {
         
@@ -183,11 +185,10 @@ class BigBoardStock: NSObject, Mappable {
         yearRange <- map["YearRange"]
     }
     
-    
     /*  Returns an array of stock symbols that were invalid based on the stocks param passed in.
         @param stocks: An array of stocks to check for invalidity
-     */
-    class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String]{
+    */
+    class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String] {
         var invalidSymbols:[String] = []
         for stock in stocks {
             if stock.isReal() == false {
@@ -205,5 +206,14 @@ class BigBoardStock: NSObject, Mappable {
     */
     func isReal() -> Bool {
         return name != nil
+    }
+    
+    func mapHistoricalData(startDate startDate:NSDate, endDate:NSDate, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+        return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, startDate: startDate, endDate: endDate, success: { (historicalData:[BigBoardHistoricalData]) in
+            self.historicalData = historicalData;
+            if let success = success {
+                success()
+            }
+        }, failure: failure)
     }
 }

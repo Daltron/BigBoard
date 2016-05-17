@@ -14,7 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         BigBoard.stocksWithSymbols(symbols: ["GOOG"], success: { (stocks) in
-            print(stocks)
+            print(stocks.first?.symbol!)
+            stocks.first!.mapHistoricalData(startDate: NSDate(), endDate: NSDate(), success: { 
+                print("Finished!")
+            }, failure: { (error) in
+                print(error.description)
+            })
         }) { (error) in
             print(error)
         }

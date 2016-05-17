@@ -29,4 +29,9 @@ class BigBoardError: NSObject {
         super.init()
         errorMessage = "\(ERROR_PREFIX) \(nsError.localizedDescription)"
     }
+    
+    init(customErrorMessage:String) {
+        super.init()
+        self.errorMessage = customErrorMessage
+    }
 }

@@ -48,9 +48,11 @@ class BigBoardRequestManager: NSObject {
         }
     }
     
-    class func mapBigBoardStock(symbol symbol:String, success:((BigBoardStock) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request {
-        let queryString = BigBoardQueryCreator.queryForStockSymbol(symbol: symbol)
-        return generalRequest(.GET, urlString: queryString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardStock, NSError>) in
+    class func mapBigBoardStock(symbol symbol:String, success:((BigBoardStock) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request? {
+        
+        let urlString = BigBoardQueryCreator.urlForStockSymbol(symbol: symbol)
+        
+        return generalRequest(.GET, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardStock, NSError>) in
             switch response.result {
                 case .Success:
                     let stock = response.result.value!
@@ -65,31 +67,31 @@ class BigBoardRequestManager: NSObject {
         })
     }
     
-    class func mapBigBoardStocks(symbols symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request {
-        let queryString = BigBoardQueryCreator.queryForStockSymbols(symbols: symbols)
-
-    
-        /* If symbols array only contains one symbol, then we need to call the mapBigBoardStock function because Yahoo
-           will return just a single object, not an array with a single value, thus ObjectMapper can not perform the
-           mapping.
-         */
+    class func mapBigBoardStocks(symbols symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request? {
+        
+        let urlString = BigBoardQueryCreator.urlForStockSymbols(symbols: symbols)
+        
+        /*  If symbols array only contains one symbol, then we need to call the mapBigBoardStock function because Yahoo
+            will return just a single object, not an array with a single value, thus ObjectMapper can not perform the
+            mapping.
+        */
         if symbols.count > 1 {
             
-            return generalRequest(.GET, urlString: queryString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
+            return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
                 switch response.result {
-                case .Success:
-                    let stocks = response.result.value!
-                    let invalidSymbols = BigBoardStock.invalidSymbolsForStocks(stocks: stocks)
-                    if invalidSymbols.isEmpty {
-                        if let success = success {
-                            success(response.result.value!)
+                    case .Success:
+                        let stocks = response.result.value!
+                        let invalidSymbols = BigBoardStock.invalidSymbolsForStocks(stocks: stocks)
+                        if invalidSymbols.isEmpty {
+                            if let success = success {
+                                success(response.result.value!)
+                            }
+                        } else {
+                            let bigBoardError = BigBoardError(invalidSymbols: invalidSymbols)
+                            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
                         }
-                    } else {
-                        let bigBoardError = BigBoardError(invalidSymbols: invalidSymbols)
-                        callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-                    }
                     
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                    case .Failure(let error): callErrorCallback(failure: failure, error: error)
                 }
             })
 
@@ -100,8 +102,37 @@ class BigBoardRequestManager: NSObject {
                 }
             }, failure: failure)
         }
-        
-        
     }
-
+    
+    class func mapHistoricalDataForStock(stock stock:BigBoardStock?, startDate:NSDate, endDate:NSDate, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+        
+        if let stockSymbol = stock?.symbol {
+            let urlString = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: stockSymbol, startDate: startDate, endDate: endDate)
+            
+            if startDate == endDate {
+                return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardHistoricalData], NSError>) in
+                    switch response.result {
+                        case .Success: success(response.result.value!)
+                        case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                    }
+                })
+            } else if startDate >= NSDate() {
+                return mapHistoricalDataItem(urlString, success: success, failure: failure)
+            }
+            
+        } else {
+            let bigBoardError = BigBoardError(customErrorMessage: "You are trying to map historical data for a stock that does not exist")
+            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+            return nil
+        }
+    }
+    
+    private class func mapHistoricalDataItem(urlString:String, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+        return generalRequest(.GET, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardHistoricalData, NSError>) in
+            switch response.result {
+                case .Success: success([response.result.value!])
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+            }
+        })
+    }
 }
