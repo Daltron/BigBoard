@@ -9,6 +9,10 @@
 import UIKit
 
 class BigBoardTestsHelper: NSObject {
+    
+    class func sampleDateRange() -> BigBoardHistoricalDateRange {
+        return BigBoardHistoricalDateRange(startDate: sampleStartDate(), endDate: sampleEndDate())
+    }
 
     class func sampleStartDate() -> NSDate {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)

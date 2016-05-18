@@ -35,7 +35,9 @@ class BigBoardQueryCreatorTests: XCTestCase {
     
     func testThatUrlStringIsCorrectlyCreatedForHistoricalData() {
         
-        let bigBoardUrl = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: "GOOG", startDate: BigBoardTestsHelper.sampleStartDate(), endDate: BigBoardTestsHelper.sampleEndDate())
+        let dateRange = BigBoardHistoricalDateRange(startDate: BigBoardTestsHelper.sampleStartDate(), endDate: BigBoardTestsHelper.sampleEndDate())
+        
+        let bigBoardUrl = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: "GOOG", dateRange: dateRange)
         let yqlUrl = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.historicaldata%20WHERE%20symbol%20IN%20('GOOG')%20AND%20startDate=%20%222015-06-04%22%20AND%20endDate=%20%222015-06-11%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
         
         XCTAssertEqual(bigBoardUrl, yqlUrl)

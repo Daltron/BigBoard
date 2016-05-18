@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		40E749D441A24BE1107A672E /* Pods_BigBoard_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2098D1D3CD0B5A2FF1E2D8 /* Pods_BigBoard_Example.framework */; };
 		5C13EC591CC441B4001BA523 /* BigBoardMainClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C13EC581CC441B4001BA523 /* BigBoardMainClassTests.swift */; };
+		5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */; };
+		5C4AEB771CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */; };
+		5C4AEB791CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB781CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift */; };
 		5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
 		5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
 		5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
@@ -17,13 +20,13 @@
 		5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
 		5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
 		5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
+		5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */; };
+		5C79885D1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */; };
 		5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E04641CC0385000F47699 /* BigBoardError.swift */; };
 		5C9E04661CC039D900F47699 /* BigBoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E04641CC0385000F47699 /* BigBoardError.swift */; };
 		5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */; };
 		5CC18DA01CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */; };
 		5CC18DA51CEBC73E0054990C /* BigBoardTestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18DA31CEBC73E0054990C /* BigBoardTestsHelper.swift */; };
-		5CC18DAB1CEBDB720054990C /* NSDate+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18DAA1CEBDB720054990C /* NSDate+BigBoard.swift */; };
-		5CC18DAC1CEBDBBB0054990C /* NSDate+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18DAA1CEBDB720054990C /* NSDate+BigBoard.swift */; };
 		5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -48,14 +51,16 @@
 		0B0B2E655EA8DB4F0BFF61A2 /* Pods-BigBoard_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBoard_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigBoard_Tests/Pods-BigBoard_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3638779B75CFAADFFDD0E7DB /* Pods-BigBoard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBoard_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigBoard_Example/Pods-BigBoard_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5C13EC581CC441B4001BA523 /* BigBoardMainClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardMainClassTests.swift; sourceTree = "<group>"; };
+		5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardHistoricalDateRange.swift; path = ../../Pod/Classes/BigBoardHistoricalDateRange.swift; sourceTree = "<group>"; };
+		5C4AEB781CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardHistoricalDateRangeTests.swift; sourceTree = "<group>"; };
 		5C71E6E41CC027AF00DEB166 /* BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoard.swift; path = ../../Pod/Classes/BigBoard.swift; sourceTree = "<group>"; };
 		5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardQueryCreator.swift; path = ../../Pod/Classes/BigBoardQueryCreator.swift; sourceTree = "<group>"; };
 		5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardRequestManager.swift; path = ../../Pod/Classes/BigBoardRequestManager.swift; sourceTree = "<group>"; };
 		5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardStock.swift; path = ../../Pod/Classes/BigBoardStock.swift; sourceTree = "<group>"; };
+		5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+BigBoard.swift"; path = "../../Pod/Classes/NSDate+BigBoard.swift"; sourceTree = "<group>"; };
 		5C9E04641CC0385000F47699 /* BigBoardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardError.swift; path = ../../Pod/Classes/BigBoardError.swift; sourceTree = "<group>"; };
 		5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardHistoricalData.swift; path = ../../Pod/Classes/BigBoardHistoricalData.swift; sourceTree = "<group>"; };
 		5CC18DA31CEBC73E0054990C /* BigBoardTestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardTestsHelper.swift; sourceTree = "<group>"; };
-		5CC18DAA1CEBDB720054990C /* NSDate+BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+BigBoard.swift"; path = "../../Pod/NSDate+BigBoard.swift"; sourceTree = "<group>"; };
 		5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardQueryCreatorTests.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BigBoard_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBoard_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,7 +108,8 @@
 				5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */,
 				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
 				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
-				5CC18DAA1CEBDB720054990C /* NSDate+BigBoard.swift */,
+				5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */,
+				5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -158,6 +164,7 @@
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */,
 				5C13EC581CC441B4001BA523 /* BigBoardMainClassTests.swift */,
+				5C4AEB781CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift */,
 				5CC18DA31CEBC73E0054990C /* BigBoardTestsHelper.swift */,
 			);
 			path = Tests;
@@ -404,11 +411,12 @@
 				5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */,
+				5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
+				5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
 				5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */,
 				5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
-				5CC18DAB1CEBDB720054990C /* NSDate+BigBoard.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,10 +428,12 @@
 				5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */,
 				5C9E04661CC039D900F47699 /* BigBoardError.swift in Sources */,
+				5C79885D1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
 				5C13EC591CC441B4001BA523 /* BigBoardMainClassTests.swift in Sources */,
-				5CC18DAC1CEBDBBB0054990C /* NSDate+BigBoard.swift in Sources */,
 				5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				5CC18DA51CEBC73E0054990C /* BigBoardTestsHelper.swift in Sources */,
+				5C4AEB791CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift in Sources */,
+				5C4AEB771CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
 				5CC18DA01CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */,
 				5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */,

@@ -14,4 +14,16 @@ extension NSDate {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         return calendar!.isDate(self, inSameDayAsDate: date)
     }
+    
+    func isOnAWeekend() -> Bool {
+        return isSaturday() || isSunday()
+    }
+    
+    func isSaturday() -> Bool {
+        return weekday == 7
+    }
+    
+    func isSunday() -> Bool {
+        return weekday == 1
+    }
 }

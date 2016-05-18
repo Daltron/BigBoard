@@ -208,12 +208,30 @@ class BigBoardStock: NSObject, Mappable {
         return name != nil
     }
     
-    func mapHistoricalData(startDate startDate:NSDate, endDate:NSDate, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
-        return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, startDate: startDate, endDate: endDate, success: { (historicalData:[BigBoardHistoricalData]) in
+    /*  Fetches and maps historical data points based on the provided date range
+        @param dateRange: The date range that the historical data points will fall in.
+    */
+    func mapHistoricalData(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+        
+        return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
             self.historicalData = historicalData;
             if let success = success {
                 success()
             }
         }, failure: failure)
+        
+    }
+    
+    func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+        
+        let dateRange = BigBoardHistoricalDateRange.fiveDayRange()
+        
+        return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
+            self.historicalData = historicalData;
+            if let success = success {
+                success()
+            }
+        }, failure: failure)
+        
     }
 }

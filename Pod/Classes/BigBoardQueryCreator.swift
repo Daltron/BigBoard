@@ -59,13 +59,13 @@ class BigBoardQueryCreator: NSObject {
         @param startDate: The date you want the historical data to start from
         @param endDate: The date you want the historical data to end at
      */
-    class func urlForHistoricalDataWithStockSymbol(symbol symbol:String, startDate:NSDate, endDate:NSDate) -> String {
+    class func urlForHistoricalDataWithStockSymbol(symbol symbol:String, dateRange:BigBoardHistoricalDateRange) -> String {
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        
-        let startDateString = dateFormatter.stringFromDate(startDate)
-        let endDateString = dateFormatter.stringFromDate(endDate)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let startDateString = dateFormatter.stringFromDate(dateRange.startDate)
+        let endDateString = dateFormatter.stringFromDate(dateRange.endDate)
         
         let dateQuery = percentEscapedQuery(query: " AND startDate= \"\(startDateString)\" AND endDate= \"\(endDateString)\"")
 

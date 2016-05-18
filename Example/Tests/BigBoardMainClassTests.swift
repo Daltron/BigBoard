@@ -122,7 +122,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataIsReturnedWhenTheGoogleStockSymbolIsUsed(){
         
-        sampleStock.mapHistoricalData(startDate: BigBoardTestsHelper.sampleStartDate(), endDate: BigBoardTestsHelper.sampleEndDate(), success: {
+        sampleStock.mapHistoricalData(dateRange: BigBoardTestsHelper.sampleDateRange(), success: {
             if self.sampleStock.historicalData?.isEmpty == false {
                 self.validationExpectation.fulfill()
                 XCTAssert(true)
@@ -141,7 +141,9 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStartDateIsEqualToToday() {
         
-        sampleStock.mapHistoricalData(startDate: NSDate(), endDate: NSDate(), success: {
+        let dateRange = BigBoardHistoricalDateRange(startDate: NSDate(), endDate: NSDate())
+        
+        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -158,7 +160,9 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStartDateIsGreaterThanEndDate() {
         
-        sampleStock.mapHistoricalData(startDate: 1.days.ago, endDate: 2.days.ago, success: {
+        let dateRange = BigBoardHistoricalDateRange(startDate: 1.days.ago, endDate: 2.days.ago)
+        
+        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -174,10 +178,12 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateAndEndDateAreTheSameAndTheDayIsSaturday() {
+        
         let startDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
         let endDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
+        let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(startDate: startDate, endDate: endDate, success: {
+        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -193,10 +199,12 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateAndEndDateAreTheSameAndTheDayIsSunday() {
+        
         let startDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
         let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
+        let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(startDate: startDate, endDate: endDate, success: {
+        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -212,10 +220,12 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateIsASaturdayAndTheEndDateIsTheFirstSundayAfter() {
+        
         let startDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
         let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
+        let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(startDate: startDate, endDate: endDate, success: {
+        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in

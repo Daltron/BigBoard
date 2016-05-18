@@ -11,7 +11,6 @@ import Alamofire
 import AlamofireObjectMapper
 import Timepiece
 
-
 class BigBoardRequestManager: NSObject {
 
     private static var _manager:Alamofire.Manager?
@@ -106,25 +105,22 @@ class BigBoardRequestManager: NSObject {
         }
     }
     
-    class func mapHistoricalDataForStock(stock stock:BigBoardStock?, startDate:NSDate, endDate:NSDate, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+    class func mapHistoricalDataForStock(stock stock:BigBoardStock?, dateRange:BigBoardHistoricalDateRange, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
         
-        if startDate >= NSDate.today() || endDate >= NSDate.today() {
+        if dateRange.isFutureDateRange() {
             let bigBoardError = BigBoardError(errorMessageType: .MappingFutureDate)
             callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-        } else if startDate > endDate {
+        } else if dateRange.startDateIsGreaterThanEndDate() {
             let bigBoardError = BigBoardError(errorMessageType: .StartDateGreaterThanEndDate)
             callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-        } else if startDate.isSameDayAsDate(endDate) && (startDate.weekday == 1 || startDate.weekday == 7) {
-            let bigBoardError = BigBoardError(errorMessageType: .StockMarketIsClosedInGivenDateRange)
-            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-        } else if endDate.day == startDate.day + 1 && (startDate.weekday == 7 && endDate.weekday == 1) {
+        } else if dateRange.stockMarketIsClosedDuringRange() {
             let bigBoardError = BigBoardError(errorMessageType: .StockMarketIsClosedInGivenDateRange)
             callErrorCallback(failure: failure, bigBoardError: bigBoardError)
         } else {
             if let stockSymbol = stock?.symbol {
-                let urlString = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: stockSymbol, startDate: startDate, endDate: endDate)
+                let urlString = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: stockSymbol, dateRange: dateRange)
                 
-                if startDate.isSameDayAsDate(endDate) {
+                if dateRange.startDate.isSameDayAsDate(dateRange.endDate) {
                         return mapHistoricalDataItem(urlString, success: success, failure: failure)
                 } else {
                     return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardHistoricalData], NSError>) in
