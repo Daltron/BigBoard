@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        let dr = BigBoardHistoricalDateRange.thirtyDayRange()
+        print(dr.startDate)
+        print(dr.endDate)
 
     }
 

@@ -22,13 +22,13 @@ class BigBoardQueryCreatorTests: XCTestCase {
     }
     
     func testThatUrlStringIsCorrectlyCreatedForOneStockSymbol(){
-        let bigBoardUrl = BigBoardQueryCreator.urlForStockSymbol(symbol: "GOOG")
+        let bigBoardUrl = BigBoardUrlCreator.urlForStockSymbol(symbol: "GOOG")
         let yqlUrl = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('GOOG')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForMultipleStockSymbols(){
-        let bigBoardUrl = BigBoardQueryCreator.urlForStockSymbols(symbols: ["GOOG", "AAPL", "TSLA"])
+        let bigBoardUrl = BigBoardUrlCreator.urlForStockSymbols(symbols: ["GOOG", "AAPL", "TSLA"])
         let yqlUrl = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('GOOG','AAPL','TSLA')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
@@ -37,7 +37,7 @@ class BigBoardQueryCreatorTests: XCTestCase {
         
         let dateRange = BigBoardHistoricalDateRange(startDate: BigBoardTestsHelper.sampleStartDate(), endDate: BigBoardTestsHelper.sampleEndDate())
         
-        let bigBoardUrl = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: "GOOG", dateRange: dateRange)
+        let bigBoardUrl = BigBoardUrlCreator.urlForHistoricalDataWithStockSymbol(symbol: "GOOG", dateRange: dateRange)
         let yqlUrl = "http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.historicaldata%20WHERE%20symbol%20IN%20('GOOG')%20AND%20startDate=%20%222015-06-04%22%20AND%20endDate=%20%222015-06-11%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
         
         XCTAssertEqual(bigBoardUrl, yqlUrl)

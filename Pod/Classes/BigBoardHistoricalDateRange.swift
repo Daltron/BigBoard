@@ -28,15 +28,19 @@ class BigBoardHistoricalDateRange: NSObject {
         return startDate > endDate
     }
     
+    /*
+        Determines if the stock market is closed based on the startDate and endDate. This calclulation does not yet consider holidays
+        in which the NYSE is closed.
+    */
+    
     func stockMarketIsClosedDuringRange() -> Bool {
-        
         let hasSameDatesAndDatesAreOnAWeekend = startDate.isSameDayAsDate(endDate) && (startDate.weekday == 1 || startDate.weekday == 7)
         let datesAreOneDayApartAndBothAreOnAWeekend = endDate.day == startDate.day + 1 && (startDate.weekday == 7 && endDate.weekday == 1)
         return hasSameDatesAndDatesAreOnAWeekend || datesAreOneDayApartAndBothAreOnAWeekend
     }
     
     class func fiveDayRange() -> BigBoardHistoricalDateRange {
-        return fiveDayRangeFromDate(endDate: NSDate() - 1.days)
+        return fiveDayRangeFromDate(endDate: NSDate() - 1.day)
     }
     
     class func fiveDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
@@ -45,7 +49,7 @@ class BigBoardHistoricalDateRange: NSObject {
     }
     
     class func tenDayRange() -> BigBoardHistoricalDateRange {
-        return fiveDayRangeFromDate(endDate: NSDate() - 10.days)
+        return tenDayRangeFromDate(endDate: NSDate() - 1.day)
     }
     
     class func tenDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
@@ -54,13 +58,20 @@ class BigBoardHistoricalDateRange: NSObject {
     }
     
     class func thirtyDayRange() -> BigBoardHistoricalDateRange {
-        return thirtyDayRangeFromDate(endDate: NSDate() - 30.days)
+        return thirtyDayRangeFromDate(endDate: NSDate() - 1.day)
     }
     
     class func thirtyDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
         let (startDate, endDate) = startAndEndDatesForEndDate(endDate: endDate, rangeLength: 30)
         return BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
     }
+    
+    /*  
+        Calculates and passes back a valid startDate and endDate for the given rangeLength. If the endDate is on a weekend, then 
+        the endDate will be pushed back to the nearest Friday.
+        @param endDate: The date the range ends on
+        @param rangeLength: The amount of days your range should be
+     */
 
     private class func startAndEndDatesForEndDate(endDate endDate:NSDate, rangeLength:Int) -> (NSDate, NSDate) {
         

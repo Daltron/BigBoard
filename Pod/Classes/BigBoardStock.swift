@@ -188,6 +188,7 @@ class BigBoardStock: NSObject, Mappable {
     /*  Returns an array of stock symbols that were invalid based on the stocks param passed in.
         @param stocks: An array of stocks to check for invalidity
     */
+    
     class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String] {
         var invalidSymbols:[String] = []
         for stock in stocks {
@@ -204,14 +205,17 @@ class BigBoardStock: NSObject, Mappable {
         stock actually exists.
         See Example: http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('FAKESTOCK')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
     */
+    
     func isReal() -> Bool {
         return name != nil
     }
     
-    /*  Fetches and maps historical data points based on the provided date range
+    /*  Fetches and maps historical data points based on the provided date range.
         @param dateRange: The date range that the historical data points will fall in.
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
-    func mapHistoricalData(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    func mapHistoricalDataWithRange(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         
         return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
             self.historicalData = historicalData;
@@ -222,16 +226,40 @@ class BigBoardStock: NSObject, Mappable {
         
     }
     
+    /*  Fetches and maps historical data points based on the previous five days. Today is not included in this range as YQL does not have 
+        a historical data point for it yet.
+        @param dateRange: The date range that the historical data points will fall in.
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
+     */
+    
     func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
-        
         let dateRange = BigBoardHistoricalDateRange.fiveDayRange()
-        
-        return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
-            self.historicalData = historicalData;
-            if let success = success {
-                success()
-            }
-        }, failure: failure)
-        
+        return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
+    
+    /*  Fetches and maps historical data points based on the previous ten days. Today is not included in this range as YQL does not have
+        a historical data point for it yet.
+        @param dateRange: The date range that the historical data points will fall in.
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
+     */
+    
+    func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+        let dateRange = BigBoardHistoricalDateRange.tenDayRange()
+        return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
+    }
+    
+    /*  Fetches and maps historical data points based on the previous thirty days. Today is not included in this range as YQL does not have
+        a historical data point for it yet.
+        @param dateRange: The date range that the historical data points will fall in.
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
+     */
+
+    func mapHistoricalDataWithThirtyDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+        let dateRange = BigBoardHistoricalDateRange.thirtyDayRange()
+        return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
+    }
+
 }

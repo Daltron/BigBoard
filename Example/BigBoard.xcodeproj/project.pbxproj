@@ -12,12 +12,12 @@
 		5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */; };
 		5C4AEB771CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */; };
 		5C4AEB791CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AEB781CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift */; };
+		5C4FB0541CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */; };
+		5C4FB0551CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */; };
 		5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
-		5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
 		5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
 		5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
 		5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
-		5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */; };
 		5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
 		5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
 		5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */; };
@@ -53,8 +53,8 @@
 		5C13EC581CC441B4001BA523 /* BigBoardMainClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardMainClassTests.swift; sourceTree = "<group>"; };
 		5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardHistoricalDateRange.swift; path = ../../Pod/Classes/BigBoardHistoricalDateRange.swift; sourceTree = "<group>"; };
 		5C4AEB781CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBoardHistoricalDateRangeTests.swift; sourceTree = "<group>"; };
+		5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardUrlCreator.swift; path = ../../Pod/Classes/BigBoardUrlCreator.swift; sourceTree = "<group>"; };
 		5C71E6E41CC027AF00DEB166 /* BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoard.swift; path = ../../Pod/Classes/BigBoard.swift; sourceTree = "<group>"; };
-		5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardQueryCreator.swift; path = ../../Pod/Classes/BigBoardQueryCreator.swift; sourceTree = "<group>"; };
 		5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardRequestManager.swift; path = ../../Pod/Classes/BigBoardRequestManager.swift; sourceTree = "<group>"; };
 		5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardStock.swift; path = ../../Pod/Classes/BigBoardStock.swift; sourceTree = "<group>"; };
 		5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+BigBoard.swift"; path = "../../Pod/Classes/NSDate+BigBoard.swift"; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 				5C71E6E41CC027AF00DEB166 /* BigBoard.swift */,
 				5C9E04641CC0385000F47699 /* BigBoardError.swift */,
 				5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */,
-				5C71E6E51CC027AF00DEB166 /* BigBoardQueryCreator.swift */,
 				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
+				5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */,
 				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
 				5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */,
 				5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */,
@@ -414,9 +414,9 @@
 				5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
 				5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
 				5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */,
-				5C71E6E91CC027AF00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
+				5C4FB0541CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,7 +425,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C71E6ED1CC0280B00DEB166 /* BigBoardQueryCreator.swift in Sources */,
 				5C71E6EF1CC0280B00DEB166 /* BigBoardStock.swift in Sources */,
 				5C9E04661CC039D900F47699 /* BigBoardError.swift in Sources */,
 				5C79885D1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
@@ -434,6 +433,7 @@
 				5CC18DA51CEBC73E0054990C /* BigBoardTestsHelper.swift in Sources */,
 				5C4AEB791CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift in Sources */,
 				5C4AEB771CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
+				5C4FB0551CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */,
 				5CC18DA01CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */,
 				5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */,

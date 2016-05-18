@@ -22,6 +22,7 @@ class BigBoardMainClassTests: XCTestCase {
         validationExpectation = expectationWithDescription("Validation")
         sampleStock = BigBoardStock(Map(mappingType: .ToJSON, JSONDictionary: [:]))
         sampleStock.symbol = "GOOG"
+        sampleStock.name = "GOOGLE"
     }
     
     override func tearDown() {
@@ -122,7 +123,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataIsReturnedWhenTheGoogleStockSymbolIsUsed(){
         
-        sampleStock.mapHistoricalData(dateRange: BigBoardTestsHelper.sampleDateRange(), success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: BigBoardTestsHelper.sampleDateRange(), success: {
             if self.sampleStock.historicalData?.isEmpty == false {
                 self.validationExpectation.fulfill()
                 XCTAssert(true)
@@ -143,7 +144,7 @@ class BigBoardMainClassTests: XCTestCase {
         
         let dateRange = BigBoardHistoricalDateRange(startDate: NSDate(), endDate: NSDate())
         
-        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -162,7 +163,7 @@ class BigBoardMainClassTests: XCTestCase {
         
         let dateRange = BigBoardHistoricalDateRange(startDate: 1.days.ago, endDate: 2.days.ago)
         
-        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -183,7 +184,7 @@ class BigBoardMainClassTests: XCTestCase {
         let endDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -204,7 +205,7 @@ class BigBoardMainClassTests: XCTestCase {
         let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -225,7 +226,7 @@ class BigBoardMainClassTests: XCTestCase {
         let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalData(dateRange: dateRange, success: {
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -239,7 +240,27 @@ class BigBoardMainClassTests: XCTestCase {
         
         waitForRequestToFinish()
     }
-
+    
+    func testThatHistoricalDataRequestFailsIfTheStockProvidedIsNotReal() {
+        
+        let dateRange = BigBoardTestsHelper.sampleDateRange()
+        sampleStock.name = nil
+        
+        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+            self.validationExpectation.fulfill()
+            XCTFail("This test should have failed.")
+            }, failure: { (error) in
+                self.validationExpectation.fulfill()
+                if error.description == BigBoardErrorMessage.StockDoesNotExist.rawValue {
+                    XCTAssert(true)
+                } else {
+                    print(error.description)
+                    XCTFail("The wrong error message was passed back.")
+                }
+        })
+        
+        waitForRequestToFinish()
+    }
 
     // MARK: Helpers
     

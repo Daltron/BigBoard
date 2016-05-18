@@ -19,7 +19,7 @@
 		21FAD0C3F487C026A309EB20673A9904 /* BigBoard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E2EEF8D6627A8870633D0E33749E59D7 /* BigBoard.bundle */; };
 		27F8381C1954FA911321EFAF1360B8B5 /* ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA59AAFB1665837B7F1BC412FD7F22 /* ToJSON.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB9F51719853C32AFD916EA41DC26BC /* Validation.swift */; };
-		2D7D0113E027753C17C2A7D821A94F45 /* BigBoardQueryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardQueryCreator.swift */; };
+		2D7D0113E027753C17C2A7D821A94F45 /* BigBoardUrlCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardUrlCreator.swift */; };
 		2E989A4945DECA906C092F70B093B55D /* Pods-BigBoard_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF620AE3D52EC7B78AED9FB5E64ACE8 /* Pods-BigBoard_Tests-dummy.m */; };
 		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94020286CD2A591CB31CBBAB7094EC6 /* NetworkReachabilityManager.swift */; };
 		3A6502171B181276231C2E92BB25FF94 /* ObjectMapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7B0DBB6843723AE4EC62E1114398CE /* ObjectMapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,7 +249,7 @@
 		82C078CB90B14F1F55A66CA467443A33 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		836CDDA6DAD3D1C997B71F549ACBC5AF /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		85B8BA5CBDF437AEEB3C43BFD48BD46C /* Pods-BigBoard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BigBoard_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardQueryCreator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BigBoardQueryCreator.swift; sourceTree = "<group>"; };
+		888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardUrlCreator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BigBoardUrlCreator.swift; sourceTree = "<group>"; };
 		8A447BF8181756A882E68F1357142E44 /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C71D8EE8838FA82DA9322ABB7053635 /* EnumTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumTransform.swift; path = ObjectMapper/Transforms/EnumTransform.swift; sourceTree = "<group>"; };
 		8E86DF0A4DE9C6286CC33DB1E64011E1 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 				501EC72D3A06E808F83BAAA676AA9549 /* BigBoard.swift */,
 				3E67D8C965355FFE7E3BA94BAE57139C /* BigBoardError.swift */,
 				9CAC4752A1D7043505565737BDEE8337 /* BigBoardHistoricalData.swift */,
-				888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardQueryCreator.swift */,
+				888F0FE9B2220BFA729406D7B60B7E90 /* BigBoardUrlCreator.swift */,
 				CF740908DDB30088FFFD17AF0FA423AD /* BigBoardRequestManager.swift */,
 				5F7555B635D6FA722440C7F8AEDD51B7 /* BigBoardStock.swift */,
 				5C4AEB731CEBFB480082F35B /* BigBoardHistoricalDateRange.swift */,
@@ -940,7 +940,7 @@
 				E04445D0F77D40959A369568365EA023 /* BigBoard.swift in Sources */,
 				F52E4D499A255D20234F04BF9D896EE7 /* BigBoardError.swift in Sources */,
 				E439D010C762D9F23A5FACADDDE8DC5C /* BigBoardHistoricalData.swift in Sources */,
-				2D7D0113E027753C17C2A7D821A94F45 /* BigBoardQueryCreator.swift in Sources */,
+				2D7D0113E027753C17C2A7D821A94F45 /* BigBoardUrlCreator.swift in Sources */,
 				16A4C24EE200E30C60D1DDEF05FBE7DC /* BigBoardRequestManager.swift in Sources */,
 				5C79885A1CEBF9A3008878EB /* NSDate+BigBoard.swift in Sources */,
 				8ED27FCA3B90297DB4E5DCE14E22933D /* BigBoardStock.swift in Sources */,
