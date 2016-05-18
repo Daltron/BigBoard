@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import AlamofireObjectMapper
+import Timepiece
+
 
 class BigBoardRequestManager: NSObject {
 
@@ -106,25 +108,40 @@ class BigBoardRequestManager: NSObject {
     
     class func mapHistoricalDataForStock(stock stock:BigBoardStock?, startDate:NSDate, endDate:NSDate, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
         
-        if let stockSymbol = stock?.symbol {
-            let urlString = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: stockSymbol, startDate: startDate, endDate: endDate)
-            
-            if startDate == endDate {
-                return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardHistoricalData], NSError>) in
-                    switch response.result {
-                        case .Success: success(response.result.value!)
-                        case .Failure(let error): callErrorCallback(failure: failure, error: error)
-                    }
-                })
-            } else if startDate >= NSDate() {
-                return mapHistoricalDataItem(urlString, success: success, failure: failure)
-            }
-            
-        } else {
-            let bigBoardError = BigBoardError(customErrorMessage: "You are trying to map historical data for a stock that does not exist")
+        if startDate >= NSDate.today() || endDate >= NSDate.today() {
+            let bigBoardError = BigBoardError(errorMessageType: .MappingFutureDate)
             callErrorCallback(failure: failure, bigBoardError: bigBoardError)
-            return nil
+        } else if startDate > endDate {
+            let bigBoardError = BigBoardError(errorMessageType: .StartDateGreaterThanEndDate)
+            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+        } else if startDate.isSameDayAsDate(endDate) && (startDate.weekday == 1 || startDate.weekday == 7) {
+            let bigBoardError = BigBoardError(errorMessageType: .StockMarketIsClosedInGivenDateRange)
+            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+        } else if endDate.day == startDate.day + 1 && (startDate.weekday == 7 && endDate.weekday == 1) {
+            let bigBoardError = BigBoardError(errorMessageType: .StockMarketIsClosedInGivenDateRange)
+            callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+        } else {
+            if let stockSymbol = stock?.symbol {
+                let urlString = BigBoardQueryCreator.urlForHistoricalDataWithStockSymbol(symbol: stockSymbol, startDate: startDate, endDate: endDate)
+                
+                if startDate.isSameDayAsDate(endDate) {
+                        return mapHistoricalDataItem(urlString, success: success, failure: failure)
+                } else {
+                    return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardHistoricalData], NSError>) in
+                        switch response.result {
+                            case .Success: success(response.result.value!)
+                            case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                        }
+                    })
+                }
+                
+            } else {
+                let bigBoardError = BigBoardError(errorMessageType: .StockDoesNotExist)
+                callErrorCallback(failure: failure, bigBoardError: bigBoardError)
+            }
         }
+        
+        return nil
     }
     
     private class func mapHistoricalDataItem(urlString:String, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {

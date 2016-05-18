@@ -71,7 +71,7 @@ class BigBoardQueryCreator: NSObject {
 
         let symbolsQuery = queryForStockSymbol(symbol: symbol, queryType: .HistoricalData)
         let completedUrl = "\(YQL_URL_PREFIX)\(symbolsQuery)\(dateQuery)\(YQL_URL_SUFFIX)"
-        
+        print(completedUrl)
         return completedUrl
     }
     

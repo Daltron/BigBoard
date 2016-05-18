@@ -49,6 +49,7 @@ class BigBoardStock: NSObject, Mappable {
     var exDividendDate:String?
     var fiftyDayMovingAverage:String?
     var highLimit:String?
+    var historicalData:[BigBoardHistoricalData]?
     var holdingsGain:String?
     var holdingsGainPercent:String?
     var holdingsGainPercentRealtime:String?
@@ -94,7 +95,6 @@ class BigBoardStock: NSObject, Mappable {
     var yearHigh:String?
     var yearLow:String?
     var yearRange:String?
-    var historicalData:[BigBoardHistoricalData]?
     
     required init?(_ map: Map) {
         

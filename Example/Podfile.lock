@@ -1,11 +1,13 @@
 PODS:
-  - Alamofire (3.3.1)
+  - Alamofire (3.4.0)
   - AlamofireObjectMapper (3.0.0):
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
   - BigBoard (0.1.0):
     - AlamofireObjectMapper (~> 3.0)
-  - ObjectMapper (1.2.0)
+    - Timepiece
+  - ObjectMapper (1.3.0)
+  - Timepiece (0.4.2)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 3.0)
@@ -16,9 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
-  BigBoard: adea3440e04725d07a50a0695283ca31940df1af
-  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  BigBoard: 8832d326660d958034f284f1d20145f04950fd72
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
+  Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
 COCOAPODS: 0.39.0

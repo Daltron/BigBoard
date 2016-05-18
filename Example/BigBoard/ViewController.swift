@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Timepiece
 
 class ViewController: UIViewController {
 
@@ -15,8 +16,8 @@ class ViewController: UIViewController {
         
         BigBoard.stocksWithSymbols(symbols: ["GOOG"], success: { (stocks) in
             print(stocks.first?.symbol!)
-            stocks.first!.mapHistoricalData(startDate: NSDate(), endDate: NSDate(), success: { 
-                print("Finished!")
+            stocks.first!.mapHistoricalData(startDate: NSDate() - 2.days, endDate: NSDate() - 3.days, success: {
+                print(stocks.first?.historicalData)
             }, failure: { (error) in
                 print(error.description)
             })

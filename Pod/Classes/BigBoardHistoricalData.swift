@@ -26,12 +26,12 @@ class BigBoardHistoricalData: Mappable {
     
     func mapping(map: Map) {
         symbol <- map["Symbol"]
-        symbol <- map["Date"]
-        symbol <- map["Open"]
-        symbol <- map["High"]
-        symbol <- map["Low"]
-        symbol <- map["Close"]
-        symbol <- map["Volume"]
-        symbol <- map["Adj_Close"]
+        date <- map["Date"]
+        open <- map["Open"]
+        high <- map["High"]
+        low <- map["Low"]
+        close <- map["Close"]
+        volume <- map["Volume"]
+        adjClose <- map["Adj_Close"]
     }
 }

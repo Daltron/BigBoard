@@ -25,6 +25,9 @@
   "dependencies": {
     "AlamofireObjectMapper": [
       "~> 3.0"
+    ],
+    "Timepiece": [
+
     ]
   }
 }
