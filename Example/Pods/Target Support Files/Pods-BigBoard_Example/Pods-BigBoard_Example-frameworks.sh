@@ -87,13 +87,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BigBoard_Example/Alamofire.framework"
   install_framework "Pods-BigBoard_Example/AlamofireObjectMapper.framework"
   install_framework "Pods-BigBoard_Example/BigBoard.framework"
+  install_framework "Pods-BigBoard_Example/Charts.framework"
   install_framework "Pods-BigBoard_Example/ObjectMapper.framework"
+  install_framework "Pods-BigBoard_Example/SnapKit.framework"
   install_framework "Pods-BigBoard_Example/Timepiece.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BigBoard_Example/Alamofire.framework"
   install_framework "Pods-BigBoard_Example/AlamofireObjectMapper.framework"
   install_framework "Pods-BigBoard_Example/BigBoard.framework"
+  install_framework "Pods-BigBoard_Example/Charts.framework"
   install_framework "Pods-BigBoard_Example/ObjectMapper.framework"
+  install_framework "Pods-BigBoard_Example/SnapKit.framework"
   install_framework "Pods-BigBoard_Example/Timepiece.framework"
 fi
