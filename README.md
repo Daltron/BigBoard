@@ -16,6 +16,12 @@ BigBoard is the most powerful yet easy to use API for iOS for retrieving stock m
 - [x] Comprehensive unit test coverage
 - [x] Extensive documentation
 
+## Library Dependencies
+
+ - [Alamofire](https://github.com/Alamofire/Alamofire): Elegant HTTP Networking in Swift
+ - [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper): An Alamofire extension which converts JSON into Swift objects 
+ - [Timepiece](https://github.com/naoty/Timepiece): Intuitive NSDate extensions in Swift
+
 ## Installation
 
 ### CocoaPods
@@ -35,6 +41,8 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+This will download any library dependencies you do not already have in your project.
 
 ## Usage
 
