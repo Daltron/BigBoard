@@ -42,6 +42,33 @@ BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks
 }
 ```
 
+### Retrieving historical data for a stock in a given date range
+
+You can use any of these:
+
+```swift
+
+class BigBoardStock : Mappable {
+    func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapHistoricalDataWithThirtyDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+}
+```
+
+or make your own:
+
+```swift
+import BigBoard
+
+let dateRange = BigBoardHistoricalDateRange(startDate: NSDate() - 7.days, endDate: NSDate() - 3.days)
+stock.mapHistoricalDataWithRange(dateRange: dateRange, success: { 
+    // The historical data has been mapped to the stock
+    print(stock.historicalData.count)
+}) { (error) in
+    print(error)
+}
+```
+
 ## Requirements
 
 ## Installation
