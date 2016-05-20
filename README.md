@@ -62,6 +62,102 @@ BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks
 }
 ```
 
+Stocks have the following properties:
+
+```swift
+class BigBoardStock: Mappable {
+    var afterHoursChangeRealtime:String?
+    var annualizedGain:String?
+    var ask:String?
+    var askRealTime:String?
+    var averageDailyVolume:String?
+    var bid:String?
+    var bidRealTime:String?
+    var bookValue:String?
+    var change:String?
+    var changeFromFiftyDayMovingAverage:String?
+    var changeFromTwoHundredDayMovingAverage:String?
+    var changeFromYearHigh:String?
+    var changeFromYearLow:String?
+    var changePercentRealtime:String?
+    var changeRealTime:String?
+    var changePercentChange:String?
+    var changeInPercent:String?
+    var commission:String?
+    var currency:String?
+    var daysHigh:String?
+    var daysLow:String?
+    var daysRange:String?
+    var daysRangeRealTime:String?
+    var daysValueChange:String?
+    var daysValueChangeRealTime:String?
+    var dividendPayDate:String?
+    var dividendShare:String?
+    var dividendYield:String?
+    var ebitda:String?
+    var epsEstimateCurrentYear:String?
+    var epsEstimateNextQuarter:String?
+    var epsEstimateNextYear:String?
+    var earningsShare:String?
+    var errorIndicationReturnedForSymbolChangedInvalid:String?
+    var exDividendDate:String?
+    var fiveDayChartModule:BigBoardChartDataModule?
+    var fiveYearChartModule:BigBoardChartDataModule?
+    var fiftyDayMovingAverage:String?
+    var highLimit:String?
+    var historicalData:[BigBoardHistoricalData]?
+    var holdingsGain:String?
+    var holdingsGainPercent:String?
+    var holdingsGainPercentRealtime:String?
+    var holdingsGainRealtime:String?
+    var holdingsValue:String?
+    var holdingsValueRealtime:String?
+    var lastTradeDate:String?
+    var lastTradePriceOnly:String?
+    var lastTradeRealTimeWithTime:String?
+    var lastTradeTime:String?
+    var lastTradeWithTime:String?
+    var lifetimeChartModule:BigBoardChartDataModule?
+    var lowLimit:String?
+    var marketCapRealtime:String?
+    var marketCapitalization:String?
+    var moreInfo:String?
+    var name:String?
+    var notes:String?
+    var oneDayChartModule:BigBoardChartDataModule?
+    var oneMonthChartModule:BigBoardChartDataModule?
+    var oneYearChartModule:BigBoardChartDataModule?
+    var oneYearTargetPrice:String?
+    var open:String?
+    var orderBookRealtime:String?
+    var pegRatio:String?
+    var peRatio:String?
+    var peRatioRealtime:String?
+    var percentChangeFromYearHigh:String?
+    var percentChange:String?
+    var percentChangeFromFiftyDayMovingAverage:String?
+    var percentChangeFromTwoHundredDayMovingAverage:String?
+    var percentChangeFromYearLow:String?
+    var previousClose:String?
+    var priceBook:String?
+    var priceEPSEstimateCurrentYear:String?
+    var priceEPSEstimateNextYear:String?
+    var pricePaid:String?
+    var priceSales:String?
+    var sharesOwned:String?
+    var shortRatio:String?
+    var stockExchange:String?
+    var symbol:String?
+    var threeMonthChartModule:BigBoardChartDataModule?
+    var tickerTrend:String?
+    var tradeDate:String?
+    var twoHundredDayMovingAverage:String?
+    var volume:String?
+    var yearHigh:String?
+    var yearLow:String?
+    var yearRange:String?
+```
+
 ### Retrieving historical data for a stock in a given date range
 
 You can use any of these:
@@ -85,6 +181,21 @@ stock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
     print(stock.historicalData.count)
 }) { (error) in
     print(error)
+}
+```
+
+Historical data items have the following properties:
+
+```swift
+class BigBoardHistoricalData: Mappable {
+    var symbol:String?
+    var date:String?
+    var open:String?
+    var high:String?
+    var low:String?
+    var close:String?
+    var volume:String?
+    var adjClose:String?
 }
 ```
 
@@ -115,6 +226,26 @@ stock.mapOneMonthChartDataModule({
 })
 
 ```
+
+Chart Modules have the following properties:
+
+```swift
+class BigBoardChartDataModule: Mappable {
+    var dates:[NSDate]!
+    var series:[BigBoardChartDataModuleSeries]!
+}
+
+class BigBoardChartDataModuleSeries: Mappable {
+    var date:NSDate!
+    var close:Double!
+    var high:Double!
+    var low:Double!
+    var open:Double!
+    var volume:Int!
+}
+```
+
+
 ### Retrieve a list of stocks based on a search term
 
 ```swift
@@ -124,6 +255,20 @@ BigBoard.stocksContainingSearchTerm(searchTerm: "Google", success: { (searchResu
     // Do Something with the searchResultStocks
 }) { (error) in
     print(error)
+}
+
+```
+
+Search result stocks have the following properties:
+
+```swift
+class BigBoardSearchResultStock: Mappable {
+    var symbol:String?
+    var name:String?
+    var exch:String?
+    var type:String?
+    var exchDisp:String?
+    var typeDisp:String?
 }
 
 ```
