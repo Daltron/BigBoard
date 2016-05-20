@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![Platform](https://img.shields.io/cocoapods/p/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 
-BigBoard is the most powerful yet easy to use API for iOS for retrieving stock market and finance data from Yahoo's APIs.
+BigBoard is a powerful yet easy to use finance API for iOS and OSX.
 
 ## Features
 - [x] Retreive a stock based on a stock symbol
