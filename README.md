@@ -12,7 +12,7 @@ BigBoard is the most powerful yet easy to use API for iOS for retrieving stock m
 - [x] Retrieve multiple stocks at the same time based on multiple stock symbols
 - [x] Retrieve historical data for a stock for any custom date range
 - [x] Retrieve chart data information for a stock that can easily be used in many charting libraries
-- [x] Retrieve a list of stocks based on a given search term
+- [x] Retrieve a list of stocks based on a search term
 - [x] Comprehensive unit test coverage
 - [x] Complete documentation
 
@@ -67,7 +67,6 @@ BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks
 You can use any of these:
 
 ```swift
-
 class BigBoardStock : Mappable {
     func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
     func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
@@ -75,7 +74,7 @@ class BigBoardStock : Mappable {
 }
 ```
 
-or make your own:
+or define your own:
 
 ```swift
 import BigBoard
@@ -87,6 +86,46 @@ stock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
 }) { (error) in
     print(error)
 }
+```
+
+### Retrieving chart data for a stock
+
+There are currently seven different ways to retrieve chart data:
+
+```swift
+class BigBoardStock : Mappable {
+    func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+}
+```
+Example:
+
+```swift
+import BigBoard
+
+stock.mapOneMonthChartDataModule({
+    // oneMonthChartModule is now mapped to the stock
+}, failure: { (error) in
+    print(error)
+})
+
+```
+### Retrieve a list of stocks based on a search term
+
+```swift
+import BigBoard
+
+BigBoard.stocksContainingSearchTerm(searchTerm: "Google", success: { (searchResultStocks) in
+    // Do Something with the searchResultStocks
+}) { (error) in
+    print(error)
+}
+
 ```
 
 ## Requirements
