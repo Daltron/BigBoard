@@ -14,7 +14,7 @@ BigBoard is the most powerful yet easy to use API for iOS for retrieving stock m
 - [x] Retrieve chart data information for a stock that can easily be used in many charting libraries
 - [x] Retrieve a list of stocks based on a search term
 - [x] Comprehensive unit test coverage
-- [x] Complete documentation
+- [x] Extensive documentation
 
 ## Installation
 
