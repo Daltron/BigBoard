@@ -16,6 +16,26 @@ BigBoard is the most powerful yet easy to use API for iOS for retrieving stock m
 - [x] Comprehensive unit test coverage
 - [x] Complete documentation
 
+## Installation
+
+### CocoaPods
+
+To integrate BigBoard into your xCode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'BigBoard'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
 ## Usage
 
 ### Mapping a single stock
@@ -71,14 +91,8 @@ stock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
 
 ## Requirements
 
-## Installation
-
-BigBoard is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "BigBoard"
-```
+- iOS 8.0+
+- xCode 7.3+
 
 ## Author
 
