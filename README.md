@@ -288,7 +288,7 @@ class BigBoardSearchResultStock: Mappable {
 
 ## Author
 
-Dalton Hinterscer, daltonhint4@gmail.com
+Dalton Hinterscher, daltonhint4@gmail.com
 
 ## License
 
