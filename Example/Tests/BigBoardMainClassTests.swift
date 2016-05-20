@@ -261,6 +261,105 @@ class BigBoardMainClassTests: XCTestCase {
         
         waitForRequestToFinish()
     }
+    
+    func testThatOneDayChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapOneDayChartDataModule({ 
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.oneDayChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+    
+    func testThatFiveDayChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapFiveDayChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.fiveDayChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+    
+    func testThatOneMonthChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapOneMonthChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.oneMonthChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+
+    
+    func testThatThreeMonthChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapThreeMonthChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.threeMonthChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+
+    func testThatOneYearChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapOneYearChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.oneYearChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+    
+    func testThatFiveYearChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapFiveYearChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.fiveYearChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
+
+    func testThatLifetimeChartDataModuleRequestIsCorrectlyMapped() {
+        
+        sampleStock.mapLifetimeChartDataModule({
+            self.validationExpectation.fulfill()
+            XCTAssert(self.sampleStock.lifetimeChartModule != nil)
+        }) { (error) in
+            self.validationExpectation.fulfill()
+            XCTFail(error.description)
+        }
+        
+        waitForRequestToFinish()
+        
+    }
 
     // MARK: Helpers
     

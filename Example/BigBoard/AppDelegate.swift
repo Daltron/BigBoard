@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        
         let navigationController = UINavigationController(rootViewController: ExampleViewController())
+        navigationController.navigationBar.barTintColor = UIColor.flatGreenColorDark()
+        navigationController.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "SinkinSans-400Regular", size: 20.0)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

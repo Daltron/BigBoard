@@ -19,6 +19,16 @@
 		5C4FB05B1CECD0AC00CD982B /* ExampleHistoricalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB05A1CECD0AC00CD982B /* ExampleHistoricalDataModel.swift */; };
 		5C4FB05D1CECD0B700CD982B /* ExampleHistoricalDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB05C1CECD0B700CD982B /* ExampleHistoricalDataView.swift */; };
 		5C4FB05F1CECD0C400CD982B /* ExampleHistoricalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB05E1CECD0C400CD982B /* ExampleHistoricalDataViewController.swift */; };
+		5C4FB0781CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0771CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift */; };
+		5C4FB0791CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0771CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift */; };
+		5C4FB07B1CEF681800CD982B /* BigBoardChartDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB07A1CEF681800CD982B /* BigBoardChartDataModule.swift */; };
+		5C4FB07C1CEF681800CD982B /* BigBoardChartDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB07A1CEF681800CD982B /* BigBoardChartDataModule.swift */; };
+		5C4FB0801CEF974E00CD982B /* BigBoardSearchResultStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB07F1CEF974E00CD982B /* BigBoardSearchResultStock.swift */; };
+		5C4FB0811CEF974E00CD982B /* BigBoardSearchResultStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB07F1CEF974E00CD982B /* BigBoardSearchResultStock.swift */; };
+		5C4FB0861CEF9FDE00CD982B /* SinkinSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C4FB0851CEF9FDE00CD982B /* SinkinSans.otf */; };
+		5C4FB0881CEFA1CB00CD982B /* ExampleAddStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0871CEFA1CB00CD982B /* ExampleAddStockModel.swift */; };
+		5C4FB08B1CEFA1EA00CD982B /* ExampleAddStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB08A1CEFA1EA00CD982B /* ExampleAddStockView.swift */; };
+		5C4FB08D1CEFA20600CD982B /* ExampleAddStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB08C1CEFA20600CD982B /* ExampleAddStockViewController.swift */; };
 		5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E41CC027AF00DEB166 /* BigBoard.swift */; };
 		5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */; };
 		5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */; };
@@ -63,6 +73,13 @@
 		5C4FB05A1CECD0AC00CD982B /* ExampleHistoricalDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleHistoricalDataModel.swift; sourceTree = "<group>"; };
 		5C4FB05C1CECD0B700CD982B /* ExampleHistoricalDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleHistoricalDataView.swift; sourceTree = "<group>"; };
 		5C4FB05E1CECD0C400CD982B /* ExampleHistoricalDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleHistoricalDataViewController.swift; sourceTree = "<group>"; };
+		5C4FB0771CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardChartDataModuleSeries.swift; path = ../../Pod/Classes/BigBoardChartDataModuleSeries.swift; sourceTree = "<group>"; };
+		5C4FB07A1CEF681800CD982B /* BigBoardChartDataModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardChartDataModule.swift; path = ../../Pod/Classes/BigBoardChartDataModule.swift; sourceTree = "<group>"; };
+		5C4FB07F1CEF974E00CD982B /* BigBoardSearchResultStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardSearchResultStock.swift; path = ../../Pod/Classes/BigBoardSearchResultStock.swift; sourceTree = "<group>"; };
+		5C4FB0851CEF9FDE00CD982B /* SinkinSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SinkinSans.otf; sourceTree = "<group>"; };
+		5C4FB0871CEFA1CB00CD982B /* ExampleAddStockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAddStockModel.swift; sourceTree = "<group>"; };
+		5C4FB08A1CEFA1EA00CD982B /* ExampleAddStockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAddStockView.swift; sourceTree = "<group>"; };
+		5C4FB08C1CEFA20600CD982B /* ExampleAddStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAddStockViewController.swift; sourceTree = "<group>"; };
 		5C71E6E41CC027AF00DEB166 /* BigBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoard.swift; path = ../../Pod/Classes/BigBoard.swift; sourceTree = "<group>"; };
 		5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardRequestManager.swift; path = ../../Pod/Classes/BigBoardRequestManager.swift; sourceTree = "<group>"; };
 		5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardStock.swift; path = ../../Pod/Classes/BigBoardStock.swift; sourceTree = "<group>"; };
@@ -107,17 +124,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C4FB0821CEF9F0A00CD982B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5C4FB0851CEF9FDE00CD982B /* SinkinSans.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		5C71E6E31CC0279D00DEB166 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				5C71E6E41CC027AF00DEB166 /* BigBoard.swift */,
+				5C4FB07A1CEF681800CD982B /* BigBoardChartDataModule.swift */,
+				5C4FB0771CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift */,
 				5C9E04641CC0385000F47699 /* BigBoardError.swift */,
 				5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */,
-				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
-				5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */,
-				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
-				5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */,
 				5C4AEB751CEBFB520082F35B /* BigBoardHistoricalDateRange.swift */,
+				5C71E6E61CC027AF00DEB166 /* BigBoardRequestManager.swift */,
+				5C71E6E71CC027AF00DEB166 /* BigBoardStock.swift */,
+				5C4FB0531CECB9DB00CD982B /* BigBoardUrlCreator.swift */,
+				5C79885B1CEBF9B1008878EB /* NSDate+BigBoard.swift */,
+				5C4FB07F1CEF974E00CD982B /* BigBoardSearchResultStock.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -146,6 +174,7 @@
 		607FACD21AFB9204008FA782 /* Example for BigBoard */ = {
 			isa = PBXGroup;
 			children = (
+				5C4FB0821CEF9F0A00CD982B /* Fonts */,
 				5C71E6E31CC0279D00DEB166 /* Source */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				5C4FB0561CECC59300CD982B /* ExampleModel.swift */,
@@ -157,6 +186,9 @@
 				5C4FB05A1CECD0AC00CD982B /* ExampleHistoricalDataModel.swift */,
 				5C4FB05C1CECD0B700CD982B /* ExampleHistoricalDataView.swift */,
 				5C4FB05E1CECD0C400CD982B /* ExampleHistoricalDataViewController.swift */,
+				5C4FB0871CEFA1CB00CD982B /* ExampleAddStockModel.swift */,
+				5C4FB08A1CEFA1EA00CD982B /* ExampleAddStockView.swift */,
+				5C4FB08C1CEFA20600CD982B /* ExampleAddStockViewController.swift */,
 			);
 			name = "Example for BigBoard";
 			path = BigBoard;
@@ -309,6 +341,7 @@
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				5C4FB0861CEF9FDE00CD982B /* SinkinSans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,18 +453,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C71E6EA1CC027AF00DEB166 /* BigBoardRequestManager.swift in Sources */,
+				5C4FB07B1CEF681800CD982B /* BigBoardChartDataModule.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ExampleViewController.swift in Sources */,
 				5C71E6EB1CC027AF00DEB166 /* BigBoardStock.swift in Sources */,
+				5C4FB08B1CEFA1EA00CD982B /* ExampleAddStockView.swift in Sources */,
 				5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
 				5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
 				5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */,
 				5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
 				5C4FB05B1CECD0AC00CD982B /* ExampleHistoricalDataModel.swift in Sources */,
+				5C4FB0881CEFA1CB00CD982B /* ExampleAddStockModel.swift in Sources */,
+				5C4FB08D1CEFA20600CD982B /* ExampleAddStockViewController.swift in Sources */,
 				5C4FB0541CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				5C4FB0571CECC59300CD982B /* ExampleModel.swift in Sources */,
 				5C4FB0591CECC5A200CD982B /* ExampleView.swift in Sources */,
+				5C4FB0781CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift in Sources */,
+				5C4FB0801CEF974E00CD982B /* BigBoardSearchResultStock.swift in Sources */,
 				5C4FB05D1CECD0B700CD982B /* ExampleHistoricalDataView.swift in Sources */,
 				5C4FB05F1CECD0C400CD982B /* ExampleHistoricalDataViewController.swift in Sources */,
 			);
@@ -447,11 +486,14 @@
 				5C13EC591CC441B4001BA523 /* BigBoardMainClassTests.swift in Sources */,
 				5C71E6EE1CC0280B00DEB166 /* BigBoardRequestManager.swift in Sources */,
 				5CC18DA51CEBC73E0054990C /* BigBoardTestsHelper.swift in Sources */,
+				5C4FB0811CEF974E00CD982B /* BigBoardSearchResultStock.swift in Sources */,
 				5C4AEB791CEC00010082F35B /* BigBoardHistoricalDateRangeTests.swift in Sources */,
 				5C4AEB771CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
 				5C4FB0551CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */,
 				5CC18DA01CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
+				5C4FB07C1CEF681800CD982B /* BigBoardChartDataModule.swift in Sources */,
 				5CF6E5FB1CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift in Sources */,
+				5C4FB0791CEF67FE00CD982B /* BigBoardChartDataModuleSeries.swift in Sources */,
 				5C71E6EC1CC0280B00DEB166 /* BigBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

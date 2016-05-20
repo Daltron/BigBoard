@@ -20,6 +20,20 @@ class ExampleModel: NSObject {
         return stocks[index]
     }
     
+    func refreshStocks(success success:(() -> Void), failure:(BigBoardError) -> Void) {
+        
+        var stockSymbols:[String] = []
+        
+        for stock in stocks {
+            stockSymbols.append(stock.symbol!)
+        }
+        
+        BigBoard.stocksWithSymbols(symbols: stockSymbols, success: { (stocks) in
+            self.stocks = stocks
+            success()
+        }, failure: failure)
+    }
+    
     func mapSampleStocks(success success:(() -> Void), failure:((BigBoardError) -> Void)) {
         BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks) in
             self.stocks = stocks

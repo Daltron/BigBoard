@@ -5,6 +5,7 @@ target 'BigBoard_Example', :exclusive => true do
   pod 'BigBoard', :path => '../'
   pod 'SnapKit'
   pod 'Charts'
+  pod 'ChameleonFramework/Swift'
 end
 
 target 'BigBoard_Tests', :exclusive => true do

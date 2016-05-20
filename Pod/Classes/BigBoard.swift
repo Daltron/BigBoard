@@ -11,4 +11,8 @@ class BigBoard: NSObject {
     class func stocksWithSymbols(symbols symbols:[String], success:(([BigBoardStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.mapBigBoardStocks(symbols: symbols, success: success, failure: failure)
     }
+    
+    class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+        return BigBoardRequestManager.stocksContainingSearchTerm(searchTerm: searchTerm, success: success, failure: failure)
+    }
 }

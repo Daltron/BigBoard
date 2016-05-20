@@ -21,25 +21,39 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
         exampleView = ExampleView(delegate: self)
         view = exampleView
         title = "BigBoard"
+        
+    
+        BigBoard.stocksContainingSearchTerm(searchTerm: "Google", success: { (searchResultStocks) in
+            // Do Something with the searchResultStocks
+        }) { (error) in
+            print(error)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        print("Mapping Sample Stocks...")
-        model.mapSampleStocks(success: {
-            print("Sample Stocks successfully mapped...")
-            print("--------------------------")
-            self.exampleView.stocksTableView.reloadData()
-        }) { (error) in
-            print(error)
-            print("--------------------------")
-        }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addStockButtonPressed))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
     }
     
+    func addStockButtonPressed() {
+        let addStockController = ExampleAddStockViewController { (stock:BigBoardSearchResultStock) in
+            print("Loading stock with symbol: \(stock.symbol!)")
+            self.model.mapStockWithSymbol(symbol: stock.symbol!, success: {
+                print("Stock successfully mapped.")
+                print("--------------------------")
+                self.exampleView.stocksTableView.reloadData()
+            }, failure: { (error) in
+                print(error)
+                print("--------------------------")
+            })
+        }
+        navigationController?.pushViewController(addStockController, animated: true)
+    }
     
     // MARK: ExampleViewDelegate Implementation
     
@@ -51,22 +65,19 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
         return model.stockAtIndex(index)
     }
     
-    func addStockButtonPressed(symbol symbol: String) {
-        print("Mapping Stock with Symbol: \(symbol)")
-        model.mapStockWithSymbol(symbol: symbol, success: {
-            print("Stock Successfully Mapped")
-            print("--------------------------")
-            self.exampleView.stocksTableView.reloadData()
-        }) { (error) in
-            print(error)
-            print("--------------------------")
-        }
-    }
-    
-    func stockAtIndexPressed(index:Int) {
+    func stockSelectedAtIndex(index:Int) {
         let exampleHistoricalDataModel = ExampleHistoricalDataModel(stock: model.stockAtIndex(index))
         let exampleHistoricalDataViewController = ExampleHistoricalDataViewController(model: exampleHistoricalDataModel)
         navigationController!.pushViewController(exampleHistoricalDataViewController, animated: true)
+    }
+    
+    func refreshControllPulled() {
+        model.refreshStocks(success: { 
+            self.exampleView.refreshControl.endRefreshing()
+            self.exampleView.stocksTableView.reloadData()
+        }) { (error) in
+            print(error)
+        }
     }
 
 }

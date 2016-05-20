@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ObjectMapper
 import AlamofireObjectMapper
 import Timepiece
 
@@ -31,7 +32,7 @@ class BigBoardRequestManager: NSObject {
         is in the 200-299 range.
     */
     
-    class func generalRequest(method:Alamofire.Method, urlString:String) -> Request {
+    private class func generalRequest(method:Alamofire.Method, urlString:String) -> Request {
         return manager.request(method, urlString, parameters: nil, headers: nil).validate()
     }
     
@@ -41,7 +42,7 @@ class BigBoardRequestManager: NSObject {
         just mapped.
     */
     
-    class func callSuccessCallback(success success:((BigBoardStock) -> Void)?, stock:BigBoardStock){
+    private class func callSuccessCallback(success success:((BigBoardStock) -> Void)?, stock:BigBoardStock){
         if let success = success {
             success(stock)
         }
@@ -53,7 +54,7 @@ class BigBoardRequestManager: NSObject {
         with the appropriate message.
     */
     
-    class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, error:NSError){
+    private class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, error:NSError){
         let bigBoardError = BigBoardError(nsError: error)
         if let failure = failure {
             failure(bigBoardError)
@@ -66,7 +67,7 @@ class BigBoardRequestManager: NSObject {
         with the appropriate message.
     */
     
-    class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, bigBoardError:BigBoardError){
+    private class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, bigBoardError:BigBoardError){
         if let failure = failure {
             failure(bigBoardError)
         }
@@ -204,4 +205,59 @@ class BigBoardRequestManager: NSObject {
             }
         })
     }
+    
+    
+    /*
+        Maps chart data for the specified stock symbol for a given BigBoardChartDataModuleRange.
+        @param symbol: The symbol of the stock you are wanting to map the chart data to
+        @param range: The range of the chart data you want to map
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed
+    */
+    
+    class func mapChartDataModuleForStockWithSymbol(symbol symbol:String, range:BigBoardChartDataModuleRange, success:((BigBoardChartDataModule) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+        let urlString = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: symbol, range: range)
+        return generalRequest(.GET, urlString: urlString).responseData(queue: nil) { (response:Response<NSData, NSError>) in
+            
+            switch response.result {
+                case .Success:
+                    
+                    /*
+                        Since the JSON is returned with a JSONP callback, we must do the following steps:
+                        1. Convert the data into a JSON string
+                        2. Remove the JSONP callback from the JSON. In this case, we want to remove 'BigBoard(' from the beginning
+                           of the JSON string and ')' at the end of the JSON string
+                        3. Turn the trimmedJsonString into NSData
+                        4. Turn that NSData into a JSON object
+                        5. Initialize a BigBoardChartDataModule object and pass in the formattedJson object into the mapping
+                    */
+                    
+                    let jsonString = NSString(data: response.data!, encoding: NSUTF8StringEncoding)!
+                    var trimmedJsonString = jsonString.substringFromIndex("BigBoard(".length + 1)
+                    trimmedJsonString = trimmedJsonString.substringToIndex(trimmedJsonString.endIndex.advancedBy(-1))
+                    
+                    let trimmedJsonStringData = trimmedJsonString.dataUsingEncoding(NSUTF8StringEncoding)
+                    let formattedJson = try? NSJSONSerialization.JSONObjectWithData(trimmedJsonStringData!, options: .MutableContainers) as! [String : AnyObject]
+                    
+                    let module = BigBoardChartDataModule(Map(mappingType: .FromJSON, JSONDictionary: formattedJson!))!
+                    success(module)
+                
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+            }
+        }
+    }
+    
+    class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+        
+        let urlString = BigBoardUrlCreator.urlForAutoCompleteSearch(searchTerm: searchTerm)
+        
+        return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "ResultSet.Result", completionHandler: { (response:Response<[BigBoardSearchResultStock], NSError>) in
+            
+            switch response.result {
+                case .Success: success(response.result.value!)
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+            }
+        })
+    }
 }
+

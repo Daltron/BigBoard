@@ -21,7 +21,7 @@ class BigBoardHistoricalData: Mappable {
     var adjClose:String?
 
     required init?(_ map: Map) {
-        
+        mapping(map)
     }
     
     func mapping(map: Map) {

@@ -12,32 +12,20 @@ import SnapKit
 protocol ExampleViewDelegate : class {
     func numberOfStocks() -> Int
     func stockAtIndex(index:Int) -> BigBoardStock
-    func addStockButtonPressed(symbol symbol:String)
-    func stockAtIndexPressed(index:Int)
+    func stockSelectedAtIndex(index:Int)
+    func refreshControllPulled()
 }
 
 class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
 
     weak var delegate:ExampleViewDelegate?
     var stocksTableView:UITableView!
-    var addStockTextField:UITextField!
+    var refreshControl:UIRefreshControl!
     
     init(delegate:ExampleViewDelegate){
         super.init(frame: CGRectZero)
         self.delegate = delegate
         self.backgroundColor = UIColor.whiteColor()
-        
-        let addButton = UIButton(type: .ContactAdd)
-        addButton.addTarget(self, action: #selector(addStockButtonPressed), forControlEvents: .TouchUpInside)
-        addButton.frame = CGRectMake(0, 0, 45, 35)
-        
-        addStockTextField = UITextField()
-        addStockTextField.borderStyle = .RoundedRect
-        addStockTextField.placeholder = "Stock Symbol:"
-        addStockTextField.rightView = addButton
-        addStockTextField.rightViewMode = .Always
-        addSubview(addStockTextField)
-        
         
         stocksTableView = UITableView(frame: CGRectZero, style: .Plain)
         stocksTableView.dataSource = self
@@ -45,18 +33,12 @@ class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
         stocksTableView.rowHeight = 50.0
         addSubview(stocksTableView)
         
-        addStockTextField.snp_makeConstraints { (make) in
-            make.top.equalTo(self).offset(20)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(self).offset(-10)
-            make.height.equalTo(35)
-        }
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControllerPulled), forControlEvents: .ValueChanged)
+        stocksTableView.addSubview(refreshControl)
         
         stocksTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(addStockTextField.snp_bottom)
-            make.left.equalTo(self)
-            make.right.equalTo(self)
-            make.bottom.equalTo(self)
+            make.edges.equalTo(self)
         }
     }
     
@@ -64,13 +46,8 @@ class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Button Action Implementation
-    
-    func addStockButtonPressed(){
-        if addStockTextField.text?.isEmpty == false {
-            delegate!.addStockButtonPressed(symbol: addStockTextField.text!)
-            addStockTextField.text = ""
-        }
+    func refreshControllerPulled(){
+        delegate!.refreshControllPulled()
     }
     
     // MARK: UITableViewDataSource and UITableViewDataSource Implementation
@@ -109,7 +86,7 @@ class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        delegate!.stockAtIndexPressed(indexPath.row)
+        delegate!.stockSelectedAtIndex(indexPath.row)
     }
 
 }

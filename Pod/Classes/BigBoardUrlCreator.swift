@@ -81,14 +81,32 @@ class BigBoardUrlCreator: NSObject {
 
         let symbolsQuery = queryForStockSymbol(symbol: symbol, queryType: .HistoricalData)
         let completedUrl = "\(YQL_URL_PREFIX)\(symbolsQuery)\(dateQuery)\(YQL_URL_SUFFIX)"
-        print(completedUrl)
+ 
         return completedUrl
     }
     
+    /*  Returns a URL for a stock with the provided symbol and range
+        @param symbol: The stock symbol of the desired stock. Google -> GOOG, Tesla -> TSLA, etc...
+        @param range: The range of the chart data you want to map
+    */
+    
+    class func urlForChartDataModuleWithSymbol(symbol symbol:String, range:BigBoardChartDataModuleRange) -> String {
+        return "http://chartapi.finance.yahoo.com/instrument/1.0/\(symbol)/chartdata;type=quote;range=\(range.rawValue)/json?callback=BigBoard"
+    }
+    
+    
+    /*  Returns a URL for an autocomplete search containg the given search term
+        @param searchTerm: The term you are looking to contain
+    */
+    
+    class func urlForAutoCompleteSearch(searchTerm searchTerm:String) -> String {
+        return "http://autoc.finance.yahoo.com/autoc?query=\(percentEscapedQuery(query: searchTerm))&region=2&lang=en"
+    }
     
     /*  Returns a url string that is percent escaped encoded
         @param query: Any query that needs to be percent escaped encoded
     */
+    
     private class func percentEscapedQuery(query query:String) -> String {
         return query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     }
