@@ -280,7 +280,7 @@ class BigBoardSearchResultStock: Mappable {
 
 ## Author
 
-Dalton, daltonhint4@gmail.com
+Dalton Hinterscer, daltonhint4@gmail.com
 
 ## License
 
