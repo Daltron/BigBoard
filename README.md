@@ -277,7 +277,7 @@ import BigBoard
 
 imageView.setGraphAsImageForStock(stock: stock, timelineInMonths: 3, movingAverageTrendlineDays: [14, 50, 100], failure: { (error) in
     print(error)
- })
+})
 ```
 The resulting image would be this:
 
