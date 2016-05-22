@@ -241,10 +241,10 @@ Chart Modules have the following properties:
 ```swift
 class BigBoardChartDataModule: Mappable {
     var dates:[NSDate]!
-    var series:[BigBoardChartDataModuleSeries]!
+    var dataPoints:[BigBoardChartDataModulePoint]!
 }
 
-class BigBoardChartDataModuleSeries: Mappable {
+class BigBoardChartDataModulePoint: Mappable {
     var date:NSDate!
     var close:Double!
     var high:Double!
