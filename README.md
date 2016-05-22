@@ -12,6 +12,7 @@ BigBoard is a powerful yet easy to use finance API for iOS and OSX.
 - [x] Retrieve multiple stocks at the same time based on multiple stock symbols
 - [x] Retrieve historical data for a stock for any custom date range
 - [x] Retrieve chart data information for a stock that can easily be used in many charting libraries
+- [x] Retrieve graph images with custom trendlines
 - [x] Retrieve a list of stocks based on a search term
 - [x] Comprehensive unit test coverage
 - [x] Extensive documentation
@@ -46,7 +47,7 @@ This will download any library dependencies you do not already have in your proj
 
 ## Usage
 
-### Mapping a single stock
+### Mapping a Single Stock
 
 ```swift
 import BigBoard
@@ -58,7 +59,7 @@ BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
 }
 ```
 
-### Mapping multiple stocks with one request
+### Mapping Multiple Stocks with One Request
 
 ```swift
 import BigBoard
@@ -166,7 +167,7 @@ class BigBoardStock: Mappable {
     var yearRange:String?
 ```
 
-### Retrieving historical data for a stock in a given date range
+### Retrieving Historical Data for a Stock in a Given Date Range
 
 You can use any of these:
 
@@ -207,7 +208,7 @@ class BigBoardHistoricalData: Mappable {
 }
 ```
 
-### Retrieving chart data for a stock
+### Retrieving Chart Data for a Stock
 
 There are currently seven different ways to retrieve chart data:
 
@@ -253,8 +254,36 @@ class BigBoardChartDataModuleSeries: Mappable {
 }
 ```
 
+## Retrieve Graph Images with Custom Trendlines
 
-### Retrieve a list of stocks based on a search term
+An image of a graph for any stock can easily be set to any UIImageView by calling this function:
+```swift
+import BigBoard
+
+extension UIImageView {
+    imageView.setGraphAsImageForStock(stock: stock) { (error) in
+            print(error)
+    }
+}
+```
+The resulting image would be this:
+
+![Graph Image Example](http://chart.finance.yahoo.com/z?s=GOOG&t=3m&q=l&l=on&z=s&p=)
+
+You can also specify custom trendlines and how many months you want your graph image to display:
+
+```swift
+import BigBoard
+
+imageView.setGraphAsImageForStock(stock: stock, timelineInMonths: 3, movingAverageTrendlineDays: [14, 50, 100], failure: { (error) in
+    print(error)
+ })
+```
+The resulting image would be this:
+
+![Graph Image Example](http://chart.finance.yahoo.com/z?s=GOOG&t=3m&q=l&l=on&z=s&p=m14,m50,m100)
+
+### Retrieve a List of Stocks Based on a Search Term
 
 ```swift
 import BigBoard
