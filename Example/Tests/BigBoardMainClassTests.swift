@@ -20,9 +20,7 @@ class BigBoardMainClassTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         validationExpectation = expectationWithDescription("Validation")
-        sampleStock = BigBoardStock(Map(mappingType: .ToJSON, JSONDictionary: [:]))
-        sampleStock.symbol = "GOOG"
-        sampleStock.name = "GOOGLE"
+        sampleStock = BigBoardTestsHelper.sampleStock()
     }
     
     override func tearDown() {

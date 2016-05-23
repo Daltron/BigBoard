@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class BigBoardTestsHelper: NSObject {
     
@@ -34,6 +35,13 @@ class BigBoardTestsHelper: NSObject {
         dateComponents.day = 11
         
         return calendar!.dateFromComponents(dateComponents)!
+    }
+    
+    class func sampleStock() -> BigBoardStock {
+        let sampleStock = BigBoardStock(Map(mappingType: .ToJSON, JSONDictionary: [:]))
+        sampleStock!.symbol = "GOOG"
+        sampleStock!.name = "GOOGLE"
+        return sampleStock!
     }
 
 }

@@ -16,24 +16,45 @@
  
 */
 
-import Foundation
+import ObjectMapper
 
-extension NSDate {
+class BigBoardRSSFeedItem: Mappable {
     
-    func isSameDayAsDate(date:NSDate) -> Bool {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        return calendar!.isDate(self, inSameDayAsDate: date)
+    private static var dateFormatter:NSDateFormatter?
+    private static func sharedDateFormatter() -> NSDateFormatter {
+        if dateFormatter == nil {
+            dateFormatter = NSDateFormatter()
+            dateFormatter?.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
+        }
+        
+        return dateFormatter!
+    }
+
+    var title:String?
+    var link:String?
+    var guid:String?
+    var publicationDate:NSDate?
+    var author:String?
+    var thumbnailLink:String?
+    var description:String?
+    var content:String?
+    
+    required init?(_ map: Map) {
+        mapping(map)
     }
     
-    func isOnAWeekend() -> Bool {
-        return isSaturday() || isSunday()
-    }
-    
-    func isSaturday() -> Bool {
-        return weekday == 7
-    }
-    
-    func isSunday() -> Bool {
-        return weekday == 1
+    func mapping(map: Map) {
+        title <- map["title"]
+        link <- map["link"]
+        guid <- map["guid"]
+        author <- map["author"]
+        thumbnailLink <- map["thumbnail"]
+        description <- map["description"]
+        content <- map["content"]
+        
+        var publicationDateString = ""
+        publicationDateString <- map["pubDate"]
+        
+        publicationDate = BigBoardRSSFeedItem.sharedDateFormatter().dateFromString(publicationDateString)
     }
 }

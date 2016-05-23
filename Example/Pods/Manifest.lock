@@ -1,17 +1,17 @@
 PODS:
   - Alamofire (3.4.0)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
   - AlamofireObjectMapper (3.0.0):
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
-  - BigBoard (0.1.0):
+  - BigBoard (1.0.0):
+    - AlamofireImage (~> 2.0)
     - AlamofireObjectMapper (~> 3.0)
     - Timepiece
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - Charts (2.2.4):
-    - Charts/Core (= 2.2.4)
-  - Charts/Core (2.2.4)
   - ObjectMapper (1.3.0)
   - SnapKit (0.21.0)
   - Timepiece (0.4.2)
@@ -19,7 +19,6 @@ PODS:
 DEPENDENCIES:
   - BigBoard (from `../`)
   - ChameleonFramework/Swift
-  - Charts
   - SnapKit
 
 EXTERNAL SOURCES:
@@ -28,10 +27,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
-  BigBoard: 8832d326660d958034f284f1d20145f04950fd72
+  BigBoard: ebdfd78cf9116bd282900a031ff13671f3ef85b0
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd

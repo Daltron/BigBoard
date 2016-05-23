@@ -16,24 +16,28 @@
  
 */
 
-import Foundation
+import ObjectMapper
 
-extension NSDate {
+class BigBoardRSSFeed: Mappable {
     
-    func isSameDayAsDate(date:NSDate) -> Bool {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        return calendar!.isDate(self, inSameDayAsDate: date)
+    var title:String?
+    var link:String?
+    var author:String?
+    var description:String?
+    var imageLink:String?
+    var items:[BigBoardRSSFeedItem]?
+    
+    required init?(_ map: Map) {
+        mapping(map)
     }
     
-    func isOnAWeekend() -> Bool {
-        return isSaturday() || isSunday()
+    func mapping(map: Map) {
+        title <- map["feed.title"]
+        link <- map["feed.link"]
+        author <- map["feed.author"]
+        description <- map["feed.description"]
+        imageLink <- map["feed.image"]
+        items <- map["items"]
     }
-    
-    func isSaturday() -> Bool {
-        return weekday == 7
-    }
-    
-    func isSunday() -> Bool {
-        return weekday == 1
-    }
+
 }

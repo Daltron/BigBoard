@@ -21,13 +21,6 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
         exampleView = ExampleView(delegate: self)
         view = exampleView
         title = "BigBoard"
-        
-    
-        BigBoard.stocksContainingSearchTerm(searchTerm: "Google", success: { (searchResultStocks) in
-            // Do Something with the searchResultStocks
-        }) { (error) in
-            print(error)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,9 +59,9 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
     }
     
     func stockSelectedAtIndex(index:Int) {
-        let exampleHistoricalDataModel = ExampleHistoricalDataModel(stock: model.stockAtIndex(index))
-        let exampleHistoricalDataViewController = ExampleHistoricalDataViewController(model: exampleHistoricalDataModel)
-        navigationController!.pushViewController(exampleHistoricalDataViewController, animated: true)
+        let exampleStockDetailsModel = ExampleStockDetailsModel(stock: model.stockAtIndex(index))
+        let exampleStockDetailsViewController = ExampleStockDetailsViewController(model: exampleStockDetailsModel)
+        navigationController!.pushViewController(exampleStockDetailsViewController, animated: true)
     }
     
     func refreshControllPulled() {

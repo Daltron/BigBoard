@@ -81,4 +81,17 @@ class BigBoardQueryCreatorTests: XCTestCase {
         let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=max/json"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
+    
+    func testThatUrlStringIsCorrectlyCreatedForGraphImageWithOneTrendline() {
+        let bigBoardUrl = BigBoardUrlCreator.urlForGraphImage(stock:BigBoardTestsHelper.sampleStock(), timelineInMonths: 6, movingAverageTrendlineDays: [5])
+        let yqlUrl = "http://chart.finance.yahoo.com/z?s=GOOG&t=6m&q=l&l=on&z=s&p=m5"
+        XCTAssertEqual(bigBoardUrl, yqlUrl)
+    }
+    
+    func testThatUrlStringIsCorrectlyCreatedForGraphImageWithMultipleTrendlines() {
+        let bigBoardUrl = BigBoardUrlCreator.urlForGraphImage(stock:BigBoardTestsHelper.sampleStock(), timelineInMonths: 6, movingAverageTrendlineDays: [5, 30, 60, 120])
+        let yqlUrl = "http://chart.finance.yahoo.com/z?s=GOOG&t=6m&q=l&l=on&z=s&p=m5,m30,m60,m120"
+        XCTAssertEqual(bigBoardUrl, yqlUrl)
+    }
+    
 }

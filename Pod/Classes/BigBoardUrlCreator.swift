@@ -1,12 +1,22 @@
-//
-//  BigBoardQueryCreator.swift
-//  BigBoard
-//
-//  Created by Dalton Hinterscher on 4/14/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
-//
+/*
+ 
+ The MIT License (MIT)
+ Copyright (c) 2016 Dalton Hinterscher
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+*/
 
-import UIKit
+import Foundation
 
 private enum BigBoardQueryType : String {
     case Symbol = "SELECT * FROM yahoo.finance.quotes WHERE symbol IN"
@@ -101,6 +111,36 @@ class BigBoardUrlCreator: NSObject {
     
     class func urlForAutoCompleteSearch(searchTerm searchTerm:String) -> String {
         return "http://autoc.finance.yahoo.com/autoc?query=\(percentEscapedQuery(query: searchTerm))&region=2&lang=en"
+    }
+    
+    /*
+        Returns a URL for a graph image for a given stock
+        @param stock: Stock you want to load the graph for
+        @param timelineInMonths: How far in months you want the data of the graph image to display
+        @param movingAverageTrendlineDays: Trendlines in days you want for the data of the graph image. For example, if you specify [5,50],
+                                           then the image that is loaded will have both a 5 day moving average trendline and a 50 day moving
+                                           average trendline.
+    */
+    
+    class func urlForGraphImage(stock stock:BigBoardStock, timelineInMonths:Int, movingAverageTrendlineDays:[Int]?) -> String {
+        
+        let trendlines:NSMutableArray = []
+        if let movingAverageTrendlineDays = movingAverageTrendlineDays {
+            for trendline in movingAverageTrendlineDays {
+                trendlines.addObject("m\(trendline)")
+            }
+        }
+        
+        return "http://chart.finance.yahoo.com/z?s=\(stock.symbol!)&t=\(timelineInMonths)m&q=l&l=on&z=s&p=\(trendlines.componentsJoinedByString(","))"
+    }
+    
+    class func urlForRSSFeed(symbol symbol:String) -> String {
+        return urlForRSSFeed(symbols: [symbol])
+    }
+    
+    class func urlForRSSFeed(symbols symbols:[String]) -> String {
+        let symbolsString = NSMutableArray(array: symbols).componentsJoinedByString(",")
+        return "https://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
     }
     
     /*  Returns a url string that is percent escaped encoded

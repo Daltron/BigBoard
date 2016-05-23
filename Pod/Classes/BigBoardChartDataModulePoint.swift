@@ -14,29 +14,49 @@
  ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
-*/
+ */
 
 import ObjectMapper
 
-class BigBoardSearchResultStock: Mappable {
-
-    var symbol:String?
-    var name:String?
-    var exch:String?
-    var type:String?
-    var exchDisp:String?
-    var typeDisp:String?
+class BigBoardChartDataModulePoint: Mappable {
+    
+    private static var dateFormatter:NSDateFormatter?
+    private static func sharedDateFormatter() -> NSDateFormatter {
+        if dateFormatter == nil {
+            dateFormatter = NSDateFormatter()
+            dateFormatter?.dateFormat = "yyyy-MM-dd"
+        }
+        
+        return dateFormatter!
+    }
+    
+    var date:NSDate!
+    var close:Double!
+    var high:Double!
+    var low:Double!
+    var open:Double!
+    var volume:Int!
     
     required init?(_ map: Map) {
         mapping(map)
     }
-    
+        
     func mapping(map: Map) {
-        symbol <- map["symbol"]
-        name <- map["name"]
-        exch <- map["exch"]
-        type <- map["type"]
-        exchDisp <- map["exchDisp"]
-        typeDisp <- map["typeDisp"]
+        date <- (map["Timestamp"], DateTransform())
+        close <- map["close"]
+        high <- map["high"]
+        low <- map["low"]
+        open <- map["open"]
+        volume <- map["volume"]
+        
+        if date == nil {
+            var dateAsInteger = 0
+            dateAsInteger <- map["Date"]
+            let dateAsString = NSMutableString(string: "\(dateAsInteger)")
+            dateAsString.insertString("-", atIndex: 4)
+            dateAsString.insertString("-", atIndex: 7)
+            date = BigBoardChartDataModulePoint.sharedDateFormatter().dateFromString(dateAsString as String)!
+        }
     }
+
 }

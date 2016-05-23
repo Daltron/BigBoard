@@ -1,19 +1,16 @@
 {
   "name": "BigBoard",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "A short description of BigBoard.",
   "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/BigBoard",
+  "homepage": "https://github.com/Daltron/BigBoard",
   "license": "MIT",
   "authors": {
     "Dalton": "daltonhint4@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/BigBoard.git",
-    "tag": "0.1.0"
-  },
-  "platforms": {
-    "ios": "8.0"
+    "git": "https://github.com/Daltron/BigBoard.git",
+    "tag": "1.0.0"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
@@ -22,12 +19,19 @@
       "Pod/Assets/*.png"
     ]
   },
+  "platforms": {
+    "ios": "8.3",
+    "osx": "10.9"
+  },
   "dependencies": {
     "AlamofireObjectMapper": [
       "~> 3.0"
     ],
     "Timepiece": [
 
+    ],
+    "AlamofireImage": [
+      "~> 2.0"
     ]
   }
 }

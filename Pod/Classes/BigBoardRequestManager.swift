@@ -1,12 +1,21 @@
-//
-//  BigBoardRequestManager.swift
-//  BigBoard
-//
-//  Created by Dalton Hinterscher on 4/14/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
-//
+/*
+ 
+ The MIT License (MIT)
+ Copyright (c) 2016 Dalton Hinterscher
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+*/
 
-import UIKit
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
@@ -32,8 +41,8 @@ class BigBoardRequestManager: NSObject {
         is in the 200-299 range.
     */
     
-    private class func generalRequest(method:Alamofire.Method, urlString:String) -> Request {
-        return manager.request(method, urlString, parameters: nil, headers: nil).validate()
+    private class func generalRequest(method:Alamofire.Method, urlString:String, parameters:[String: AnyObject]? = nil) -> Request {
+        return manager.request(method, urlString, parameters: parameters, headers: nil).validate()
     }
     
     
@@ -247,12 +256,53 @@ class BigBoardRequestManager: NSObject {
         }
     }
     
+    /*
+        Maps BigBoardSearchResultStock objects based on the provided search term.
+        @param searchTerm: The search term to use to perform the mapping
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed
+    */
+    
     class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         
         let urlString = BigBoardUrlCreator.urlForAutoCompleteSearch(searchTerm: searchTerm)
         
         return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "ResultSet.Result", completionHandler: { (response:Response<[BigBoardSearchResultStock], NSError>) in
             
+            switch response.result {
+                case .Success: success(response.result.value!)
+                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+            }
+        })
+    }
+    
+    
+    /*
+        Maps the 25 most recent items for an RSS feed for the given stock symbol.
+        @param symbol: The symbol of the stock you want the RSS feed to be about
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed
+    */
+    
+    class func rssFeedForStockWithSymbol(symbol symbol:String, success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+        return rssFeedForStocksWithSymbols(symbols: [symbol], success: success, failure: failure)
+    }
+    
+    
+    /*
+        Maps the 25 most recent items for an RSS feed for the given stock symbols as one feed. There is no way to distinguish
+        which items goes with which symbol. This is a limitation for. this particular Yahoo API request.
+        @param symbol: The symbol of the stock you want the RSS feed to be about
+        @param success: The callback that is called if the mapping was successfull
+        @param failure: The callback that is called if the mapping failed
+     */
+    
+    class func rssFeedForStocksWithSymbols(symbols symbols:[String], success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+        
+        let urlString = BigBoardUrlCreator.urlForRSSFeed(symbols: symbols)
+        let parameters = ["rss_url" : urlString]
+        
+        return generalRequest(.GET, urlString: "http://rss2json.com/api.json", parameters: parameters).responseObject(completionHandler: { (response:Response<BigBoardRSSFeed, NSError>) in
             switch response.result {
                 case .Success: success(response.result.value!)
                 case .Failure(let error): callErrorCallback(failure: failure, error: error)
