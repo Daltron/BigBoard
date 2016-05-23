@@ -21,96 +21,96 @@ import Alamofire
 
 public class BigBoardStock: Mappable {
 
-    var afterHoursChangeRealtime:String?
-    var annualizedGain:String?
-    var ask:String?
-    var askRealTime:String?
-    var averageDailyVolume:String?
-    var bid:String?
-    var bidRealTime:String?
-    var bookValue:String?
-    var change:String?
-    var changeFromFiftyDayMovingAverage:String?
-    var changeFromTwoHundredDayMovingAverage:String?
-    var changeFromYearHigh:String?
-    var changeFromYearLow:String?
-    var changePercentRealtime:String?
-    var changeRealTime:String?
-    var changePercentChange:String?
-    var changeInPercent:String?
-    var commission:String?
-    var currency:String?
-    var daysHigh:String?
-    var daysLow:String?
-    var daysRange:String?
-    var daysRangeRealTime:String?
-    var daysValueChange:String?
-    var daysValueChangeRealTime:String?
-    var dividendPayDate:String?
-    var dividendShare:String?
-    var dividendYield:String?
-    var ebitda:String?
-    var epsEstimateCurrentYear:String?
-    var epsEstimateNextQuarter:String?
-    var epsEstimateNextYear:String?
-    var earningsShare:String?
-    var errorIndicationReturnedForSymbolChangedInvalid:String?
-    var exDividendDate:String?
-    var fiveDayChartModule:BigBoardChartDataModule?
-    var fiveYearChartModule:BigBoardChartDataModule?
-    var fiftyDayMovingAverage:String?
-    var highLimit:String?
-    var historicalData:[BigBoardHistoricalData]?
-    var holdingsGain:String?
-    var holdingsGainPercent:String?
-    var holdingsGainPercentRealtime:String?
-    var holdingsGainRealtime:String?
-    var holdingsValue:String?
-    var holdingsValueRealtime:String?
-    var lastTradeDate:String?
-    var lastTradePriceOnly:String?
-    var lastTradeRealTimeWithTime:String?
-    var lastTradeTime:String?
-    var lastTradeWithTime:String?
-    var lifetimeChartModule:BigBoardChartDataModule?
-    var lowLimit:String?
-    var marketCapRealtime:String?
-    var marketCapitalization:String?
-    var moreInfo:String?
-    var name:String?
-    var notes:String?
-    var oneDayChartModule:BigBoardChartDataModule?
-    var oneMonthChartModule:BigBoardChartDataModule?
-    var oneYearChartModule:BigBoardChartDataModule?
-    var oneYearTargetPrice:String?
-    var open:String?
-    var orderBookRealtime:String?
-    var pegRatio:String?
-    var peRatio:String?
-    var peRatioRealtime:String?
-    var percentChangeFromYearHigh:String?
-    var percentChange:String?
-    var percentChangeFromFiftyDayMovingAverage:String?
-    var percentChangeFromTwoHundredDayMovingAverage:String?
-    var percentChangeFromYearLow:String?
-    var previousClose:String?
-    var priceBook:String?
-    var priceEPSEstimateCurrentYear:String?
-    var priceEPSEstimateNextYear:String?
-    var pricePaid:String?
-    var priceSales:String?
-    var sharesOwned:String?
-    var shortRatio:String?
-    var stockExchange:String?
-    var symbol:String?
-    var threeMonthChartModule:BigBoardChartDataModule?
-    var tickerTrend:String?
-    var tradeDate:String?
-    var twoHundredDayMovingAverage:String?
-    var volume:String?
-    var yearHigh:String?
-    var yearLow:String?
-    var yearRange:String?
+    public var afterHoursChangeRealtime:String?
+    public var annualizedGain:String?
+    public var ask:String?
+    public var askRealTime:String?
+    public var averageDailyVolume:String?
+    public var bid:String?
+    public var bidRealTime:String?
+    public var bookValue:String?
+    public var change:String?
+    public var changeFromFiftyDayMovingAverage:String?
+    public var changeFromTwoHundredDayMovingAverage:String?
+    public var changeFromYearHigh:String?
+    public var changeFromYearLow:String?
+    public var changePercentRealtime:String?
+    public var changeRealTime:String?
+    public var changePercentChange:String?
+    public var changeInPercent:String?
+    public var commission:String?
+    public var currency:String?
+    public var daysHigh:String?
+    public var daysLow:String?
+    public var daysRange:String?
+    public var daysRangeRealTime:String?
+    public var daysValueChange:String?
+    public var daysValueChangeRealTime:String?
+    public var dividendPayDate:String?
+    public var dividendShare:String?
+    public var dividendYield:String?
+    public var ebitda:String?
+    public var epsEstimateCurrentYear:String?
+    public var epsEstimateNextQuarter:String?
+    public var epsEstimateNextYear:String?
+    public var earningsShare:String?
+    public var errorIndicationReturnedForSymbolChangedInvalid:String?
+    public var exDividendDate:String?
+    public var fiveDayChartModule:BigBoardChartDataModule?
+    public var fiveYearChartModule:BigBoardChartDataModule?
+    public var fiftyDayMovingAverage:String?
+    public var highLimit:String?
+    public var historicalData:[BigBoardHistoricalData]?
+    public var holdingsGain:String?
+    public var holdingsGainPercent:String?
+    public var holdingsGainPercentRealtime:String?
+    public var holdingsGainRealtime:String?
+    public var holdingsValue:String?
+    public var holdingsValueRealtime:String?
+    public var lastTradeDate:String?
+    public var lastTradePriceOnly:String?
+    public var lastTradeRealTimeWithTime:String?
+    public var lastTradeTime:String?
+    public var lastTradeWithTime:String?
+    public var lifetimeChartModule:BigBoardChartDataModule?
+    public var lowLimit:String?
+    public var marketCapRealtime:String?
+    public var marketCapitalization:String?
+    public var moreInfo:String?
+    public var name:String?
+    public var notes:String?
+    public var oneDayChartModule:BigBoardChartDataModule?
+    public var oneMonthChartModule:BigBoardChartDataModule?
+    public var oneYearChartModule:BigBoardChartDataModule?
+    public var oneYearTargetPrice:String?
+    public var open:String?
+    public var orderBookRealtime:String?
+    public var pegRatio:String?
+    public var peRatio:String?
+    public var peRatioRealtime:String?
+    public var percentChangeFromYearHigh:String?
+    public var percentChange:String?
+    public var percentChangeFromFiftyDayMovingAverage:String?
+    public var percentChangeFromTwoHundredDayMovingAverage:String?
+    public var percentChangeFromYearLow:String?
+    public var previousClose:String?
+    public var priceBook:String?
+    public var priceEPSEstimateCurrentYear:String?
+    public var priceEPSEstimateNextYear:String?
+    public var pricePaid:String?
+    public var priceSales:String?
+    public var sharesOwned:String?
+    public var shortRatio:String?
+    public var stockExchange:String?
+    public var symbol:String?
+    public var threeMonthChartModule:BigBoardChartDataModule?
+    public var tickerTrend:String?
+    public var tradeDate:String?
+    public var twoHundredDayMovingAverage:String?
+    public var volume:String?
+    public var yearHigh:String?
+    public var yearLow:String?
+    public var yearRange:String?
     
     required public init?(_ map: Map) {
         mapping(map)

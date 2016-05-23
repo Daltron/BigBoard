@@ -20,8 +20,8 @@ import Timepiece
 
 public class BigBoardHistoricalDateRange: NSObject {
     
-    var startDate:NSDate!
-    var endDate:NSDate!
+    public var startDate:NSDate!
+    public var endDate:NSDate!
     
     public init(startDate:NSDate, endDate:NSDate) {
         super.init()

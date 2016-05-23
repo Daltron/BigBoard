@@ -30,14 +30,14 @@ public class BigBoardRSSFeedItem: Mappable {
         return dateFormatter!
     }
 
-    var title:String?
-    var link:String?
-    var guid:String?
-    var publicationDate:NSDate?
-    var author:String?
-    var thumbnailLink:String?
-    var description:String?
-    var content:String?
+    public var title:String?
+    public var link:String?
+    public var guid:String?
+    public var publicationDate:NSDate?
+    public var author:String?
+    public var thumbnailLink:String?
+    public var description:String?
+    public var content:String?
     
     required public init?(_ map: Map) {
         mapping(map)

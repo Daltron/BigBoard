@@ -40,8 +40,8 @@ public class BigBoardChartDataModule: Mappable {
         return dateFormatter!
     }
 
-    var dates:[NSDate]!
-    var dataPoints:[BigBoardChartDataModulePoint]!
+    public var dates:[NSDate]!
+    public var dataPoints:[BigBoardChartDataModulePoint]!
     
     required public init?(_ map: Map) {
         mapping(map)

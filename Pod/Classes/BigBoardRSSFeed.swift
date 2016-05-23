@@ -20,12 +20,12 @@ import ObjectMapper
 
 public class BigBoardRSSFeed: Mappable {
     
-    var title:String?
-    var link:String?
-    var author:String?
-    var description:String?
-    var imageLink:String?
-    var items:[BigBoardRSSFeedItem]?
+    public var title:String?
+    public var link:String?
+    public var author:String?
+    public var description:String?
+    public var imageLink:String?
+    public var items:[BigBoardRSSFeedItem]?
     
     required public init?(_ map: Map) {
         mapping(map)

@@ -20,12 +20,12 @@ import ObjectMapper
 
 public class BigBoardSearchResultStock: Mappable {
 
-    var symbol:String?
-    var name:String?
-    var exch:String?
-    var type:String?
-    var exchDisp:String?
-    var typeDisp:String?
+    public var symbol:String?
+    public var name:String?
+    public var exch:String?
+    public var type:String?
+    public var exchDisp:String?
+    public var typeDisp:String?
     
     required public init?(_ map: Map) {
         mapping(map)
