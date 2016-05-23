@@ -186,7 +186,7 @@ BigBoard.rssFeedForStockWithSymbol(symbol: "GOOG", success: { (feed) in
 ```swift
 import BigBoard
 
-BigBoard.rssFeedForStocksWithSymbols(symbols: ["YHOO", "GOOG"], success: { (feed) in
+BigBoard.rssFeedForStocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (feed) in
     // Do something with the RSS feed
 }) { (error) in
     print(error)
