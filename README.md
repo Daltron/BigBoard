@@ -10,6 +10,8 @@ BigBoard is a powerful yet easy to use finance API for iOS and OSX.
 ## Features
 - [x] Retreive a stock based on a stock symbol
 - [x] Retrieve multiple stocks at the same time based on multiple stock symbols
+- [x] Retrieve an RSS Feed with the 25 most recent items for a stock symbol
+- [x] Retrieve an RSS Feed with the 25 most recent items for multiple stock symbols
 - [x] Retrieve historical data for a stock for any custom date range
 - [x] Retrieve chart data information for a stock that can easily be used in many charting libraries
 - [x] Retrieve graph images with custom trendlines
@@ -165,6 +167,59 @@ class BigBoardStock: Mappable {
     var yearHigh:String?
     var yearLow:String?
     var yearRange:String?
+```
+
+### Retrieving an RSS Feed with the 25 Most Recent Items for a Stock Symbol
+
+```swift
+import BigBoard
+
+BigBoard.rssFeedForStockWithSymbol(symbol: "GOOG", success: { (feed) in
+    // Do something with the RSS feed
+ }) { (error) in
+    print(error)
+ }
+```
+
+### Retrieving an RSS Feed with the 25 Most Recent Items for Multiple Stock Symbols
+
+```swift
+import BigBoard
+
+BigBoard.rssFeedForStocksWithSymbols(symbols: ["YHOO", "GOOG"], success: { (feed) in
+    // Do something with the RSS feed
+}) { (error) in
+    print(error)
+}
+```
+Note: This retrieves the 25 most recent items for all of the stock symbols given, not the 25 most recent items for each stock symbol. There is also not a way to distinguish which feed item goes with which stock symbol. This is a limitation for this particular Yahoo API request.
+
+A BigBoardRSSFeed has the following properties:
+
+```swift
+class BigBoardRSSFeed: Mappable {
+    var title:String?
+    var link:String?
+    var author:String?
+    var description:String?
+    var imageLink:String?
+    var items:[BigBoardRSSFeedItem]?
+}
+```
+
+A BigBoardRSSFeedItem has the following properties:
+
+```swift
+class BigBoardRSSFeedItem: Mappable {
+    var title:String?
+    var link:String?
+    var guid:String?
+    var publicationDate:NSDate?
+    var author:String?
+    var thumbnailLink:String?
+    var description:String?
+    var content:String?
+}
 ```
 
 ### Retrieving Historical Data for a Stock in a Given Date Range
