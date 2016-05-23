@@ -1,17 +1,20 @@
-# BigBoard
+![BigBoard](https://raw.githubusercontent.com/Daltron/BigBoard/master/Assets/bigboard.png?token=AJPY9yZ_ZB8ao_xZziL0Wcl_-aqFB-PZks5XSN7HwA%3D%3D)
 
 [![CI Status](http://img.shields.io/travis/Dalton/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
 [![Version](https://img.shields.io/cocoapods/v/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![License](https://img.shields.io/cocoapods/l/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![Platform](https://img.shields.io/cocoapods/p/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 
-BigBoard is the most powerful yet easy to use API for iOS for retrieving stock market and finance data from Yahoo's APIs.
+BigBoard is a powerful yet easy to use finance API for iOS and OSX.
 
 ## Features
 - [x] Retreive a stock based on a stock symbol
 - [x] Retrieve multiple stocks at the same time based on multiple stock symbols
+- [x] Retrieve an RSS Feed with the 25 most recent items for a stock symbol
+- [x] Retrieve an RSS Feed with the 25 most recent items for multiple stock symbols
 - [x] Retrieve historical data for a stock for any custom date range
 - [x] Retrieve chart data information for a stock that can easily be used in many charting libraries
+- [x] Retrieve graph images with custom trendlines
 - [x] Retrieve a list of stocks based on a search term
 - [x] Comprehensive unit test coverage
 - [x] Extensive documentation
@@ -46,7 +49,7 @@ This will download any library dependencies you do not already have in your proj
 
 ## Usage
 
-### Mapping a single stock
+### Mapping a Single Stock
 
 ```swift
 import BigBoard
@@ -58,7 +61,7 @@ BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
 }
 ```
 
-### Mapping multiple stocks with one request
+### Mapping Multiple Stocks with One Request
 
 ```swift
 import BigBoard
@@ -166,7 +169,60 @@ class BigBoardStock: Mappable {
     var yearRange:String?
 ```
 
-### Retrieving historical data for a stock in a given date range
+### Retrieving an RSS Feed with the 25 Most Recent Items for a Stock Symbol
+
+```swift
+import BigBoard
+
+BigBoard.rssFeedForStockWithSymbol(symbol: "GOOG", success: { (feed) in
+    // Do something with the RSS feed
+ }) { (error) in
+    print(error)
+ }
+```
+
+### Retrieving an RSS Feed with the 25 Most Recent Items for Multiple Stock Symbols
+
+```swift
+import BigBoard
+
+BigBoard.rssFeedForStocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (feed) in
+    // Do something with the RSS feed
+}) { (error) in
+    print(error)
+}
+```
+Note: This retrieves the 25 most recent items for all of the stock symbols given, not the 25 most recent items for each stock symbol. There is also not a way to distinguish which feed item goes with which stock symbol. This is a limitation for this particular Yahoo API request.
+
+A BigBoardRSSFeed has the following properties:
+
+```swift
+class BigBoardRSSFeed: Mappable {
+    var title:String?
+    var link:String?
+    var author:String?
+    var description:String?
+    var imageLink:String?
+    var items:[BigBoardRSSFeedItem]?
+}
+```
+
+A BigBoardRSSFeedItem has the following properties:
+
+```swift
+class BigBoardRSSFeedItem: Mappable {
+    var title:String?
+    var link:String?
+    var guid:String?
+    var publicationDate:NSDate?
+    var author:String?
+    var thumbnailLink:String?
+    var description:String?
+    var content:String?
+}
+```
+
+### Retrieving Historical Data for a Stock in a Given Date Range
 
 You can use any of these:
 
@@ -207,7 +263,7 @@ class BigBoardHistoricalData: Mappable {
 }
 ```
 
-### Retrieving chart data for a stock
+### Retrieving Chart Data for a Stock
 
 There are currently seven different ways to retrieve chart data:
 
@@ -240,10 +296,10 @@ Chart Modules have the following properties:
 ```swift
 class BigBoardChartDataModule: Mappable {
     var dates:[NSDate]!
-    var series:[BigBoardChartDataModuleSeries]!
+    var dataPoints:[BigBoardChartDataModulePoint]!
 }
 
-class BigBoardChartDataModuleSeries: Mappable {
+class BigBoardChartDataModulePoint: Mappable {
     var date:NSDate!
     var close:Double!
     var high:Double!
@@ -253,8 +309,36 @@ class BigBoardChartDataModuleSeries: Mappable {
 }
 ```
 
+## Retrieve Graph Images with Custom Trendlines
 
-### Retrieve a list of stocks based on a search term
+An image of a graph for any stock can easily be set to any UIImageView by calling this function:
+```swift
+import BigBoard
+
+extension UIImageView {
+    imageView.setGraphAsImageForStock(stock: stock) { (error) in
+            print(error)
+    }
+}
+```
+The resulting image would be this:
+
+![Graph Image Example](http://chart.finance.yahoo.com/z?s=GOOG&t=3m&q=l&l=on&z=s&p=)
+
+You can also specify custom trendlines and how many months you want your graph image to display:
+
+```swift
+import BigBoard
+
+imageView.setGraphAsImageForStock(stock: stock, timelineInMonths: 3, movingAverageTrendlineDays: [14, 50, 100], failure: { (error) in
+    print(error)
+})
+```
+The resulting image would be this:
+
+![Graph Image Example](http://chart.finance.yahoo.com/z?s=GOOG&t=3m&q=l&l=on&z=s&p=m14,m50,m100)
+
+### Retrieve a List of Stocks Based on a Search Term
 
 ```swift
 import BigBoard
@@ -283,7 +367,7 @@ class BigBoardSearchResultStock: Mappable {
 
 ## Requirements
 
-- iOS 8.0+
+- iOS 8.3+
 - xCode 7.3+
 
 ## Author
