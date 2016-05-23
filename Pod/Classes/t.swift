@@ -16,8 +16,3 @@
  
  */
 
-import AppKit
-
-extension NSImageView {
-
-}
