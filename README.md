@@ -1,7 +1,7 @@
 ![BigBoard](https://raw.githubusercontent.com/Daltron/BigBoard/master/Assets/bigboard.png?token=AJPY9yZ_ZB8ao_xZziL0Wcl_-aqFB-PZks5XSN7HwA%3D%3D)
 
 
-[![CI Status](http://img.shields.io/travis/Dalton/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
+[![CI Status](http://img.shields.io/travis/Daltron/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
 [![Version](https://img.shields.io/cocoapods/v/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![License](https://img.shields.io/cocoapods/l/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![Platform](https://img.shields.io/cocoapods/p/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
@@ -34,7 +34,7 @@ To integrate BigBoard into your xCode project using CocoaPods, specify it in you
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.3' // This number can be anything greater than 8.3
+platform :ios, '8.3' # This can be greater than 8.3
 use_frameworks!
 
 pod 'BigBoard'
