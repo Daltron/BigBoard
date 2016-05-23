@@ -18,7 +18,7 @@
 
 import Alamofire
 
-class BigBoard: NSObject {
+public class BigBoard: NSObject {
     
     /*
         Calls the BigBoardRequestManager class to map a single BigBoardStock object with the provided symbol.
@@ -27,7 +27,7 @@ class BigBoard: NSObject {
         @param failure: The callback that is called if the mapping failed or if the stock symbol provided is not valid
     */
     
-    class func stockWithSymbol(symbol symbol:String, success:((BigBoardStock) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    public class func stockWithSymbol(symbol symbol:String, success:((BigBoardStock) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.mapBigBoardStock(symbol: symbol, success: success, failure: failure)
     }
     
@@ -39,7 +39,7 @@ class BigBoard: NSObject {
         @param failure: The callback that is called if the mapping failed or if one or more of the stock symbols provided were not valid
     */
     
-    class func stocksWithSymbols(symbols symbols:[String], success:(([BigBoardStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    public class func stocksWithSymbols(symbols symbols:[String], success:(([BigBoardStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.mapBigBoardStocks(symbols: symbols, success: success, failure: failure)
     }
     
@@ -51,7 +51,7 @@ class BigBoard: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    public class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.stocksContainingSearchTerm(searchTerm: searchTerm, success: success, failure: failure)
     }
     
@@ -63,7 +63,7 @@ class BigBoard: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func rssFeedForStockWithSymbol(symbol symbol:String, success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    public class func rssFeedForStockWithSymbol(symbol symbol:String, success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.rssFeedForStockWithSymbol(symbol: symbol, success: success, failure: failure)
     }
     
@@ -75,7 +75,7 @@ class BigBoard: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func rssFeedForStocksWithSymbols(symbols symbols:[String], success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    public class func rssFeedForStocksWithSymbols(symbols symbols:[String], success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
         return BigBoardRequestManager.rssFeedForStocksWithSymbols(symbols: symbols, success: success, failure: failure)
     }
 }

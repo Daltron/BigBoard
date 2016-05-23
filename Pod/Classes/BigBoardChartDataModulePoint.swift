@@ -18,7 +18,7 @@
 
 import ObjectMapper
 
-class BigBoardChartDataModulePoint: Mappable {
+public class BigBoardChartDataModulePoint: Mappable {
     
     private static var dateFormatter:NSDateFormatter?
     private static func sharedDateFormatter() -> NSDateFormatter {
@@ -37,11 +37,11 @@ class BigBoardChartDataModulePoint: Mappable {
     var open:Double!
     var volume:Int!
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
         
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         date <- (map["Timestamp"], DateTransform())
         close <- map["close"]
         high <- map["high"]

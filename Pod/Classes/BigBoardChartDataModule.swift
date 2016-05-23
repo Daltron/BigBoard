@@ -28,7 +28,7 @@ public enum BigBoardChartDataModuleRange : String {
     case Lifetime = "max"
 }
 
-class BigBoardChartDataModule: Mappable {
+public class BigBoardChartDataModule: Mappable {
     
     private static var dateFormatter:NSDateFormatter?
     private static func sharedDateFormatter() -> NSDateFormatter {
@@ -43,11 +43,11 @@ class BigBoardChartDataModule: Mappable {
     var dates:[NSDate]!
     var dataPoints:[BigBoardChartDataModulePoint]!
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         dates = []
         dataPoints <- map["series"]
         

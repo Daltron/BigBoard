@@ -18,7 +18,7 @@
 
 import ObjectMapper
 
-class BigBoardSearchResultStock: Mappable {
+public class BigBoardSearchResultStock: Mappable {
 
     var symbol:String?
     var name:String?
@@ -27,11 +27,11 @@ class BigBoardSearchResultStock: Mappable {
     var exchDisp:String?
     var typeDisp:String?
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         symbol <- map["symbol"]
         name <- map["name"]
         exch <- map["exch"]

@@ -18,22 +18,22 @@
 
 import Foundation
 
-extension NSDate {
+public extension NSDate {
     
-    func isSameDayAsDate(date:NSDate) -> Bool {
+    public func isSameDayAsDate(date:NSDate) -> Bool {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         return calendar!.isDate(self, inSameDayAsDate: date)
     }
     
-    func isOnAWeekend() -> Bool {
+    public func isOnAWeekend() -> Bool {
         return isSaturday() || isSunday()
     }
     
-    func isSaturday() -> Bool {
+    public func isSaturday() -> Bool {
         return weekday == 7
     }
     
-    func isSunday() -> Bool {
+    public func isSunday() -> Bool {
         return weekday == 1
     }
 }

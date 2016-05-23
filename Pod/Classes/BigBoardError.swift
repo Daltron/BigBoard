@@ -18,18 +18,18 @@
 
 import Foundation
 
-public enum BigBoardErrorMessage : String {
+enum BigBoardErrorMessage : String {
     case MappingFutureDate = "You are trying to map historical data for a future date."
     case StartDateGreaterThanEndDate = "Your start date is greater than your end date. Your start date must take place or be equal to your end date."
     case StockMarketIsClosedInGivenDateRange = "Your start and end dates are pointing to dates when the stock market is closed. No historical data exists for these dates."
     case StockDoesNotExist = "You are trying to map historical data for a stock that does not exist."
 }
 
-class BigBoardError: NSObject {
+public class BigBoardError: NSObject {
     
     private let ERROR_PREFIX = "BigBoardError:"
 
-    override var description: String {
+    override public var description: String {
         return errorMessage
     }
     

@@ -18,7 +18,7 @@
 
 import ObjectMapper
 
-class BigBoardRSSFeedItem: Mappable {
+public class BigBoardRSSFeedItem: Mappable {
     
     private static var dateFormatter:NSDateFormatter?
     private static func sharedDateFormatter() -> NSDateFormatter {
@@ -39,11 +39,11 @@ class BigBoardRSSFeedItem: Mappable {
     var description:String?
     var content:String?
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         title <- map["title"]
         link <- map["link"]
         guid <- map["guid"]

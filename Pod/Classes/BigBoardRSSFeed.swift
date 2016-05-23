@@ -18,7 +18,7 @@
 
 import ObjectMapper
 
-class BigBoardRSSFeed: Mappable {
+public class BigBoardRSSFeed: Mappable {
     
     var title:String?
     var link:String?
@@ -27,11 +27,11 @@ class BigBoardRSSFeed: Mappable {
     var imageLink:String?
     var items:[BigBoardRSSFeedItem]?
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         title <- map["feed.title"]
         link <- map["feed.link"]
         author <- map["feed.author"]

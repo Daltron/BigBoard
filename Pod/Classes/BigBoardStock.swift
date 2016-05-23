@@ -19,7 +19,7 @@
 import ObjectMapper
 import Alamofire
 
-class BigBoardStock: Mappable {
+public class BigBoardStock: Mappable {
 
     var afterHoursChangeRealtime:String?
     var annualizedGain:String?
@@ -112,11 +112,11 @@ class BigBoardStock: Mappable {
     var yearLow:String?
     var yearRange:String?
     
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         afterHoursChangeRealtime <- map["AfterHoursChangeRealtime"]
         annualizedGain <- map["AnnualizedGain"]
         ask <- map["Ask"]
@@ -206,7 +206,7 @@ class BigBoardStock: Mappable {
         @param stocks: An array of stocks to check for invalidity
     */
     
-    class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String] {
+    public class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String] {
         var invalidSymbols:[String] = []
         for stock in stocks {
             if stock.isReal() == false {
@@ -224,7 +224,7 @@ class BigBoardStock: Mappable {
         See Example: http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('FAKESTOCK')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
     */
     
-    func isReal() -> Bool {
+    public func isReal() -> Bool {
         return name != nil
     }
     
@@ -235,7 +235,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapHistoricalDataWithRange(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapHistoricalDataWithRange(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         
         return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
             self.historicalData = historicalData;
@@ -254,7 +254,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
     
-    func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         let dateRange = BigBoardHistoricalDateRange.fiveDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -267,7 +267,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
     
-    func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         let dateRange = BigBoardHistoricalDateRange.tenDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -280,7 +280,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
 
-    func mapHistoricalDataWithThirtyDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapHistoricalDataWithThirtyDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         let dateRange = BigBoardHistoricalDateRange.thirtyDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -291,7 +291,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneDay, success: { (module:BigBoardChartDataModule) in
             self.oneDayChartModule = module
             if let success = success {
@@ -307,7 +307,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .FiveDay, success: { (module:BigBoardChartDataModule) in
             self.fiveDayChartModule = module
             if let success = success {
@@ -323,7 +323,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneMonth, success: { (module:BigBoardChartDataModule) in
             self.oneMonthChartModule = module
             if let success = success {
@@ -339,7 +339,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .ThreeMonth, success: { (module:BigBoardChartDataModule) in
             self.threeMonthChartModule = module
             if let success = success {
@@ -355,7 +355,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneYear, success: { (module:BigBoardChartDataModule) in
             self.oneYearChartModule = module
             if let success = success {
@@ -371,7 +371,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .FiveYear, success: { (module:BigBoardChartDataModule) in
             self.fiveYearChartModule = module
             if let success = success {
@@ -387,7 +387,7 @@ class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    public func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .Lifetime, success: { (module:BigBoardChartDataModule) in
             self.lifetimeChartModule = module
             if let success = success {

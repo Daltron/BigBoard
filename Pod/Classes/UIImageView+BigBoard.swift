@@ -20,7 +20,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-extension UIImageView {
+public extension UIImageView {
     
     /*
         Asynchronously loads and sets the image property with a graph image for a given stock
@@ -32,7 +32,7 @@ extension UIImageView {
  
     */
 
-    func setGraphAsImageForStock(stock stock:BigBoardStock, timelineInMonths:Int = 3, movingAverageTrendlineDays:[Int]? = nil, failure:((BigBoardError) -> Void)?) {
+    public func setGraphAsImageForStock(stock stock:BigBoardStock, timelineInMonths:Int = 3, movingAverageTrendlineDays:[Int]? = nil, failure:((BigBoardError) -> Void)?) {
         
         let urlString = BigBoardUrlCreator.urlForGraphImage(stock: stock, timelineInMonths: timelineInMonths, movingAverageTrendlineDays: movingAverageTrendlineDays)
         

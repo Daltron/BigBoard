@@ -21,6 +21,12 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
         exampleView = ExampleView(delegate: self)
         view = exampleView
         title = "BigBoard"
+        
+        BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
+            
+        }) { (error) in
+            print(error)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

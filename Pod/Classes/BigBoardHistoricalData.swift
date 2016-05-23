@@ -18,7 +18,7 @@
 
 import ObjectMapper
 
-class BigBoardHistoricalData: Mappable {
+public class BigBoardHistoricalData: Mappable {
 
     var symbol:String?
     var date:String?
@@ -29,11 +29,11 @@ class BigBoardHistoricalData: Mappable {
     var volume:String?
     var adjClose:String?
 
-    required init?(_ map: Map) {
+    required public init?(_ map: Map) {
         mapping(map)
     }
     
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         symbol <- map["Symbol"]
         date <- map["Date"]
         open <- map["Open"]
