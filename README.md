@@ -367,7 +367,7 @@ class BigBoardSearchResultStock: Mappable {
 
 ## Requirements
 
-- iOS 8.0+
+- iOS 8.3+
 - xCode 7.3+
 
 ## Author
