@@ -42,43 +42,43 @@ class BigBoardQueryCreatorTests: XCTestCase {
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithOneDayRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .OneDay)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1d/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1d/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithFiveDayRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .FiveDay)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=5d/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=5d/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithOneMonthRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .OneMonth)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1m/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1m/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithThreeMonthRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .ThreeMonth)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=3m/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=3m/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithOneYearRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .OneYear)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1y/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=1y/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithFiveYearRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .FiveYear)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=5y/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=5y/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
     func testThatUrlStringIsCorrectlyCreatedForChartDataModuleWithLifetimeRange() {
         let bigBoardUrl = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: "GOOG", range: .Lifetime)
-        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=max/json"
+        let yqlUrl = "http://chartapi.finance.yahoo.com/instrument/1.0/GOOG/chartdata;type=quote;range=max/json?callback=BigBoard"
         XCTAssertEqual(bigBoardUrl, yqlUrl)
     }
     
