@@ -30,12 +30,12 @@ public class BigBoardChartDataModulePoint: Mappable {
         return dateFormatter!
     }
     
-    var date:NSDate!
-    var close:Double!
-    var high:Double!
-    var low:Double!
-    var open:Double!
-    var volume:Int!
+    public var date:NSDate!
+    public var close:Double!
+    public var high:Double!
+    public var low:Double!
+    public var open:Double!
+    public var volume:Int!
     
     required public init?(_ map: Map) {
         mapping(map)
