@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
     s.name             = "BigBoard"
-    s.version          = "1.0.0"
+    s.version          = "1.0.1"
     s.summary          = "An Elegant Financial Markets Library Written in Swift"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+#   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description      = <<-DESC
 BigBoard is an elegant financial markets library for iOS written in Swift. Under the hood, BigBoard makes requests to Yahoo Finance API's. Those requests are then processed and clean, friendly, and easy to use objects are returned. The goal of BigBoard is to take the learning curve out of the Yahoo Finance API's and centralize all finanical market data into one core library.
                        DESC
@@ -28,9 +28,6 @@ BigBoard is an elegant financial markets library for iOS written in Swift. Under
     s.requires_arc = true
 
     s.source_files = 'Pod/Classes/**/*'
-    s.resource_bundles = {
-        'BigBoard' => ['Pod/Assets/*.png']
-    }
 
     s.platform = :ios
     s.ios.deployment_target = '8.3'
