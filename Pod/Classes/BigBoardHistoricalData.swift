@@ -20,14 +20,14 @@ import ObjectMapper
 
 public class BigBoardHistoricalData: Mappable {
 
-    var symbol:String?
-    var date:String?
-    var open:String?
-    var high:String?
-    var low:String?
-    var close:String?
-    var volume:String?
-    var adjClose:String?
+    public var symbol:String?
+    public var date:String?
+    public var open:String?
+    public var high:String?
+    public var low:String?
+    public var close:String?
+    public var volume:String?
+    public var adjClose:String?
 
     required public init?(_ map: Map) {
         mapping(map)
