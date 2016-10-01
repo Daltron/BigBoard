@@ -18,32 +18,32 @@
 
 import ObjectMapper
 
-public class BigBoardRSSFeedItem: Mappable {
+open class BigBoardRSSFeedItem: Mappable {
     
-    private static var dateFormatter:NSDateFormatter?
-    private static func sharedDateFormatter() -> NSDateFormatter {
+    fileprivate static var dateFormatter:DateFormatter?
+    fileprivate static func sharedDateFormatter() -> DateFormatter {
         if dateFormatter == nil {
-            dateFormatter = NSDateFormatter()
+            dateFormatter = DateFormatter()
             dateFormatter?.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
         }
         
         return dateFormatter!
     }
 
-    public var title:String?
-    public var link:String?
-    public var guid:String?
-    public var publicationDate:NSDate?
-    public var author:String?
-    public var thumbnailLink:String?
-    public var description:String?
-    public var content:String?
+    open var title:String?
+    open var link:String?
+    open var guid:String?
+    open var publicationDate:Date?
+    open var author:String?
+    open var thumbnailLink:String?
+    open var description:String?
+    open var content:String?
     
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         title <- map["title"]
         link <- map["link"]
         guid <- map["guid"]
@@ -55,6 +55,6 @@ public class BigBoardRSSFeedItem: Mappable {
         var publicationDateString = ""
         publicationDateString <- map["pubDate"]
         
-        publicationDate = BigBoardRSSFeedItem.sharedDateFormatter().dateFromString(publicationDateString)
+        publicationDate = BigBoardRSSFeedItem.sharedDateFormatter().date(from: publicationDateString)
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 protocol ExampleStockDetailsViewDelegate : class {
     func numberOfRSSFeedItems() -> Int
-    func rssFeedItemAtIndex(index:Int) -> BigBoardRSSFeedItem
-    func rssFeedItemSelectedAtIndex(index:Int)
+    func rssFeedItemAtIndex(_ index:Int) -> BigBoardRSSFeedItem
+    func rssFeedItemSelectedAtIndex(_ index:Int)
 }
 
 class ExampleStockDetailsView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -21,29 +21,29 @@ class ExampleStockDetailsView: UIView, UITableViewDataSource, UITableViewDelegat
     var rssFeedTableView:UITableView!
     
     init(delegate:ExampleStockDetailsViewDelegate) {
-        super.init(frame: CGRectZero)
-        self.backgroundColor = UIColor.whiteColor()
+        super.init(frame: CGRect.zero)
+        self.backgroundColor = UIColor.white
         self.delegate = delegate
         
         graphImageView = UIImageView()
-        graphImageView.backgroundColor = UIColor.whiteColor()
+        graphImageView.backgroundColor = UIColor.white
         addSubview(graphImageView)
         
-        graphImageView.snp_makeConstraints { (make) in
+        graphImageView.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(20)
             make.left.equalTo(self)
             make.right.equalTo(self)
             make.height.equalTo(self).multipliedBy(0.25)
         }
         
-        rssFeedTableView = UITableView(frame: CGRectZero, style: .Grouped)
+        rssFeedTableView = UITableView(frame: CGRect.zero, style: .grouped)
         rssFeedTableView.dataSource = self
         rssFeedTableView.delegate = self
         rssFeedTableView.rowHeight = 100.0
         addSubview(rssFeedTableView)
         
-        rssFeedTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(graphImageView.snp_bottom)
+        rssFeedTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(graphImageView.snp.bottom)
             make.left.equalTo(self)
             make.right.equalTo(self)
             make.bottom.equalTo(self)
@@ -56,26 +56,26 @@ class ExampleStockDetailsView: UIView, UITableViewDataSource, UITableViewDelegat
     
     // MARK: UITableViewDataSource and UITableViewDataSource Implementation
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return delegate!.numberOfRSSFeedItems()
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.0001
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let reuseIdentifier = "ExampleCell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as UITableViewCell?
         
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
             cell?.textLabel?.numberOfLines = 2
             cell?.detailTextLabel?.numberOfLines = 0
         }
@@ -83,15 +83,15 @@ class ExampleStockDetailsView: UIView, UITableViewDataSource, UITableViewDelegat
         return cell!
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let feedItem = delegate!.rssFeedItemAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let feedItem = delegate!.rssFeedItemAtIndex((indexPath as NSIndexPath).row)
         cell.textLabel?.text = feedItem.title!
         cell.detailTextLabel?.text = feedItem.description!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        delegate!.rssFeedItemSelectedAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        delegate!.rssFeedItemSelectedAtIndex((indexPath as NSIndexPath).row)
     }
 
 

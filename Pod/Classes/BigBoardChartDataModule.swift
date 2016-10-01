@@ -28,33 +28,33 @@ public enum BigBoardChartDataModuleRange : String {
     case Lifetime = "max"
 }
 
-public class BigBoardChartDataModule: Mappable {
+open class BigBoardChartDataModule: Mappable {
     
-    private static var dateFormatter:NSDateFormatter?
-    private static func sharedDateFormatter() -> NSDateFormatter {
+    fileprivate static var dateFormatter:DateFormatter?
+    fileprivate static func sharedDateFormatter() -> DateFormatter {
         if dateFormatter == nil {
-            dateFormatter = NSDateFormatter()
+            dateFormatter = DateFormatter()
             dateFormatter?.dateFormat = "yyyy-MM-dd"
         }
         
         return dateFormatter!
     }
 
-    public var dates:[NSDate]!
-    public var dataPoints:[BigBoardChartDataModulePoint]!
+    open var dates:[Date]!
+    open var dataPoints:[BigBoardChartDataModulePoint]!
     
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         dates = []
         dataPoints <- map["series"]
         
-        var labels = []
+        var labels:[Int] = []
         labels <- map["labels"]
         
-        let firstLabelInt = labels.firstObject! as! Int
+        let firstLabelInt = labels.first!
         let firstLabelString = "\(firstLabelInt)"
 
         if firstLabelString.characters.count > 8 {
@@ -62,9 +62,9 @@ public class BigBoardChartDataModule: Mappable {
         } else {
             for label in labels {
                 let dateAsString = NSMutableString(string: "\(label)")
-                dateAsString.insertString("-", atIndex: 4)
-                dateAsString.insertString("-", atIndex: 7)
-                dates.append(BigBoardChartDataModule.sharedDateFormatter().dateFromString(dateAsString as String)!)
+                dateAsString.insert("-", at: 4)
+                dateAsString.insert("-", at: 7)
+                dates.append(BigBoardChartDataModule.sharedDateFormatter().date(from: dateAsString as String)!)
             }
         }
     }

@@ -12,9 +12,9 @@ import ChameleonFramework
 
 protocol ExampleAddStockViewDelegate : class {
     func numberOfSearchResultStocks() -> Int
-    func searchResultStockAtIndex(index:Int) -> BigBoardSearchResultStock
-    func searchTermChanged(searchTerm searchTerm:String)
-    func stockResultSelectedAtIndex(index:Int)
+    func searchResultStockAtIndex(_ index:Int) -> BigBoardSearchResultStock
+    func searchTermChanged(searchTerm:String)
+    func stockResultSelectedAtIndex(_ index:Int)
 }
 
 class ExampleAddStockView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -24,42 +24,42 @@ class ExampleAddStockView: UIView, UITableViewDataSource, UITableViewDelegate {
     var stocksTableView:UITableView!
 
     init(delegate:ExampleAddStockViewDelegate) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.delegate = delegate
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         let searchBarView = UIView()
         addSubview(searchBarView)
         
         searchTextField = UITextField()
-        searchTextField.borderStyle = .RoundedRect
-        searchTextField.textAlignment = .Center
+        searchTextField.borderStyle = .roundedRect
+        searchTextField.textAlignment = .center
         searchTextField.placeholder = "Search:"
-        searchTextField.addTarget(self, action: #selector(searchTermChanged), forControlEvents: .AllEditingEvents)
+        searchTextField.addTarget(self, action: #selector(searchTermChanged), for: .allEditingEvents)
         searchBarView.addSubview(searchTextField)
         
-        stocksTableView = UITableView(frame: CGRectZero, style: .Plain)
+        stocksTableView = UITableView(frame: CGRect.zero, style: .plain)
         stocksTableView.dataSource = self
         stocksTableView.delegate = self
         stocksTableView.rowHeight = 50.0
         addSubview(stocksTableView)
         
-        searchBarView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.snp_top)
-            make.left.equalTo(self.snp_left)
-            make.right.equalTo(self.snp_right)
+        searchBarView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.top)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.right)
             make.height.equalTo(50)
         }
         
-        searchTextField.snp_makeConstraints { (make) in
+        searchTextField.snp.makeConstraints { (make) in
             make.top.equalTo(searchBarView).offset(10)
             make.left.equalTo(searchBarView).offset(10)
             make.right.equalTo(searchBarView).offset(-10)
             make.bottom.equalTo(searchBarView).offset(-10)
         }
         
-        stocksTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(searchBarView.snp_bottom)
+        stocksTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBarView.snp.bottom)
             make.left.equalTo(self)
             make.right.equalTo(self)
             make.bottom.equalTo(self)
@@ -77,41 +77,41 @@ class ExampleAddStockView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: UITableViewDataSource and UITableViewDataSource Implementation
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return delegate!.numberOfSearchResultStocks()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let reuseIdentifier = "ExampleCell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as UITableViewCell?
         
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-            let exchangeLabel = UILabel(frame: CGRectMake(0, 0, 150, 25))
-            exchangeLabel.textAlignment = .Right
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
+            let exchangeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 25))
+            exchangeLabel.textAlignment = .right
             cell?.accessoryView = exchangeLabel
         }
         
         return cell!
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let stock = delegate!.searchResultStockAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let stock = delegate!.searchResultStockAtIndex((indexPath as NSIndexPath).row)
         cell.textLabel?.text = stock.name!
         cell.detailTextLabel?.text = stock.symbol!
         let exchangeLabel = cell.accessoryView as! UILabel!
-        exchangeLabel.text = stock.exch!
+        exchangeLabel?.text = stock.exch!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        delegate!.stockResultSelectedAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        delegate!.stockResultSelectedAtIndex((indexPath as NSIndexPath).row)
     }
 
 }

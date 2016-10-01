@@ -18,11 +18,11 @@
 
 import Foundation
 
-public extension NSDate {
+public extension Date {
     
-    public func isSameDayAsDate(date:NSDate) -> Bool {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        return calendar!.isDate(self, inSameDayAsDate: date)
+    public func isSameDayAsDate(_ date:Date) -> Bool {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        return calendar.isDate(self, inSameDayAs: date)
     }
     
     public func isOnAWeekend() -> Bool {

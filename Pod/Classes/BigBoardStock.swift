@@ -19,104 +19,104 @@
 import ObjectMapper
 import Alamofire
 
-public class BigBoardStock: Mappable {
+open class BigBoardStock: Mappable {
 
-    public var afterHoursChangeRealtime:String?
-    public var annualizedGain:String?
-    public var ask:String?
-    public var askRealTime:String?
-    public var averageDailyVolume:String?
-    public var bid:String?
-    public var bidRealTime:String?
-    public var bookValue:String?
-    public var change:String?
-    public var changeFromFiftyDayMovingAverage:String?
-    public var changeFromTwoHundredDayMovingAverage:String?
-    public var changeFromYearHigh:String?
-    public var changeFromYearLow:String?
-    public var changePercentRealtime:String?
-    public var changeRealTime:String?
-    public var changePercentChange:String?
-    public var changeInPercent:String?
-    public var commission:String?
-    public var currency:String?
-    public var daysHigh:String?
-    public var daysLow:String?
-    public var daysRange:String?
-    public var daysRangeRealTime:String?
-    public var daysValueChange:String?
-    public var daysValueChangeRealTime:String?
-    public var dividendPayDate:String?
-    public var dividendShare:String?
-    public var dividendYield:String?
-    public var ebitda:String?
-    public var epsEstimateCurrentYear:String?
-    public var epsEstimateNextQuarter:String?
-    public var epsEstimateNextYear:String?
-    public var earningsShare:String?
-    public var errorIndicationReturnedForSymbolChangedInvalid:String?
-    public var exDividendDate:String?
-    public var fiveDayChartModule:BigBoardChartDataModule?
-    public var fiveYearChartModule:BigBoardChartDataModule?
-    public var fiftyDayMovingAverage:String?
-    public var highLimit:String?
-    public var historicalData:[BigBoardHistoricalData]?
-    public var holdingsGain:String?
-    public var holdingsGainPercent:String?
-    public var holdingsGainPercentRealtime:String?
-    public var holdingsGainRealtime:String?
-    public var holdingsValue:String?
-    public var holdingsValueRealtime:String?
-    public var lastTradeDate:String?
-    public var lastTradePriceOnly:String?
-    public var lastTradeRealTimeWithTime:String?
-    public var lastTradeTime:String?
-    public var lastTradeWithTime:String?
-    public var lifetimeChartModule:BigBoardChartDataModule?
-    public var lowLimit:String?
-    public var marketCapRealtime:String?
-    public var marketCapitalization:String?
-    public var moreInfo:String?
-    public var name:String?
-    public var notes:String?
-    public var oneDayChartModule:BigBoardChartDataModule?
-    public var oneMonthChartModule:BigBoardChartDataModule?
-    public var oneYearChartModule:BigBoardChartDataModule?
-    public var oneYearTargetPrice:String?
-    public var open:String?
-    public var orderBookRealtime:String?
-    public var pegRatio:String?
-    public var peRatio:String?
-    public var peRatioRealtime:String?
-    public var percentChangeFromYearHigh:String?
-    public var percentChange:String?
-    public var percentChangeFromFiftyDayMovingAverage:String?
-    public var percentChangeFromTwoHundredDayMovingAverage:String?
-    public var percentChangeFromYearLow:String?
-    public var previousClose:String?
-    public var priceBook:String?
-    public var priceEPSEstimateCurrentYear:String?
-    public var priceEPSEstimateNextYear:String?
-    public var pricePaid:String?
-    public var priceSales:String?
-    public var sharesOwned:String?
-    public var shortRatio:String?
-    public var stockExchange:String?
-    public var symbol:String?
-    public var threeMonthChartModule:BigBoardChartDataModule?
-    public var tickerTrend:String?
-    public var tradeDate:String?
-    public var twoHundredDayMovingAverage:String?
-    public var volume:String?
-    public var yearHigh:String?
-    public var yearLow:String?
-    public var yearRange:String?
+    open var afterHoursChangeRealtime:String?
+    open var annualizedGain:String?
+    open var ask:String?
+    open var askRealTime:String?
+    open var averageDailyVolume:String?
+    open var bid:String?
+    open var bidRealTime:String?
+    open var bookValue:String?
+    open var change:String?
+    open var changeFromFiftyDayMovingAverage:String?
+    open var changeFromTwoHundredDayMovingAverage:String?
+    open var changeFromYearHigh:String?
+    open var changeFromYearLow:String?
+    open var changePercentRealtime:String?
+    open var changeRealTime:String?
+    open var changePercentChange:String?
+    open var changeInPercent:String?
+    open var commission:String?
+    open var currency:String?
+    open var daysHigh:String?
+    open var daysLow:String?
+    open var daysRange:String?
+    open var daysRangeRealTime:String?
+    open var daysValueChange:String?
+    open var daysValueChangeRealTime:String?
+    open var dividendPayDate:String?
+    open var dividendShare:String?
+    open var dividendYield:String?
+    open var ebitda:String?
+    open var epsEstimateCurrentYear:String?
+    open var epsEstimateNextQuarter:String?
+    open var epsEstimateNextYear:String?
+    open var earningsShare:String?
+    open var errorIndicationReturnedForSymbolChangedInvalid:String?
+    open var exDividendDate:String?
+    open var fiveDayChartModule:BigBoardChartDataModule?
+    open var fiveYearChartModule:BigBoardChartDataModule?
+    open var fiftyDayMovingAverage:String?
+    open var highLimit:String?
+    open var historicalData:[BigBoardHistoricalData]?
+    open var holdingsGain:String?
+    open var holdingsGainPercent:String?
+    open var holdingsGainPercentRealtime:String?
+    open var holdingsGainRealtime:String?
+    open var holdingsValue:String?
+    open var holdingsValueRealtime:String?
+    open var lastTradeDate:String?
+    open var lastTradePriceOnly:String?
+    open var lastTradeRealTimeWithTime:String?
+    open var lastTradeTime:String?
+    open var lastTradeWithTime:String?
+    open var lifetimeChartModule:BigBoardChartDataModule?
+    open var lowLimit:String?
+    open var marketCapRealtime:String?
+    open var marketCapitalization:String?
+    open var moreInfo:String?
+    open var name:String?
+    open var notes:String?
+    open var oneDayChartModule:BigBoardChartDataModule?
+    open var oneMonthChartModule:BigBoardChartDataModule?
+    open var oneYearChartModule:BigBoardChartDataModule?
+    open var oneYearTargetPrice:String?
+    open var open:String?
+    open var orderBookRealtime:String?
+    open var pegRatio:String?
+    open var peRatio:String?
+    open var peRatioRealtime:String?
+    open var percentChangeFromYearHigh:String?
+    open var percentChange:String?
+    open var percentChangeFromFiftyDayMovingAverage:String?
+    open var percentChangeFromTwoHundredDayMovingAverage:String?
+    open var percentChangeFromYearLow:String?
+    open var previousClose:String?
+    open var priceBook:String?
+    open var priceEPSEstimateCurrentYear:String?
+    open var priceEPSEstimateNextYear:String?
+    open var pricePaid:String?
+    open var priceSales:String?
+    open var sharesOwned:String?
+    open var shortRatio:String?
+    open var stockExchange:String?
+    open var symbol:String?
+    open var threeMonthChartModule:BigBoardChartDataModule?
+    open var tickerTrend:String?
+    open var tradeDate:String?
+    open var twoHundredDayMovingAverage:String?
+    open var volume:String?
+    open var yearHigh:String?
+    open var yearLow:String?
+    open var yearRange:String?
     
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         afterHoursChangeRealtime <- map["AfterHoursChangeRealtime"]
         annualizedGain <- map["AnnualizedGain"]
         ask <- map["Ask"]
@@ -206,11 +206,11 @@ public class BigBoardStock: Mappable {
         @param stocks: An array of stocks to check for invalidity
     */
     
-    public class func invalidSymbolsForStocks(stocks stocks:[BigBoardStock]) -> [String] {
+    open class func invalidSymbolsForStocks(stocks:[BigBoardStock]) -> [String] {
         var invalidSymbols:[String] = []
         for stock in stocks {
             if stock.isReal() == false {
-                invalidSymbols.append(stock.symbol!.uppercaseString)
+                invalidSymbols.append(stock.symbol!.uppercased())
             }
         }
         
@@ -224,7 +224,7 @@ public class BigBoardStock: Mappable {
         See Example: http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('FAKESTOCK')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
     */
     
-    public func isReal() -> Bool {
+    open func isReal() -> Bool {
         return name != nil
     }
     
@@ -235,7 +235,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapHistoricalDataWithRange(dateRange dateRange:BigBoardHistoricalDateRange, success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapHistoricalDataWithRange(dateRange:BigBoardHistoricalDateRange, success: (() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         
         return BigBoardRequestManager.mapHistoricalDataForStock(stock: self, dateRange: dateRange, success: { (historicalData:[BigBoardHistoricalData]) in
             self.historicalData = historicalData;
@@ -254,7 +254,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
     
-    public func mapHistoricalDataWithFiveDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapHistoricalDataWithFiveDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         let dateRange = BigBoardHistoricalDateRange.fiveDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -267,7 +267,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
     
-    public func mapHistoricalDataWithTenDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapHistoricalDataWithTenDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         let dateRange = BigBoardHistoricalDateRange.tenDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -280,7 +280,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
      */
 
-    public func mapHistoricalDataWithThirtyDayRange(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapHistoricalDataWithThirtyDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         let dateRange = BigBoardHistoricalDateRange.thirtyDayRange()
         return mapHistoricalDataWithRange(dateRange: dateRange, success: success, failure: failure)
     }
@@ -291,7 +291,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapOneDayChartDataModule(_ success: (() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneDay, success: { (module:BigBoardChartDataModule) in
             self.oneDayChartModule = module
             if let success = success {
@@ -307,7 +307,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapFiveDayChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .FiveDay, success: { (module:BigBoardChartDataModule) in
             self.fiveDayChartModule = module
             if let success = success {
@@ -323,7 +323,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapOneMonthChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneMonth, success: { (module:BigBoardChartDataModule) in
             self.oneMonthChartModule = module
             if let success = success {
@@ -339,7 +339,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapThreeMonthChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .ThreeMonth, success: { (module:BigBoardChartDataModule) in
             self.threeMonthChartModule = module
             if let success = success {
@@ -355,7 +355,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapOneYearChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .OneYear, success: { (module:BigBoardChartDataModule) in
             self.oneYearChartModule = module
             if let success = success {
@@ -371,7 +371,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapFiveYearChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .FiveYear, success: { (module:BigBoardChartDataModule) in
             self.fiveYearChartModule = module
             if let success = success {
@@ -387,7 +387,7 @@ public class BigBoardStock: Mappable {
         @param failure: The callback that is called if the mapping failed or if the stock that called this method is not valid
     */
     
-    public func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request? {
+    open func mapLifetimeChartDataModule(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         return BigBoardRequestManager.mapChartDataModuleForStockWithSymbol(symbol: self.symbol!, range: .Lifetime, success: { (module:BigBoardChartDataModule) in
             self.lifetimeChartModule = module
             if let success = success {

@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/downloads-64,933+-ffc003.svg?style=flat" alt="Downloads"/>
+    <img src="https://img.shields.io/badge/downloads-154,614+-ffc003.svg?style=flat" alt="Downloads"/>
     <img src="https://img.shields.io/badge/platform-iOS%208%2B-blue.svg?style=flat" alt="Platform: iOS 8+"/>
     <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat" alt="Language: Swift 2" /></a>
     <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
-    <a href="https://cocoapods.org/pods/ChameleonFramework"><img src="https://cocoapod-badges.herokuapp.com/v/ChameleonFramework/badge.png" alt="Cocoapods compatible" /></a>
+    <a href="https://cocoapods.org/pods/ChameleonFramework"><img src="https://cocoapod-badges.herokuapp.com/v/ChameleonFramework/badge.png" alt="CocoaPods compatible" /></a>
     <img src="http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat" alt="License: MIT" /> <br><br>
     <a href="https://gratipay.com/chameleon/"><img src="https://img.shields.io/badge/Donate-%241%2Fweek-yellow.svg?style=social" alt="Donate"/></a>
 </p>
@@ -34,7 +34,8 @@ With Chameleon, you can easily stop tinkering with RGB values, wasting hours fig
 [● License](https://github.com/ViccAlexander/Chameleon#-license)  
 [● Contributions](https://github.com/ViccAlexander/Chameleon#-contributions)   
 [● Documentation](https://github.com/ViccAlexander/Chameleon#-documentation)  
-[● Storyboard Add-On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on)   
+[● Storyboard Add-On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on)  
+[● Sketch Add-On](https://github.com/ViccAlexander/Chameleon#sketch-add-on)  
 [● Author](https://github.com/ViccAlexander/Chameleon#-author)   
 [● Special Thanks](https://github.com/ViccAlexander/Chameleon#-special-thanks)    
 [● To Do List](https://github.com/ViccAlexander/Chameleon#-to-do-list)  
@@ -148,13 +149,13 @@ All methods, properties, and types available in Chameleon are documented below.
 
 #####Documentation Table of Contents  
 [● Installation](https://github.com/ViccAlexander/Chameleon#installation)  
-[● Storyboard-Add On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on-)  
+[● Storyboard-Add On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on)  
 [● Usage](https://github.com/ViccAlexander/Chameleon#usage)  
 [● UIColor Methods](https://github.com/ViccAlexander/Chameleon#uicolor-methods)  
-[● Colors From Images](https://github.com/ViccAlexander/Chameleon#colors-from-images--1)  
+[● Colors From Images](https://github.com/ViccAlexander/Chameleon#colors-from-images)  
 [● UIStatusBarStyle Methods](https://github.com/ViccAlexander/Chameleon#uistatusbarstyle-methods)  
 [● Color Scheme Methods](https://github.com/ViccAlexander/Chameleon#color-schemes-methods)  
-[● Theme Methods](https://github.com/ViccAlexander/Chameleon#theme-methods-)  
+[● Theme Methods](https://github.com/ViccAlexander/Chameleon#theme-methods)  
 
 ###Installation
 ####CocoaPods Installation
@@ -172,8 +173,6 @@ use_frameworks!
 
 pod 'ChameleonFramework/Swift'
 ```
-
-###### **Note:** Swift support for Chameleon 2.0 is almost complete.
 
 =======
 ####Carthage Installation
@@ -195,7 +194,7 @@ If you're working with Swift and are manually installing Chameleon, there's an a
 ####Storyboard Add-On
 Using Chameleon's awesome palette in Storyboard is easy! Simply download and install [Chameleon Palette](https://github.com/ViccAlexander/Chameleon/blob/master/Extras/Chameleon.dmg?raw=true).
 
-Once installed, make sure to restart XCode. You'll find all of Chameleon's colors in the Palette Color Picker whenever they're needed! :)
+Once installed, make sure to restart Xcode. You'll find all of Chameleon's colors in the Palette Color Picker whenever they're needed! :)
 
 <p align="center">
   <img src="http://i.imgur.com/XqpFUSt.png" alt="Chameleon Palette"/>
@@ -205,10 +204,13 @@ Once installed, make sure to restart XCode. You'll find all of Chameleon's color
   <img src="http://i.imgur.com/QhhPFHY.gif" alt="Chameleon Palette"/>
 </p>
 
+####Sketch Add-On
+Using Chameleon's awesome palette in Sketch is easy! Simply download and install [Sketch Palette](https://github.com/ViccAlexander/Chameleon/blob/master/Extras/Chameleon.sketchpalette?raw=true).
+
 ###Usage
 To use the myriad of features in Chameleon, include the following import:
 
-###### If you installed Chameleon using cocoapods:
+###### If you installed Chameleon using CocoaPods:
 
 ######Objective-C
 
@@ -740,6 +742,11 @@ As of `2.0.3` the navigation bar hairline view is no longer hidden by default. H
 self.navigationController.hidesNavigationBarHairline = YES;
 ```
 
+######Swift
+```swift
+self.navigationController?.hidesNavigationBarHairline = true
+``` 
+
 ## 👑 Author
 Chameleon was developed by **Vicc Alexander** [(@ViccsMind)](https://twitter.com/viccsmind) in 2014. Currently, it is being maintained by [@ViccAlexander](https://github.com/ViccAlexander) and [@Bre7](https://github.com/bre7).
 
@@ -747,7 +754,7 @@ Chameleon was developed by **Vicc Alexander** [(@ViccsMind)](https://twitter.com
 If you enjoy Chameleon and would like to buy us a coffee we'd appreciate it. <a href="https://gratipay.com/chameleon/"><img src="https://img.shields.io/badge/Donate-%241%2Fweek-yellow.svg?style=social" alt="Donate"/></a>
 
 ## 📝 To Do List 
-* ~~Cocoapods Support~~ ![1.0.1](http://i.imgur.com/8Li5aRR.png)  
+* ~~CocoaPods Support~~ ![1.0.1](http://i.imgur.com/8Li5aRR.png)  
 * ~~Table of Contents~~ ![1.0.1](http://i.imgur.com/8Li5aRR.png)  
 * ~~Storyboard Color Picker Add-On~~ ![1.1.0](http://i.imgur.com/Py4QvaK.png)  
 * ~~Xcode In-App Documentation~~ ![1.1.0](http://i.imgur.com/Py4QvaK.png)  

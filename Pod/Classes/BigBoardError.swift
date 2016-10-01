@@ -25,11 +25,11 @@ enum BigBoardErrorMessage : String {
     case StockDoesNotExist = "You are trying to map historical data for a stock that does not exist."
 }
 
-public class BigBoardError: NSObject {
+open class BigBoardError: NSObject {
     
-    private let ERROR_PREFIX = "BigBoardError:"
+    fileprivate let ERROR_PREFIX = "BigBoardError:"
 
-    override public var description: String {
+    override open var description: String {
         return errorMessage
     }
     
@@ -37,15 +37,15 @@ public class BigBoardError: NSObject {
     
     init(invalidSymbol:String) {
         super.init()
-        errorMessage = "\(ERROR_PREFIX) \(invalidSymbol.uppercaseString) is not a real stock."
+        errorMessage = "\(ERROR_PREFIX) \(invalidSymbol.uppercased()) is not a real stock."
     }
     
     init(invalidSymbols:[String]) {
         super.init()
         if invalidSymbols.count > 1 {
-            errorMessage = "\(ERROR_PREFIX) \(invalidSymbols.joinWithSeparator(", ")) are not real stocks."
+            errorMessage = "\(ERROR_PREFIX) \(invalidSymbols.joined(separator: ", ")) are not real stocks."
         } else {
-            errorMessage = "\(ERROR_PREFIX) \(invalidSymbols.first!.uppercaseString) is not a real stock."
+            errorMessage = "\(ERROR_PREFIX) \(invalidSymbols.first!.uppercased()) is not a real stock."
         }
     }
     

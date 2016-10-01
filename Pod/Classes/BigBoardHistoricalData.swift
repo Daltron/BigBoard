@@ -18,22 +18,22 @@
 
 import ObjectMapper
 
-public class BigBoardHistoricalData: Mappable {
+open class BigBoardHistoricalData: Mappable {
 
-    public var symbol:String?
-    public var date:String?
-    public var open:String?
-    public var high:String?
-    public var low:String?
-    public var close:String?
-    public var volume:String?
-    public var adjClose:String?
+    open var symbol:String?
+    open var date:String?
+    open var open:String?
+    open var high:String?
+    open var low:String?
+    open var close:String?
+    open var volume:String?
+    open var adjClose:String?
 
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         symbol <- map["Symbol"]
         date <- map["Date"]
         open <- map["Open"]

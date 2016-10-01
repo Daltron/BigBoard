@@ -8,8 +8,6 @@
 
 import XCTest
 import BigBoard
-import ObjectMapper
-import Timepiece
 
 class BigBoardMainClassTests: XCTestCase {
     
@@ -19,7 +17,7 @@ class BigBoardMainClassTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        validationExpectation = expectationWithDescription("Validation")
+        validationExpectation = expectation(description: "Validation")
         sampleStock = BigBoardTestsHelper.sampleStock()
     }
     
@@ -30,20 +28,20 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatSingleStockIsCorrectlyMappedWhenCallingStockWithSymbolFunction(){
         
-        BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
+        _ = BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
             self.validationExpectation.fulfill()
             XCTAssert(true)
         }) { (error) in
             self.validationExpectation.fulfill()
             XCTFail(error.description)
         }
-        
+    
         waitForRequestToFinish()
     }
     
     func testThatSingleStockIsCorrectlyMappedWhenCallingStocksWithSymbolsFunction(){
         
-        BigBoard.stocksWithSymbols(symbols: ["AAPL"], success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: ["AAPL"], success: { (stocks) in
             self.validationExpectation.fulfill()
             XCTAssert(true)
         }) { (error) in
@@ -51,12 +49,12 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail(error.description)
         }
         
-        waitForRequestToFinish()
+        self.waitForRequestToFinish()
     }
     
     func testThatMultipleStocksAreCorrectlyMappedWhenCallingStocksWithSymbolsFunction(){
         
-        BigBoard.stocksWithSymbols(symbols: ["AAPL", "GOOG", "TSLA"], success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: ["AAPL", "GOOG", "TSLA"], success: { (stocks) in
             self.validationExpectation.fulfill()
             XCTAssert(true)
         }) { (error) in
@@ -68,7 +66,7 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatCallingStockWithSymbolFunctionReturnsAnErrorWhenAnInvalidStockSymbolIsProvided(){
-        BigBoard.stockWithSymbol(symbol: "FAKESTOCK", success: { (stock) in
+        _ = BigBoard.stockWithSymbol(symbol: "FAKESTOCK", success: { (stock) in
             self.validationExpectation.fulfill()
             XCTFail()
         }) { (error) in
@@ -81,7 +79,7 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatCallingStocksWithSymbolsFunctionReturnsAnErrorWhenAnInvalidStockSymbolIsProvidedForASingleSymbol() {
-        BigBoard.stocksWithSymbols(symbols: ["FAKESTOCK"], success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: ["FAKESTOCK"], success: { (stocks) in
             self.validationExpectation.fulfill()
             XCTFail()
         }) { (error) in
@@ -94,7 +92,7 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatCallingStocksWithSymbolsFunctionReturnsAnErrorWhenAnInvalidStockSymbolIsProvidedForMultipleSymbols() {
-        BigBoard.stocksWithSymbols(symbols: ["AAPL", "FAKESTOCK", "GOOG"], success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: ["AAPL", "FAKESTOCK", "GOOG"], success: { (stocks) in
             self.validationExpectation.fulfill()
             XCTFail()
         }) { (error) in
@@ -107,7 +105,7 @@ class BigBoardMainClassTests: XCTestCase {
     }
     
     func testThatCallingStocksWithSymbolsFunctionReturnsAnErrorWhenMultipleInvalidStockSymbolAreProvidedForMultipleSymbols() {
-        BigBoard.stocksWithSymbols(symbols: ["AAPL", "FAKESTOCK", "GOOG", "FAKESTOCK2"], success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: ["AAPL", "FAKESTOCK", "GOOG", "FAKESTOCK2"], success: { (stocks) in
             self.validationExpectation.fulfill()
             XCTFail()
         }) { (error) in
@@ -121,7 +119,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataIsReturnedWhenTheGoogleStockSymbolIsUsed(){
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: BigBoardTestsHelper.sampleDateRange(), success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: BigBoardTestsHelper.sampleDateRange(), success: {
             if self.sampleStock.historicalData?.isEmpty == false {
                 self.validationExpectation.fulfill()
                 XCTAssert(true)
@@ -140,9 +138,9 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStartDateIsEqualToToday() {
         
-        let dateRange = BigBoardHistoricalDateRange(startDate: NSDate(), endDate: NSDate())
+        let dateRange = BigBoardHistoricalDateRange(startDate: Date(), endDate: Date())
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -161,7 +159,7 @@ class BigBoardMainClassTests: XCTestCase {
         
         let dateRange = BigBoardHistoricalDateRange(startDate: 1.days.ago, endDate: 2.days.ago)
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
         }, failure: { (error) in
@@ -178,11 +176,11 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateAndEndDateAreTheSameAndTheDayIsSaturday() {
         
-        let startDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
-        let endDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
+        let startDate:Date = Date().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
+        let endDate:Date = Date().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -199,11 +197,11 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateAndEndDateAreTheSameAndTheDayIsSunday() {
         
-        let startDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
-        let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
+        let startDate:Date = Date().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
+        let endDate:Date = Date().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -220,11 +218,11 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatHistoricalDataRequestFailsWhenStockMarketIsClosedInTheGivenDateRangeAndStartDateIsASaturdayAndTheEndDateIsTheFirstSundayAfter() {
         
-        let startDate = NSDate().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
-        let endDate = NSDate().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
+        let startDate:Date = Date().change(year: 2016, month: 1, day: 2, hour: 1, minute: 1, second: 1)
+        let endDate:Date = Date().change(year: 2016, month: 1, day: 3, hour: 1, minute: 1, second: 1)
         let dateRange = BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -244,7 +242,7 @@ class BigBoardMainClassTests: XCTestCase {
         let dateRange = BigBoardTestsHelper.sampleDateRange()
         sampleStock.name = nil
         
-        sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
+        _ = sampleStock.mapHistoricalDataWithRange(dateRange: dateRange, success: {
             self.validationExpectation.fulfill()
             XCTFail("This test should have failed.")
             }, failure: { (error) in
@@ -262,7 +260,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatOneDayChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapOneDayChartDataModule({ 
+        _ = sampleStock.mapOneDayChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.oneDayChartModule != nil)
         }) { (error) in
@@ -276,7 +274,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatFiveDayChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapFiveDayChartDataModule({
+        _ = sampleStock.mapFiveDayChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.fiveDayChartModule != nil)
         }) { (error) in
@@ -290,7 +288,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatOneMonthChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapOneMonthChartDataModule({
+        _ = sampleStock.mapOneMonthChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.oneMonthChartModule != nil)
         }) { (error) in
@@ -305,7 +303,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatThreeMonthChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapThreeMonthChartDataModule({
+        _ = sampleStock.mapThreeMonthChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.threeMonthChartModule != nil)
         }) { (error) in
@@ -319,7 +317,7 @@ class BigBoardMainClassTests: XCTestCase {
 
     func testThatOneYearChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapOneYearChartDataModule({
+        _ = sampleStock.mapOneYearChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.oneYearChartModule != nil)
         }) { (error) in
@@ -333,7 +331,7 @@ class BigBoardMainClassTests: XCTestCase {
     
     func testThatFiveYearChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapFiveYearChartDataModule({
+        _ = sampleStock.mapFiveYearChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.fiveYearChartModule != nil)
         }) { (error) in
@@ -347,7 +345,7 @@ class BigBoardMainClassTests: XCTestCase {
 
     func testThatLifetimeChartDataModuleRequestIsCorrectlyMapped() {
         
-        sampleStock.mapLifetimeChartDataModule({
+        _ = sampleStock.mapLifetimeChartDataModule({
             self.validationExpectation.fulfill()
             XCTAssert(self.sampleStock.lifetimeChartModule != nil)
         }) { (error) in
@@ -362,7 +360,8 @@ class BigBoardMainClassTests: XCTestCase {
     // MARK: Helpers
     
     func waitForRequestToFinish(){
-        waitForExpectationsWithTimeout(60.0) { (error) in
+        
+        waitForExpectations(timeout: 60.0) { (error) in
             if let error = error {
                 XCTFail(error.localizedDescription)
             }

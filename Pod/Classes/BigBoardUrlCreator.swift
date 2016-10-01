@@ -26,15 +26,15 @@ private enum BigBoardQueryType : String {
 class BigBoardUrlCreator: NSObject {
 
     // MARK: Base YQL URL Strings
-    private static let YQL_URL_PREFIX:String = "http://query.yahooapis.com/v1/public/yql?q="
-    private static let YQL_URL_SUFFIX:String = "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+    fileprivate static let YQL_URL_PREFIX:String = "http://query.yahooapis.com/v1/public/yql?q="
+    fileprivate static let YQL_URL_SUFFIX:String = "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
     
     
     /*  Returns a query for a single stock with the provided symbol
         @param symbol: The stock symbol of the desired stock. Google -> GOOG, Tesla -> TSLA, etc...
     */
     
-    private class func queryForStockSymbol(symbol symbol:String, queryType:BigBoardQueryType) -> String {
+    fileprivate class func queryForStockSymbol(symbol:String, queryType:BigBoardQueryType) -> String {
         return queryForStockSymbols(symbols: [symbol], queryType: queryType)
     }
     
@@ -43,13 +43,13 @@ class BigBoardUrlCreator: NSObject {
         @param symbols: An array of stock symbols for the desired stocks. Google -> GOOG, Tesla -> TSLA, etc...
     */
     
-    private class func queryForStockSymbols(symbols symbols:[String], queryType:BigBoardQueryType) -> String {
+    fileprivate class func queryForStockSymbols(symbols:[String], queryType:BigBoardQueryType) -> String {
         var symbolsArray = symbols
         for symbol in symbolsArray {
-            symbolsArray[symbols.indexOf(symbol)!] = "'\(symbol)'".uppercaseString
+            symbolsArray[symbols.index(of: symbol)!] = "'\(symbol)'".uppercased()
         }
         
-        let symbolsString = symbolsArray.joinWithSeparator(",")
+        let symbolsString = symbolsArray.joined(separator: ",")
         return percentEscapedQuery(query: "\(queryType.rawValue) (\(symbolsString))")
     }
     
@@ -58,7 +58,7 @@ class BigBoardUrlCreator: NSObject {
         @param symbol: The stock symbol of the desired stock. Google -> GOOG, Tesla -> TSLA, etc...
     */
     
-    class func urlForStockSymbol(symbol symbol:String) -> String {
+    class func urlForStockSymbol(symbol:String) -> String {
         return urlForStockSymbols(symbols: [symbol])
     }
     
@@ -67,7 +67,7 @@ class BigBoardUrlCreator: NSObject {
         @param symbols: An array of stock symbols for the desired stocks. Google -> GOOG, Tesla -> TSLA, etc...
     */
     
-    class func urlForStockSymbols(symbols symbols:[String]) -> String {
+    class func urlForStockSymbols(symbols:[String]) -> String {
         let symbolsQuery = queryForStockSymbols(symbols: symbols, queryType: .Symbol)
         return "\(YQL_URL_PREFIX)\(symbolsQuery)\(YQL_URL_SUFFIX)"
     }
@@ -79,13 +79,13 @@ class BigBoardUrlCreator: NSObject {
         @param endDate: The date you want the historical data to end at
     */
     
-    class func urlForHistoricalDataWithStockSymbol(symbol symbol:String, dateRange:BigBoardHistoricalDateRange) -> String {
+    class func urlForHistoricalDataWithStockSymbol(symbol:String, dateRange:BigBoardHistoricalDateRange) -> String {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
-        let startDateString = dateFormatter.stringFromDate(dateRange.startDate)
-        let endDateString = dateFormatter.stringFromDate(dateRange.endDate)
+        let startDateString = dateFormatter.string(from: dateRange.startDate as Date)
+        let endDateString = dateFormatter.string(from: dateRange.endDate as Date)
         
         let dateQuery = percentEscapedQuery(query: " AND startDate= \"\(startDateString)\" AND endDate= \"\(endDateString)\"")
 
@@ -100,7 +100,7 @@ class BigBoardUrlCreator: NSObject {
         @param range: The range of the chart data you want to map
     */
     
-    class func urlForChartDataModuleWithSymbol(symbol symbol:String, range:BigBoardChartDataModuleRange) -> String {
+    class func urlForChartDataModuleWithSymbol(symbol:String, range:BigBoardChartDataModuleRange) -> String {
         return "http://chartapi.finance.yahoo.com/instrument/1.0/\(symbol)/chartdata;type=quote;range=\(range.rawValue)/json?callback=BigBoard"
     }
     
@@ -109,7 +109,7 @@ class BigBoardUrlCreator: NSObject {
         @param searchTerm: The term you are looking to contain
     */
     
-    class func urlForAutoCompleteSearch(searchTerm searchTerm:String) -> String {
+    class func urlForAutoCompleteSearch(searchTerm:String) -> String {
         return "http://autoc.finance.yahoo.com/autoc?query=\(percentEscapedQuery(query: searchTerm))&region=2&lang=en"
     }
     
@@ -122,24 +122,24 @@ class BigBoardUrlCreator: NSObject {
                                            average trendline.
     */
     
-    class func urlForGraphImage(stock stock:BigBoardStock, timelineInMonths:Int, movingAverageTrendlineDays:[Int]?) -> String {
+    class func urlForGraphImage(stock:BigBoardStock, timelineInMonths:Int, movingAverageTrendlineDays:[Int]?) -> String {
         
         let trendlines:NSMutableArray = []
         if let movingAverageTrendlineDays = movingAverageTrendlineDays {
             for trendline in movingAverageTrendlineDays {
-                trendlines.addObject("m\(trendline)")
+                trendlines.add("m\(trendline)")
             }
         }
         
-        return "http://chart.finance.yahoo.com/z?s=\(stock.symbol!)&t=\(timelineInMonths)m&q=l&l=on&z=s&p=\(trendlines.componentsJoinedByString(","))"
+        return "http://chart.finance.yahoo.com/z?s=\(stock.symbol!)&t=\(timelineInMonths)m&q=l&l=on&z=s&p=\(trendlines.componentsJoined(by: ","))"
     }
     
-    class func urlForRSSFeed(symbol symbol:String) -> String {
+    class func urlForRSSFeed(symbol:String) -> String {
         return urlForRSSFeed(symbols: [symbol])
     }
     
-    class func urlForRSSFeed(symbols symbols:[String]) -> String {
-        let symbolsString = NSMutableArray(array: symbols).componentsJoinedByString(",")
+    class func urlForRSSFeed(symbols:[String]) -> String {
+        let symbolsString = NSMutableArray(array: symbols).componentsJoined(by: ",")
         return "https://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
     }
     
@@ -147,8 +147,8 @@ class BigBoardUrlCreator: NSObject {
         @param query: Any query that needs to be percent escaped encoded
     */
     
-    private class func percentEscapedQuery(query query:String) -> String {
-        return query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    fileprivate class func percentEscapedQuery(query:String) -> String {
+        return query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
     }
     
 }

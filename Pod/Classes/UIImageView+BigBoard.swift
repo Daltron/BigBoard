@@ -32,21 +32,21 @@ public extension UIImageView {
  
     */
 
-    public func setGraphAsImageForStock(stock stock:BigBoardStock, timelineInMonths:Int = 3, movingAverageTrendlineDays:[Int]? = nil, failure:((BigBoardError) -> Void)?) {
+    public func setGraphAsImageForStock(stock:BigBoardStock, timelineInMonths:Int = 3, movingAverageTrendlineDays:[Int]? = nil, failure:((BigBoardError) -> Void)?) {
         
         let urlString = BigBoardUrlCreator.urlForGraphImage(stock: stock, timelineInMonths: timelineInMonths, movingAverageTrendlineDays: movingAverageTrendlineDays)
         
-        Alamofire.request(.GET, urlString).validate().responseImage { (response:Response<Image, NSError>) in
+        Alamofire.request(urlString).validate().responseImage { (response:DataResponse<Image>) in
 
             switch response.result {
-                case .Success:
+                case .success:
                     if let image = response.result.value {
-                        self.contentMode = .ScaleAspectFit
+                        self.contentMode = .scaleAspectFit
                         self.image = image
                     }
-                case .Failure(let error):
+                case .failure(let error):
                     if let failure = failure {
-                        failure(BigBoardError(nsError: error))
+                        failure(BigBoardError(nsError: error as NSError))
                     }
             }
         }

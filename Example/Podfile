@@ -1,13 +1,14 @@
 source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
 use_frameworks!
 
-target 'BigBoard_Example', :exclusive => true do
+target 'BigBoard_Example' do
   pod 'BigBoard', :path => '../'
-  pod 'SnapKit'
-  pod 'ChameleonFramework/Swift'
+  pod 'SnapKit', '~> 3.0'
+  pod 'ChameleonFramework/Swift', :git=> 'https://github.com/ViccAlexander/Chameleon', :branch => 'swift3'
+  pod 'Timepiece', :git => 'https://github.com/skofgar/Timepiece.git', :branch => 'swift3'
 end
 
-target 'BigBoard_Tests', :exclusive => true do
+target 'BigBoardTests' do
   pod 'BigBoard', :path => '../'
-  
 end

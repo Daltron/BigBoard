@@ -11,8 +11,8 @@ import SnapKit
 
 protocol ExampleViewDelegate : class {
     func numberOfStocks() -> Int
-    func stockAtIndex(index:Int) -> BigBoardStock
-    func stockSelectedAtIndex(index:Int)
+    func stockAtIndex(_ index:Int) -> BigBoardStock
+    func stockSelectedAtIndex(_ index:Int)
     func refreshControllPulled()
 }
 
@@ -23,21 +23,21 @@ class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
     var refreshControl:UIRefreshControl!
     
     init(delegate:ExampleViewDelegate){
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.delegate = delegate
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
-        stocksTableView = UITableView(frame: CGRectZero, style: .Plain)
+        stocksTableView = UITableView(frame: CGRect.zero, style: .plain)
         stocksTableView.dataSource = self
         stocksTableView.delegate = self
         stocksTableView.rowHeight = 50.0
         addSubview(stocksTableView)
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControllerPulled), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshControllerPulled), for: .valueChanged)
         stocksTableView.addSubview(refreshControl)
         
-        stocksTableView.snp_makeConstraints { (make) in
+        stocksTableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
     }
@@ -52,41 +52,41 @@ class ExampleView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: UITableViewDataSource and UITableViewDataSource Implementation
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return delegate!.numberOfStocks()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let reuseIdentifier = "ExampleCell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as UITableViewCell?
         
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-            let currentPriceLabel = UILabel(frame: CGRectMake(0, 0, 150, 25))
-            currentPriceLabel.textAlignment = .Right
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
+            let currentPriceLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 25))
+            currentPriceLabel.textAlignment = .right
             cell?.accessoryView = currentPriceLabel
         }
         
         return cell!
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let stock = delegate!.stockAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let stock = delegate!.stockAtIndex((indexPath as NSIndexPath).row)
         cell.textLabel?.text = stock.name!
         cell.detailTextLabel?.text = stock.symbol!
         let currentPriceLabel = cell.accessoryView as! UILabel!
-        currentPriceLabel.text = "$\(stock.lastTradePriceOnly!)"
+        currentPriceLabel?.text = "$\(stock.lastTradePriceOnly!)"
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        delegate!.stockSelectedAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        delegate!.stockSelectedAtIndex((indexPath as NSIndexPath).row)
     }
 
 }

@@ -19,14 +19,14 @@ class ExampleStockDetailsViewController: UIViewController, ExampleStockDetailsVi
         exampleView = ExampleStockDetailsView(delegate: self)
         view = exampleView
         title = model.stock.name!
-        edgesForExtendedLayout = .None
+        edgesForExtendedLayout = UIRectEdge()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         exampleView.graphImageView.setGraphAsImageForStock(stock: model.stock, timelineInMonths: 3, movingAverageTrendlineDays: [5, 10, 50]) { (error) in
@@ -49,13 +49,13 @@ class ExampleStockDetailsViewController: UIViewController, ExampleStockDetailsVi
         return model.numberOfRSSFeedItems()
     }
     
-    func rssFeedItemAtIndex(index:Int) -> BigBoardRSSFeedItem {
+    func rssFeedItemAtIndex(_ index:Int) -> BigBoardRSSFeedItem {
         return model.rssFeedItemAtIndex(index)
     }
     
-    func rssFeedItemSelectedAtIndex(index: Int) {
-        let feedItemUrl = NSURL(string: model.rssFeedItemAtIndex(index).link!)
-        UIApplication.sharedApplication().openURL(feedItemUrl!)
+    func rssFeedItemSelectedAtIndex(_ index: Int) {
+        let feedItemUrl = URL(string: model.rssFeedItemAtIndex(index).link!)
+        UIApplication.shared.openURL(feedItemUrl!)
     }
     
 }

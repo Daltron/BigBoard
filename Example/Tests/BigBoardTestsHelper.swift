@@ -15,30 +15,30 @@ class BigBoardTestsHelper: NSObject {
         return BigBoardHistoricalDateRange(startDate: sampleStartDate(), endDate: sampleEndDate())
     }
 
-    class func sampleStartDate() -> NSDate {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+    class func sampleStartDate() -> Date {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         dateComponents.year = 2015
         dateComponents.month = 6
         dateComponents.day = 4
         
-        return calendar!.dateFromComponents(dateComponents)!
+        return calendar.date(from: dateComponents)!
     }
     
-    class func sampleEndDate() -> NSDate {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+    class func sampleEndDate() -> Date {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         dateComponents.year = 2015
         dateComponents.month = 6
         dateComponents.day = 11
         
-        return calendar!.dateFromComponents(dateComponents)!
+        return calendar.date(from: dateComponents)!
     }
     
     class func sampleStock() -> BigBoardStock {
-        let sampleStock = BigBoardStock(Map(mappingType: .ToJSON, JSONDictionary: [:]))
+        let sampleStock = BigBoardStock(map: Map(mappingType: .toJSON, JSON: [:]))
         sampleStock!.symbol = "GOOG"
         sampleStock!.name = "GOOGLE"
         return sampleStock!

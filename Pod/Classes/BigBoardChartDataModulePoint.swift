@@ -18,30 +18,30 @@
 
 import ObjectMapper
 
-public class BigBoardChartDataModulePoint: Mappable {
+open class BigBoardChartDataModulePoint: Mappable {
     
-    private static var dateFormatter:NSDateFormatter?
-    private static func sharedDateFormatter() -> NSDateFormatter {
+    fileprivate static var dateFormatter:DateFormatter?
+    fileprivate static func sharedDateFormatter() -> DateFormatter {
         if dateFormatter == nil {
-            dateFormatter = NSDateFormatter()
+            dateFormatter = DateFormatter()
             dateFormatter?.dateFormat = "yyyy-MM-dd"
         }
         
         return dateFormatter!
     }
     
-    public var date:NSDate!
-    public var close:Double!
-    public var high:Double!
-    public var low:Double!
-    public var open:Double!
-    public var volume:Int!
+    open var date:Date!
+    open var close:Double!
+    open var high:Double!
+    open var low:Double!
+    open var open:Double!
+    open var volume:Int!
     
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
         
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         date <- (map["Timestamp"], DateTransform())
         close <- map["close"]
         high <- map["high"]
@@ -53,9 +53,9 @@ public class BigBoardChartDataModulePoint: Mappable {
             var dateAsInteger = 0
             dateAsInteger <- map["Date"]
             let dateAsString = NSMutableString(string: "\(dateAsInteger)")
-            dateAsString.insertString("-", atIndex: 4)
-            dateAsString.insertString("-", atIndex: 7)
-            date = BigBoardChartDataModulePoint.sharedDateFormatter().dateFromString(dateAsString as String)!
+            dateAsString.insert("-", at: 4)
+            dateAsString.insert("-", at: 7)
+            date = BigBoardChartDataModulePoint.sharedDateFormatter().date(from: dateAsString as String)!
         }
     }
 

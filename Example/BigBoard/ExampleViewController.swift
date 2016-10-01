@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Timepiece
 
 class ExampleViewController: UIViewController, ExampleViewDelegate {
     
@@ -16,27 +15,21 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
     
     init(){
         super.init(nibName: nil, bundle: nil)
-        edgesForExtendedLayout = .None
+        edgesForExtendedLayout = UIRectEdge()
         model = ExampleModel()
         exampleView = ExampleView(delegate: self)
         view = exampleView
         title = "BigBoard"
-        
-        BigBoard.stockWithSymbol(symbol: "GOOG", success: { (stock) in
-            
-        }) { (error) in
-            print(error)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addStockButtonPressed))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStockButtonPressed))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
     }
     
     func addStockButtonPressed() {
@@ -60,11 +53,11 @@ class ExampleViewController: UIViewController, ExampleViewDelegate {
         return model.numberOfStocks()
     }
     
-    func stockAtIndex(index: Int) -> BigBoardStock {
+    func stockAtIndex(_ index: Int) -> BigBoardStock {
         return model.stockAtIndex(index)
     }
     
-    func stockSelectedAtIndex(index:Int) {
+    func stockSelectedAtIndex(_ index:Int) {
         let exampleStockDetailsModel = ExampleStockDetailsModel(stock: model.stockAtIndex(index))
         let exampleStockDetailsViewController = ExampleStockDetailsViewController(model: exampleStockDetailsModel)
         navigationController!.pushViewController(exampleStockDetailsViewController, animated: true)

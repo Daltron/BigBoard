@@ -16,11 +16,11 @@ class ExampleModel: NSObject {
         return stocks.count
     }
     
-    func stockAtIndex(index:Int) -> BigBoardStock {
+    func stockAtIndex(_ index:Int) -> BigBoardStock {
         return stocks[index]
     }
     
-    func refreshStocks(success success:(() -> Void), failure:(BigBoardError) -> Void) {
+    func refreshStocks(success:@escaping (() -> Void), failure:@escaping (BigBoardError) -> Void) {
         
         var stockSymbols:[String] = []
         
@@ -28,21 +28,21 @@ class ExampleModel: NSObject {
             stockSymbols.append(stock.symbol!)
         }
         
-        BigBoard.stocksWithSymbols(symbols: stockSymbols, success: { (stocks) in
+        _ = BigBoard.stocksWithSymbols(symbols: stockSymbols, success: { (stocks) in
             self.stocks = stocks
             success()
         }, failure: failure)
     }
     
-    func mapSampleStocks(success success:(() -> Void), failure:((BigBoardError) -> Void)) {
-        BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks) in
+    func mapSampleStocks(success:@escaping (() -> Void), failure:@escaping ((BigBoardError) -> Void)) {
+        _ = BigBoard.stocksWithSymbols(symbols: ["GOOG", "AAPL", "TSLA"], success: { (stocks) in
             self.stocks = stocks
             success()
         }, failure: failure)
     }
     
-    func mapStockWithSymbol(symbol symbol:String, success:(() -> Void), failure:((BigBoardError) -> Void)) {
-        BigBoard.stockWithSymbol(symbol: symbol, success: { (stock) in
+    func mapStockWithSymbol(symbol:String, success:@escaping (() -> Void), failure:@escaping ((BigBoardError) -> Void)) {
+        _ = BigBoard.stockWithSymbol(symbol: symbol, success: { (stock) in
             self.stocks.append(stock)
             success()
         }, failure: failure)

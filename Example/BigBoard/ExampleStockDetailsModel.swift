@@ -26,12 +26,12 @@ class ExampleStockDetailsModel: NSObject {
         }
     }
     
-    func rssFeedItemAtIndex(index:Int) -> BigBoardRSSFeedItem {
+    func rssFeedItemAtIndex(_ index:Int) -> BigBoardRSSFeedItem {
         return rssFeed.items![index]
     }
     
-    func loadRSSFeed(success success:(() -> Void), failure:((BigBoardError) -> Void)) {
-        BigBoard.rssFeedForStockWithSymbol(symbol: stock.symbol!, success: { (feed) in
+    func loadRSSFeed(success:@escaping (() -> Void), failure:@escaping ((BigBoardError) -> Void)) {
+        _ = BigBoard.rssFeedForStockWithSymbol(symbol: stock.symbol!, success: { (feed) in
             self.rssFeed = feed
             success()
         }) { (error) in

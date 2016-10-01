@@ -15,25 +15,25 @@
  THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
 */
-
+import Foundation
 import Timepiece
 
-public class BigBoardHistoricalDateRange: NSObject {
+open class BigBoardHistoricalDateRange: NSObject {
     
-    public var startDate:NSDate!
-    public var endDate:NSDate!
+    open var startDate:Date!
+    open var endDate:Date!
     
-    public init(startDate:NSDate, endDate:NSDate) {
+    public init(startDate:Date, endDate:Date) {
         super.init()
         self.startDate = startDate
         self.endDate = endDate
     }
     
-    public func isFutureDateRange() -> Bool {
-        return startDate >= NSDate.today() || endDate >= NSDate.today()
+    open func isFutureDateRange() -> Bool {
+        return startDate >= Date.today() || endDate >= Date.today()
     }
     
-    public func startDateIsGreaterThanEndDate() -> Bool {
+    open func startDateIsGreaterThanEndDate() -> Bool {
         return startDate > endDate
     }
     
@@ -42,35 +42,36 @@ public class BigBoardHistoricalDateRange: NSObject {
         in which the NYSE is closed.
     */
     
-    public func stockMarketIsClosedDuringRange() -> Bool {
+    open func stockMarketIsClosedDuringRange() -> Bool {
         let hasSameDatesAndDatesAreOnAWeekend = startDate.isSameDayAsDate(endDate) && (startDate.weekday == 1 || startDate.weekday == 7)
         let datesAreOneDayApartAndBothAreOnAWeekend = endDate.day == startDate.day + 1 && (startDate.weekday == 7 && endDate.weekday == 1)
         return hasSameDatesAndDatesAreOnAWeekend || datesAreOneDayApartAndBothAreOnAWeekend
     }
     
-    public class func fiveDayRange() -> BigBoardHistoricalDateRange {
-        return fiveDayRangeFromDate(endDate: NSDate() - 1.day)
+    open class func fiveDayRange() -> BigBoardHistoricalDateRange {
+        return fiveDayRangeFromDate(endDate: Date() - 1.day)
     }
     
-    public class func fiveDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
+    open class func fiveDayRangeFromDate(endDate:Date) -> BigBoardHistoricalDateRange {
         let (startDate, endDate) = startAndEndDatesForEndDate(endDate: endDate, rangeLength: 5)
         return BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
     }
     
-    public class func tenDayRange() -> BigBoardHistoricalDateRange {
-        return tenDayRangeFromDate(endDate: NSDate() - 1.day)
+    open class func tenDayRange() -> BigBoardHistoricalDateRange {
+        
+        return tenDayRangeFromDate(endDate: Date() - 1.day)
     }
     
-    public class func tenDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
+    open class func tenDayRangeFromDate(endDate:Date) -> BigBoardHistoricalDateRange {
         let (startDate, endDate) = startAndEndDatesForEndDate(endDate: endDate, rangeLength: 10)
         return BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
     }
     
-    public class func thirtyDayRange() -> BigBoardHistoricalDateRange {
-        return thirtyDayRangeFromDate(endDate: NSDate() - 1.day)
+    open class func thirtyDayRange() -> BigBoardHistoricalDateRange {
+        return thirtyDayRangeFromDate(endDate: Date() - 1.day)
     }
     
-    public class func thirtyDayRangeFromDate(endDate endDate:NSDate) -> BigBoardHistoricalDateRange {
+    open class func thirtyDayRangeFromDate(endDate:Date) -> BigBoardHistoricalDateRange {
         let (startDate, endDate) = startAndEndDatesForEndDate(endDate: endDate, rangeLength: 30)
         return BigBoardHistoricalDateRange(startDate: startDate, endDate: endDate)
     }
@@ -82,7 +83,7 @@ public class BigBoardHistoricalDateRange: NSObject {
         @param rangeLength: The amount of days your range should be
      */
 
-    private class func startAndEndDatesForEndDate(endDate endDate:NSDate, rangeLength:Int) -> (NSDate, NSDate) {
+    fileprivate class func startAndEndDatesForEndDate(endDate:Date, rangeLength:Int) -> (Date, Date) {
         
         var finalEndDate = endDate
         var startDate = endDate

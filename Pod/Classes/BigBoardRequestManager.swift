@@ -19,16 +19,15 @@
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
-import Timepiece
 
 class BigBoardRequestManager: NSObject {
 
-    private static var _manager:Alamofire.Manager?
-    class var manager:Alamofire.Manager {
+    fileprivate static var _manager:Alamofire.SessionManager?
+    class var manager:Alamofire.SessionManager {
         get {
             if _manager == nil {
-                let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("(NSBundle.mainBundle().bundleIdentifier).background")
-                _manager = Alamofire.Manager(configuration: configuration)
+                let configuration = URLSessionConfiguration.background(withIdentifier: "(NSBundle.mainBundle().bundleIdentifier).background")
+                _manager = Alamofire.SessionManager(configuration: configuration)
                 _manager!.startRequestsImmediately = true
             }
             
@@ -41,8 +40,8 @@ class BigBoardRequestManager: NSObject {
         is in the 200-299 range.
     */
     
-    private class func generalRequest(method:Alamofire.Method, urlString:String, parameters:[String: AnyObject]? = nil) -> Request {
-        return manager.request(method, urlString, parameters: parameters, headers: nil).validate()
+    fileprivate class func generalRequest(_ method:Alamofire.HTTPMethod, urlString:String, parameters:[String: AnyObject]? = nil) -> DataRequest {
+        return manager.request(urlString, method: method, parameters: parameters).validate()
     }
     
     
@@ -51,7 +50,7 @@ class BigBoardRequestManager: NSObject {
         just mapped.
     */
     
-    private class func callSuccessCallback(success success:((BigBoardStock) -> Void)?, stock:BigBoardStock){
+    fileprivate class func callSuccessCallback(success:((BigBoardStock) -> Void)?, stock:BigBoardStock){
         if let success = success {
             success(stock)
         }
@@ -63,7 +62,7 @@ class BigBoardRequestManager: NSObject {
         with the appropriate message.
     */
     
-    private class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, error:NSError){
+    fileprivate class func callErrorCallback(failure:((BigBoardError) -> Void)?, error:NSError){
         let bigBoardError = BigBoardError(nsError: error)
         if let failure = failure {
             failure(bigBoardError)
@@ -76,7 +75,7 @@ class BigBoardRequestManager: NSObject {
         with the appropriate message.
     */
     
-    private class func callErrorCallback(failure failure:((BigBoardError) -> Void)?, bigBoardError:BigBoardError){
+    fileprivate class func callErrorCallback(failure:((BigBoardError) -> Void)?, bigBoardError:BigBoardError){
         if let failure = failure {
             failure(bigBoardError)
         }
@@ -90,13 +89,13 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed or if the stock symbol provided is not valid
     */
     
-    class func mapBigBoardStock(symbol symbol:String, success:((BigBoardStock) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request? {
+    class func mapBigBoardStock(symbol:String, success:((BigBoardStock) -> Void)?, failure:((BigBoardError) -> Void)?) -> DataRequest? {
         
         let urlString = BigBoardUrlCreator.urlForStockSymbol(symbol: symbol)
         
-        return generalRequest(.GET, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardStock, NSError>) in
+        return generalRequest(.get, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:DataResponse<BigBoardStock>) in
             switch response.result {
-                case .Success:
+                case .success:
                     let stock = response.result.value!
                     if stock.isReal() {
                         callSuccessCallback(success: success, stock: stock)
@@ -104,7 +103,8 @@ class BigBoardRequestManager: NSObject {
                         let bigBoardError = BigBoardError(invalidSymbol: symbol)
                         callErrorCallback(failure: failure, bigBoardError:bigBoardError)
                     }
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                case .failure(let error):
+                    callErrorCallback(failure: failure, error: error as NSError)
             } 
         })
     }
@@ -117,7 +117,7 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed or if one or more of the stock symbols provided were not valid
      */
     
-    class func mapBigBoardStocks(symbols symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> Request? {
+    class func mapBigBoardStocks(symbols:[String], success:(([BigBoardStock]) -> Void)?, failure:((BigBoardError) -> Void)?) -> DataRequest? {
         
         let urlString = BigBoardUrlCreator.urlForStockSymbols(symbols: symbols)
         
@@ -127,9 +127,9 @@ class BigBoardRequestManager: NSObject {
         */
         if symbols.count > 1 {
             
-            return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardStock], NSError>) in
+            return generalRequest(.get, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:DataResponse<[BigBoardStock]>) in
                 switch response.result {
-                    case .Success:
+                    case .success:
                         let stocks = response.result.value!
                         let invalidSymbols = BigBoardStock.invalidSymbolsForStocks(stocks: stocks)
                         if invalidSymbols.isEmpty {
@@ -141,7 +141,7 @@ class BigBoardRequestManager: NSObject {
                             callErrorCallback(failure: failure, bigBoardError: bigBoardError)
                         }
                     
-                    case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                    case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
                 }
             })
 
@@ -162,7 +162,7 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed or if the stock provided is not valid
     */
     
-    class func mapHistoricalDataForStock(stock stock:BigBoardStock?, dateRange:BigBoardHistoricalDateRange, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+    class func mapHistoricalDataForStock(stock:BigBoardStock?, dateRange:BigBoardHistoricalDateRange, success:@escaping (([BigBoardHistoricalData]) -> Void), failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         
         if dateRange.isFutureDateRange() {
             let bigBoardError = BigBoardError(errorMessageType: .MappingFutureDate)
@@ -180,10 +180,10 @@ class BigBoardRequestManager: NSObject {
                 if dateRange.startDate.isSameDayAsDate(dateRange.endDate) {
                     return mapHistoricalDataItem(urlString, success: success, failure: failure)
                 } else {
-                    return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:Response<[BigBoardHistoricalData], NSError>) in
+                    return generalRequest(.get, urlString: urlString).responseArray(queue: nil, keyPath: "query.results.quote", completionHandler: { (response:DataResponse<[BigBoardHistoricalData]>) in
                         switch response.result {
-                        case .Success: success(response.result.value!)
-                        case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                        case .success: success(response.result.value!)
+                        case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
                         }
                     })
                 }
@@ -206,11 +206,11 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed
      */
     
-    private class func mapHistoricalDataItem(urlString:String, success:(([BigBoardHistoricalData]) -> Void), failure:(BigBoardError) -> Void) -> Request? {
-        return generalRequest(.GET, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:Response<BigBoardHistoricalData, NSError>) in
+    fileprivate class func mapHistoricalDataItem(_ urlString:String, success:@escaping (([BigBoardHistoricalData]) -> Void), failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
+        return generalRequest(.get, urlString: urlString).responseObject(queue: nil, keyPath: "query.results.quote", mapToObject: nil, completionHandler: { (response:DataResponse<BigBoardHistoricalData>) in
             switch response.result {
-                case .Success: success([response.result.value!])
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                case .success: success([response.result.value!])
+                case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
             }
         })
     }
@@ -224,12 +224,12 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func mapChartDataModuleForStockWithSymbol(symbol symbol:String, range:BigBoardChartDataModuleRange, success:((BigBoardChartDataModule) -> Void), failure:(BigBoardError) -> Void) -> Request? {
+    class func mapChartDataModuleForStockWithSymbol(symbol:String, range:BigBoardChartDataModuleRange, success:@escaping ((BigBoardChartDataModule) -> Void), failure:@escaping (BigBoardError) -> Void) -> DataRequest? {
         let urlString = BigBoardUrlCreator.urlForChartDataModuleWithSymbol(symbol: symbol, range: range)
-        return generalRequest(.GET, urlString: urlString).responseData(queue: nil) { (response:Response<NSData, NSError>) in
+        return generalRequest(.get, urlString: urlString).responseData(queue: nil) { (response:DataResponse<Data>) in
             
             switch response.result {
-                case .Success:
+                case .success:
                     
                     /*
                         Since the JSON is returned with a JSONP callback, we must do the following steps:
@@ -241,17 +241,17 @@ class BigBoardRequestManager: NSObject {
                         5. Initialize a BigBoardChartDataModule object and pass in the formattedJson object into the mapping
                     */
                     
-                    let jsonString = NSString(data: response.data!, encoding: NSUTF8StringEncoding)!
-                    var trimmedJsonString = jsonString.substringFromIndex("BigBoard(".length + 1)
-                    trimmedJsonString = trimmedJsonString.substringToIndex(trimmedJsonString.endIndex.advancedBy(-1))
+                    let jsonString:String = String(data: response.data!, encoding: .utf8)!
+                    var trimmedJsonString:String = jsonString.substring(from: "BigBoard(".endIndex)
+                    trimmedJsonString = trimmedJsonString.substring(to: trimmedJsonString.index(trimmedJsonString.endIndex, offsetBy: -1))
                     
-                    let trimmedJsonStringData = trimmedJsonString.dataUsingEncoding(NSUTF8StringEncoding)
-                    let formattedJson = try? NSJSONSerialization.JSONObjectWithData(trimmedJsonStringData!, options: .MutableContainers) as! [String : AnyObject]
+                    let trimmedJsonStringData:Data = trimmedJsonString.data(using: .utf8)!
+                    let formattedJson = try? JSONSerialization.jsonObject(with: trimmedJsonStringData, options: .mutableContainers)
                     
-                    let module = BigBoardChartDataModule(Map(mappingType: .FromJSON, JSONDictionary: formattedJson!))!
+                    let module = BigBoardChartDataModule(map: Map(mappingType: .fromJSON, JSON: formattedJson as! [String : Any]))!
                     success(module)
                 
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
             }
         }
     }
@@ -263,15 +263,15 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func stocksContainingSearchTerm(searchTerm searchTerm:String, success:(([BigBoardSearchResultStock]) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    class func stocksContainingSearchTerm(searchTerm:String, success:@escaping (([BigBoardSearchResultStock]) -> Void), failure:@escaping ((BigBoardError) -> Void)) -> DataRequest? {
         
         let urlString = BigBoardUrlCreator.urlForAutoCompleteSearch(searchTerm: searchTerm)
         
-        return generalRequest(.GET, urlString: urlString).responseArray(queue: nil, keyPath: "ResultSet.Result", completionHandler: { (response:Response<[BigBoardSearchResultStock], NSError>) in
+        return generalRequest(.get, urlString: urlString).responseArray(queue: nil, keyPath: "ResultSet.Result", completionHandler: { (response:DataResponse<[BigBoardSearchResultStock]>) in
             
             switch response.result {
-                case .Success: success(response.result.value!)
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                case .success: success(response.result.value!)
+                case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
             }
         })
     }
@@ -284,7 +284,7 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed
     */
     
-    class func rssFeedForStockWithSymbol(symbol symbol:String, success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    class func rssFeedForStockWithSymbol(symbol:String, success:@escaping ((BigBoardRSSFeed) -> Void), failure:@escaping ((BigBoardError) -> Void)) -> DataRequest? {
         return rssFeedForStocksWithSymbols(symbols: [symbol], success: success, failure: failure)
     }
     
@@ -297,15 +297,15 @@ class BigBoardRequestManager: NSObject {
         @param failure: The callback that is called if the mapping failed
      */
     
-    class func rssFeedForStocksWithSymbols(symbols symbols:[String], success:((BigBoardRSSFeed) -> Void), failure:((BigBoardError) -> Void)) -> Request? {
+    class func rssFeedForStocksWithSymbols(symbols:[String], success:@escaping ((BigBoardRSSFeed) -> Void), failure:@escaping ((BigBoardError) -> Void)) -> DataRequest? {
         
-        let urlString = BigBoardUrlCreator.urlForRSSFeed(symbols: symbols)
-        let parameters = ["rss_url" : urlString]
+        let urlString:String = BigBoardUrlCreator.urlForRSSFeed(symbols: symbols)
+        let parameters: [String : AnyObject] = ["rss_url" : urlString as AnyObject]
         
-        return generalRequest(.GET, urlString: "http://rss2json.com/api.json", parameters: parameters).responseObject(completionHandler: { (response:Response<BigBoardRSSFeed, NSError>) in
+        return generalRequest(.get, urlString: "http://rss2json.com/api.json", parameters: parameters).responseObject(completionHandler: { (response:DataResponse<BigBoardRSSFeed>) in
             switch response.result {
-                case .Success: success(response.result.value!)
-                case .Failure(let error): callErrorCallback(failure: failure, error: error)
+                case .success: success(response.result.value!)
+                case .failure(let error): callErrorCallback(failure: failure, error: error as NSError)
             }
         })
     }

@@ -18,20 +18,20 @@
 
 import ObjectMapper
 
-public class BigBoardSearchResultStock: Mappable {
+open class BigBoardSearchResultStock: Mappable {
 
-    public var symbol:String?
-    public var name:String?
-    public var exch:String?
-    public var type:String?
-    public var exchDisp:String?
-    public var typeDisp:String?
+    open var symbol:String?
+    open var name:String?
+    open var exch:String?
+    open var type:String?
+    open var exchDisp:String?
+    open var typeDisp:String?
     
-    required public init?(_ map: Map) {
-        mapping(map)
+    required public init?(map: Map) {
+        mapping(map: map)
     }
     
-    public func mapping(map: Map) {
+    open func mapping(map: Map) {
         symbol <- map["symbol"]
         name <- map["name"]
         exch <- map["exch"]

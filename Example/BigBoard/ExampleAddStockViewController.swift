@@ -14,9 +14,9 @@ class ExampleAddStockViewController: UIViewController, ExampleAddStockViewDelega
     var exampleView:ExampleAddStockView!
     var selectionCallback:((BigBoardSearchResultStock) -> Void)!
 
-    init(selectionCallback:((BigBoardSearchResultStock) -> Void)){
+    init(selectionCallback:@escaping ((BigBoardSearchResultStock) -> Void)){
         super.init(nibName: nil, bundle: nil)
-        edgesForExtendedLayout = .None
+        edgesForExtendedLayout = UIRectEdge()
         self.selectionCallback = selectionCallback
         model = ExampleAddStockModel()
         exampleView = ExampleAddStockView(delegate: self)
@@ -34,11 +34,11 @@ class ExampleAddStockViewController: UIViewController, ExampleAddStockViewDelega
         return model.numberOfSearchResultStocks()
     }
     
-    func searchResultStockAtIndex(index:Int) -> BigBoardSearchResultStock {
+    func searchResultStockAtIndex(_ index:Int) -> BigBoardSearchResultStock {
         return model.searchResultStockAtIndex(index)
     }
     
-    func searchTermChanged(searchTerm searchTerm:String) {
+    func searchTermChanged(searchTerm:String) {
         model.fetchStocksForSearchTerm(searchTerm, success: { 
             self.exampleView.stocksTableView.reloadData()
         }) { (error) in
@@ -46,8 +46,8 @@ class ExampleAddStockViewController: UIViewController, ExampleAddStockViewDelega
         }
     }
     
-    func stockResultSelectedAtIndex(index: Int) {
+    func stockResultSelectedAtIndex(_ index: Int) {
         selectionCallback(searchResultStockAtIndex(index))
-        navigationController!.popViewControllerAnimated(true)
+        navigationController!.popViewController(animated: true)
     }
 }

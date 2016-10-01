@@ -16,12 +16,12 @@ class ExampleAddStockModel: NSObject {
         return searchResultStocks.count
     }
     
-    func searchResultStockAtIndex(index:Int) -> BigBoardSearchResultStock {
+    func searchResultStockAtIndex(_ index:Int) -> BigBoardSearchResultStock {
         return searchResultStocks[index]
     }
     
-    func fetchStocksForSearchTerm(searchTerm:String, success:(() -> Void), failure:(BigBoardError) -> Void) {
-        BigBoard.stocksContainingSearchTerm(searchTerm: searchTerm, success: { (stocks:[BigBoardSearchResultStock]) in
+    func fetchStocksForSearchTerm(_ searchTerm:String, success:@escaping (() -> Void), failure:@escaping (BigBoardError) -> Void) {
+        _ = BigBoard.stocksContainingSearchTerm(searchTerm: searchTerm, success: { (stocks:[BigBoardSearchResultStock]) in
             self.searchResultStocks = stocks
             success()
         }, failure: failure)
