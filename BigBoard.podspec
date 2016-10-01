@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = "BigBoard"
-    s.version          = "1.0.2"
+    s.version          = "1.1"
     s.summary          = "An Elegant Financial Markets Library Written in Swift"
 
 # This description is used to generate tags and improve search results.
@@ -33,6 +33,5 @@ BigBoard is an elegant financial markets library for iOS written in Swift. Under
     s.ios.deployment_target = '9.0'
 
     s.dependency 'AlamofireObjectMapper', '~> 4.0'
-    s.dependency 'Timepiece'
     s.dependency 'AlamofireImage', '~> 3.0'
 end

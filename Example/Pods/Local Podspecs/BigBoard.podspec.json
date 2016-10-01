@@ -21,9 +21,6 @@
     "AlamofireObjectMapper": [
       "~> 4.0"
     ],
-    "Timepiece": [
-
-    ],
     "AlamofireImage": [
       "~> 3.0"
     ]

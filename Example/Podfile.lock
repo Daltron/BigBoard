@@ -8,19 +8,16 @@ PODS:
   - BigBoard (1.0.2):
     - AlamofireImage (~> 3.0)
     - AlamofireObjectMapper (~> 4.0)
-    - Timepiece
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - ObjectMapper (2.0.0)
   - SnapKit (3.0.1)
-  - Timepiece (0.4.3)
 
 DEPENDENCIES:
   - BigBoard (from `../`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon`, branch `swift3`)
   - SnapKit (~> 3.0)
-  - Timepiece (from `https://github.com/skofgar/Timepiece.git`, branch `swift3`)
 
 EXTERNAL SOURCES:
   BigBoard:
@@ -28,28 +25,21 @@ EXTERNAL SOURCES:
   ChameleonFramework:
     :branch: swift3
     :git: https://github.com/ViccAlexander/Chameleon
-  Timepiece:
-    :branch: swift3
-    :git: https://github.com/skofgar/Timepiece.git
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: c400c32eead1c6e74008983c3e7c845ae069b41d
     :git: https://github.com/ViccAlexander/Chameleon
-  Timepiece:
-    :commit: c3b7badbce11f59a7221992076f46dfe437dcf87
-    :git: https://github.com/skofgar/Timepiece.git
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireImage: 6594aa1139a67dcd36cde6da79ea4e5b318e60fb
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
-  BigBoard: 75bed36672221154e0962702e80ad2e296f0ca83
+  BigBoard: 144e36eb411e5aac38e1c7c8706960cfd813ffcb
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
-  Timepiece: b5038887b91d6eb70653173f4270e06b3abeac41
 
-PODFILE CHECKSUM: 3ab76f68f73e4233b5c6303a0be834609679d165
+PODFILE CHECKSUM: 9e1e15c97fde65079ea55365a606e79431bf3fa5
 
 COCOAPODS: 1.1.0.rc.2

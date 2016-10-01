@@ -8,7 +8,6 @@
 
 import XCTest
 import BigBoard
-import Timepiece
 
 class BigBoardHistoricalDateRangeTests: XCTestCase {
     

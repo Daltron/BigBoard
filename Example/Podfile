@@ -6,7 +6,6 @@ target 'BigBoard_Example' do
   pod 'BigBoard', :path => '../'
   pod 'SnapKit', '~> 3.0'
   pod 'ChameleonFramework/Swift', :git=> 'https://github.com/ViccAlexander/Chameleon', :branch => 'swift3'
-  pod 'Timepiece', :git => 'https://github.com/skofgar/Timepiece.git', :branch => 'swift3'
 end
 
 target 'BigBoardTests' do

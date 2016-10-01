@@ -47,6 +47,22 @@
 		5CC0FD3C1D9F4D7600D7660B /* UIImageView+BigBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0991CF1662400CD982B /* UIImageView+BigBoard.swift */; };
 		5CC0FD3D1D9F4D7600D7660B /* BigBoardRSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0A11CF17D0900CD982B /* BigBoardRSSFeed.swift */; };
 		5CC0FD3E1D9F4D7600D7660B /* BigBoardRSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FB0B01CF288E900CD982B /* BigBoardRSSFeedItem.swift */; };
+		5CC0FD711D9F578800D7660B /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD691D9F578800D7660B /* Duration.swift */; };
+		5CC0FD721D9F578800D7660B /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD691D9F578800D7660B /* Duration.swift */; };
+		5CC0FD731D9F578800D7660B /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6A1D9F578800D7660B /* Int+Timepiece.swift */; };
+		5CC0FD741D9F578800D7660B /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6A1D9F578800D7660B /* Int+Timepiece.swift */; };
+		5CC0FD751D9F578800D7660B /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6B1D9F578800D7660B /* NSCalendar+Timepiece.swift */; };
+		5CC0FD761D9F578800D7660B /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6B1D9F578800D7660B /* NSCalendar+Timepiece.swift */; };
+		5CC0FD771D9F578800D7660B /* NSCalendarUnit+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6C1D9F578800D7660B /* NSCalendarUnit+Timepiece.swift */; };
+		5CC0FD781D9F578800D7660B /* NSCalendarUnit+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6C1D9F578800D7660B /* NSCalendarUnit+Timepiece.swift */; };
+		5CC0FD791D9F578800D7660B /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6D1D9F578800D7660B /* NSDate+Timepiece.swift */; };
+		5CC0FD7A1D9F578800D7660B /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6D1D9F578800D7660B /* NSDate+Timepiece.swift */; };
+		5CC0FD7B1D9F578800D7660B /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6E1D9F578800D7660B /* NSDateComponents+Timepiece.swift */; };
+		5CC0FD7C1D9F578800D7660B /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6E1D9F578800D7660B /* NSDateComponents+Timepiece.swift */; };
+		5CC0FD7D1D9F578800D7660B /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6F1D9F578800D7660B /* NSTimeInterval+Timepiece.swift */; };
+		5CC0FD7E1D9F578800D7660B /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD6F1D9F578800D7660B /* NSTimeInterval+Timepiece.swift */; };
+		5CC0FD7F1D9F578800D7660B /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD701D9F578800D7660B /* String+Timepiece.swift */; };
+		5CC0FD801D9F578800D7660B /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0FD701D9F578800D7660B /* String+Timepiece.swift */; };
 		5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ExampleViewController.swift */; };
@@ -98,6 +114,14 @@
 		5C9E04641CC0385000F47699 /* BigBoardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardError.swift; path = ../../Pod/Classes/BigBoardError.swift; sourceTree = "<group>"; };
 		5CC0FD231D9F4C7200D7660B /* BigBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC0FD271D9F4C7200D7660B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CC0FD691D9F578800D7660B /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = ../../Pod/Classes/Duration.swift; sourceTree = "<group>"; };
+		5CC0FD6A1D9F578800D7660B /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Timepiece.swift"; path = "../../Pod/Classes/Int+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD6B1D9F578800D7660B /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCalendar+Timepiece.swift"; path = "../../Pod/Classes/NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD6C1D9F578800D7660B /* NSCalendarUnit+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCalendarUnit+Timepiece.swift"; path = "../../Pod/Classes/NSCalendarUnit+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD6D1D9F578800D7660B /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Timepiece.swift"; path = "../../Pod/Classes/NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD6E1D9F578800D7660B /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateComponents+Timepiece.swift"; path = "../../Pod/Classes/NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD6F1D9F578800D7660B /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTimeInterval+Timepiece.swift"; path = "../../Pod/Classes/NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
+		5CC0FD701D9F578800D7660B /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Timepiece.swift"; path = "../../Pod/Classes/String+Timepiece.swift"; sourceTree = "<group>"; };
 		5CC18D9E1CEBABB10054990C /* BigBoardHistoricalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardHistoricalData.swift; path = ../../Pod/Classes/BigBoardHistoricalData.swift; sourceTree = "<group>"; };
 		5CC18DA31CEBC73E0054990C /* BigBoardTestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardTestsHelper.swift; path = ../Tests/BigBoardTestsHelper.swift; sourceTree = "<group>"; };
 		5CF6E5F91CC0168F004ED3BD /* BigBoardQueryCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigBoardQueryCreatorTests.swift; path = ../Tests/BigBoardQueryCreatorTests.swift; sourceTree = "<group>"; };
@@ -167,6 +191,7 @@
 		5C71E6E31CC0279D00DEB166 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5CC0FD681D9F577C00D7660B /* Timepiece */,
 				5C71E6E41CC027AF00DEB166 /* BigBoard.swift */,
 				5C4FB07A1CEF681800CD982B /* BigBoardChartDataModule.swift */,
 				5C4FB0771CEF67FE00CD982B /* BigBoardChartDataModulePoint.swift */,
@@ -195,6 +220,21 @@
 				5CC0FD271D9F4C7200D7660B /* Info.plist */,
 			);
 			path = BigBoardTests;
+			sourceTree = "<group>";
+		};
+		5CC0FD681D9F577C00D7660B /* Timepiece */ = {
+			isa = PBXGroup;
+			children = (
+				5CC0FD691D9F578800D7660B /* Duration.swift */,
+				5CC0FD6A1D9F578800D7660B /* Int+Timepiece.swift */,
+				5CC0FD6B1D9F578800D7660B /* NSCalendar+Timepiece.swift */,
+				5CC0FD6C1D9F578800D7660B /* NSCalendarUnit+Timepiece.swift */,
+				5CC0FD6D1D9F578800D7660B /* NSDate+Timepiece.swift */,
+				5CC0FD6E1D9F578800D7660B /* NSDateComponents+Timepiece.swift */,
+				5CC0FD6F1D9F578800D7660B /* NSTimeInterval+Timepiece.swift */,
+				5CC0FD701D9F578800D7660B /* String+Timepiece.swift */,
+			);
+			name = Timepiece;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -486,14 +526,22 @@
 				5CC0FD3B1D9F4D7600D7660B /* BigBoardSearchResultStock.swift in Sources */,
 				5CC0FD301D9F4C9E00D7660B /* BigBoardQueryCreatorTests.swift in Sources */,
 				5CC0FD321D9F4D7600D7660B /* BigBoardChartDataModule.swift in Sources */,
+				5CC0FD801D9F578800D7660B /* String+Timepiece.swift in Sources */,
 				5CC0FD311D9F4D7600D7660B /* BigBoard.swift in Sources */,
+				5CC0FD761D9F578800D7660B /* NSCalendar+Timepiece.swift in Sources */,
 				5CC0FD3E1D9F4D7600D7660B /* BigBoardRSSFeedItem.swift in Sources */,
 				5CC0FD381D9F4D7600D7660B /* BigBoardStock.swift in Sources */,
+				5CC0FD741D9F578800D7660B /* Int+Timepiece.swift in Sources */,
 				5CC0FD3D1D9F4D7600D7660B /* BigBoardRSSFeed.swift in Sources */,
+				5CC0FD7C1D9F578800D7660B /* NSDateComponents+Timepiece.swift in Sources */,
+				5CC0FD7A1D9F578800D7660B /* NSDate+Timepiece.swift in Sources */,
+				5CC0FD7E1D9F578800D7660B /* NSTimeInterval+Timepiece.swift in Sources */,
+				5CC0FD781D9F578800D7660B /* NSCalendarUnit+Timepiece.swift in Sources */,
 				5CC0FD3A1D9F4D7600D7660B /* NSDate+BigBoard.swift in Sources */,
 				5CC0FD2E1D9F4C9800D7660B /* BigBoardHistoricalDateRangeTests.swift in Sources */,
 				5CC0FD351D9F4D7600D7660B /* BigBoardHistoricalData.swift in Sources */,
 				5CC0FD2F1D9F4C9B00D7660B /* BigBoardMainClassTests.swift in Sources */,
+				5CC0FD721D9F578800D7660B /* Duration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,19 +557,27 @@
 				5C4AEB761CEBFB520082F35B /* BigBoardHistoricalDateRange.swift in Sources */,
 				5C79885C1CEBF9B1008878EB /* NSDate+BigBoard.swift in Sources */,
 				5C9E04651CC0385000F47699 /* BigBoardError.swift in Sources */,
+				5CC0FD7F1D9F578800D7660B /* String+Timepiece.swift in Sources */,
 				5CC18D9F1CEBABB10054990C /* BigBoardHistoricalData.swift in Sources */,
 				5C71E6E81CC027AF00DEB166 /* BigBoard.swift in Sources */,
+				5CC0FD711D9F578800D7660B /* Duration.swift in Sources */,
+				5CC0FD751D9F578800D7660B /* NSCalendar+Timepiece.swift in Sources */,
+				5CC0FD791D9F578800D7660B /* NSDate+Timepiece.swift in Sources */,
+				5CC0FD771D9F578800D7660B /* NSCalendarUnit+Timepiece.swift in Sources */,
 				5C4FB05B1CECD0AC00CD982B /* ExampleStockDetailsModel.swift in Sources */,
 				5C4FB0881CEFA1CB00CD982B /* ExampleAddStockModel.swift in Sources */,
+				5CC0FD7B1D9F578800D7660B /* NSDateComponents+Timepiece.swift in Sources */,
 				5C4FB09A1CF1662400CD982B /* UIImageView+BigBoard.swift in Sources */,
 				5C4FB08D1CEFA20600CD982B /* ExampleAddStockViewController.swift in Sources */,
 				5C4FB0541CECB9DB00CD982B /* BigBoardUrlCreator.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				5CC0FD731D9F578800D7660B /* Int+Timepiece.swift in Sources */,
 				5C4FB0571CECC59300CD982B /* ExampleModel.swift in Sources */,
 				5C4FB0B11CF288E900CD982B /* BigBoardRSSFeedItem.swift in Sources */,
 				5C4FB0591CECC5A200CD982B /* ExampleView.swift in Sources */,
 				5C4FB0A21CF17D0900CD982B /* BigBoardRSSFeed.swift in Sources */,
 				5C4FB0781CEF67FE00CD982B /* BigBoardChartDataModulePoint.swift in Sources */,
+				5CC0FD7D1D9F578800D7660B /* NSTimeInterval+Timepiece.swift in Sources */,
 				5C4FB0801CEF974E00CD982B /* BigBoardSearchResultStock.swift in Sources */,
 				5C4FB05D1CECD0B700CD982B /* ExampleStockDetailsView.swift in Sources */,
 				5C4FB05F1CECD0C400CD982B /* ExampleStockDetailsViewController.swift in Sources */,
