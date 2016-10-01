@@ -3,9 +3,11 @@
 
 [![CI Status](http://img.shields.io/travis/Daltron/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
 [![Version](https://img.shields.io/cocoapods/v/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift-3.0-4BC51D.svg?style=flat" alt="Language: Swift" /></a>
 [![License](https://img.shields.io/cocoapods/l/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![Platform](https://img.shields.io/cocoapods/p/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 
+## Updated for Swift 3
 BigBoard is an elegant financial markets library for iOS written in Swift. Under the hood, BigBoard makes requests to Yahoo Finance API's. Those requests are then processed and clean, friendly, and easy to use objects are returned. The goal of BigBoard is to take the learning curve out of the Yahoo Finance API's and centralize all finanical market data into one core library.
 
 ## Features
@@ -24,7 +26,11 @@ BigBoard is an elegant financial markets library for iOS written in Swift. Under
 
  - [Alamofire](https://github.com/Alamofire/Alamofire): Elegant HTTP Networking in Swift
  - [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper): An Alamofire extension which converts JSON into Swift objects 
- - [Timepiece](https://github.com/naoty/Timepiece): Intuitive NSDate extensions in Swift
+ 
+## Requirements
+
+ - iOS 9.0+
+ - xCode 8
 
 ## Installation
 
@@ -34,7 +40,7 @@ To integrate BigBoard into your xCode project using CocoaPods, specify it in you
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.3' # This can be greater than 8.3
+platform :ios, '9.0' # This can be greater than 9.0
 use_frameworks!
 
 pod 'BigBoard'
@@ -272,11 +278,6 @@ class BigBoardSearchResultStock: Mappable {
 }
 
 ```
-
-## Requirements
-
-- iOS 8.3+
-- xCode 7.3+
 
 ## Author
 
