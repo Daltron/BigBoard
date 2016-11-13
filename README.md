@@ -279,6 +279,12 @@ class BigBoardSearchResultStock: Mappable {
 
 ```
 
+### Usage Information and Limits
+
+
+Since BigBoard is built on top of the Yahoo Finance API's, please take a look at this if you plan on using BigBoard for commercial use:
+https://developer.yahoo.com/yql/guide/usage_info_limits.html
+
 ## Author
 
 Dalton Hinterscher, daltonhint4@gmail.com
