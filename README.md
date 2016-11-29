@@ -84,96 +84,177 @@ Stocks have the following properties:
 
 ```swift
 class BigBoardStock: Mappable {
-    public var afterHoursChangeRealtime:String?
-    public var annualizedGain:String?
-    public var ask:String?
-    public var askRealTime:String?
-    public var averageDailyVolume:String?
-    public var bid:String?
-    public var bidRealTime:String?
-    public var bookValue:String?
-    public var change:String?
-    public var changeFromFiftyDayMovingAverage:String?
-    public var changeFromTwoHundredDayMovingAverage:String?
-    public var changeFromYearHigh:String?
-    public var changeFromYearLow:String?
-    public var changePercentRealtime:String?
-    public var changeRealTime:String?
-    public var changePercentChange:String?
-    public var changeInPercent:String?
-    public var commission:String?
-    public var currency:String?
-    public var daysHigh:String?
-    public var daysLow:String?
-    public var daysRange:String?
-    public var daysRangeRealTime:String?
-    public var daysValueChange:String?
-    public var daysValueChangeRealTime:String?
-    public var dividendPayDate:String?
-    public var dividendShare:String?
-    public var dividendYield:String?
-    public var ebitda:String?
-    public var epsEstimateCurrentYear:String?
-    public var epsEstimateNextQuarter:String?
-    public var epsEstimateNextYear:String?
-    public var earningsShare:String?
-    public var errorIndicationReturnedForSymbolChangedInvalid:String?
-    public var exDividendDate:String?
-    public var fiveDayChartModule:BigBoardChartDataModule?
-    public var fiveYearChartModule:BigBoardChartDataModule?
-    public var fiftyDayMovingAverage:String?
-    public var highLimit:String?
-    public var historicalData:[BigBoardHistoricalData]?
-    public var holdingsGain:String?
-    public var holdingsGainPercent:String?
-    public var holdingsGainPercentRealtime:String?
-    public var holdingsGainRealtime:String?
-    public var holdingsValue:String?
-    public var holdingsValueRealtime:String?
-    public var lastTradeDate:String?
-    public var lastTradePriceOnly:String?
-    public var lastTradeRealTimeWithTime:String?
-    public var lastTradeTime:String?
-    public var lastTradeWithTime:String?
-    public var lifetimeChartModule:BigBoardChartDataModule?
-    public var lowLimit:String?
-    public var marketCapRealtime:String?
-    public var marketCapitalization:String?
-    public var moreInfo:String?
-    public var name:String?
-    public var notes:String?
-    public var oneDayChartModule:BigBoardChartDataModule?
-    public var oneMonthChartModule:BigBoardChartDataModule?
-    public var oneYearChartModule:BigBoardChartDataModule?
-    public var oneYearTargetPrice:String?
-    public var open:String?
-    public var orderBookRealtime:String?
-    public var pegRatio:String?
-    public var peRatio:String?
-    public var peRatioRealtime:String?
-    public var percentChangeFromYearHigh:String?
-    public var percentChange:String?
-    public var percentChangeFromFiftyDayMovingAverage:String?
-    public var percentChangeFromTwoHundredDayMovingAverage:String?
-    public var percentChangeFromYearLow:String?
-    public var previousClose:String?
-    public var priceBook:String?
-    public var priceEPSEstimateCurrentYear:String?
-    public var priceEPSEstimateNextYear:String?
-    public var pricePaid:String?
-    public var priceSales:String?
-    public var sharesOwned:String?
-    public var shortRatio:String?
-    public var stockExchange:String?
-    public var symbol:String?
-    public var threeMonthChartModule:BigBoardChartDataModule?
-    public var tickerTrend:String?
-    public var tradeDate:String?
-    public var twoHundredDayMovingAverage:String?
-    public var volume:String?
-    public var yearHigh:String?
-    public var yearLow:String?
-    public var yearRange:String?
+    open var afterHoursChangeRealtime:String?
+    open var annualizedGain:String?
+    open var ask:String?
+    open var askRealTime:String?
+    open var averageDailyVolume:String?
+    open var bid:String?
+    open var bidRealTime:String?
+    open var bookValue:String?
+    open var change:String?
+    open var changeFromFiftyDayMovingAverage:String?
+    open var changeFromTwoHundredDayMovingAverage:String?
+    open var changeFromYearHigh:String?
+    open var changeFromYearLow:String?
+    open var changePercentRealtime:String?
+    open var changeRealTime:String?
+    open var changePercentChange:String?
+    open var changeInPercent:String?
+    open var commission:String?
+    open var currency:String?
+    open var daysHigh:String?
+    open var daysLow:String?
+    open var daysRange:String?
+    open var daysRangeRealTime:String?
+    open var daysValueChange:String?
+    open var daysValueChangeRealTime:String?
+    open var dividendPayDate:String?
+    open var dividendShare:String?
+    open var dividendYield:String?
+    open var ebitda:String?
+    open var epsEstimateCurrentYear:String?
+    open var epsEstimateNextQuarter:String?
+    open var epsEstimateNextYear:String?
+    open var earningsShare:String?
+    open var errorIndicationReturnedForSymbolChangedInvalid:String?
+    open var exDividendDate:String?
+    open var fiveDayChartModule:BigBoardChartDataModule?
+    open var fiveYearChartModule:BigBoardChartDataModule?
+    open var fiftyDayMovingAverage:String?
+    open var highLimit:String?
+    open var historicalData:[BigBoardHistoricalData]?
+    open var holdingsGain:String?
+    open var holdingsGainPercent:String?
+    open var holdingsGainPercentRealtime:String?
+    open var holdingsGainRealtime:String?
+    open var holdingsValue:String?
+    open var holdingsValueRealtime:String?
+    open var lastTradeDate:String?
+    open var lastTradePriceOnly:String?
+    open var lastTradeRealTimeWithTime:String?
+    open var lastTradeTime:String?
+    open var lastTradeWithTime:String?
+    open var lifetimeChartModule:BigBoardChartDataModule?
+    open var lowLimit:String?
+    open var marketCapRealtime:String?
+    open var marketCapitalization:String?
+    open var moreInfo:String?
+    open var name:String?
+    open var notes:String?
+    open var oneDayChartModule:BigBoardChartDataModule?
+    open var oneMonthChartModule:BigBoardChartDataModule?
+    open var oneYearChartModule:BigBoardChartDataModule?
+    open var oneYearTargetPrice:String?
+    open var open:String?
+    open var orderBookRealtime:String?
+    open var pegRatio:String?
+    open var peRatio:String?
+    open var peRatioRealtime:String?
+    open var percentChangeFromYearHigh:String?
+    open var percentChange:String?
+    open var percentChangeFromFiftyDayMovingAverage:String?
+    open var percentChangeFromTwoHundredDayMovingAverage:String?
+    open var percentChangeFromYearLow:String?
+    open var previousClose:String?
+    open var priceBook:String?
+    open var priceEPSEstimateCurrentYear:String?
+    open var priceEPSEstimateNextYear:String?
+    open var pricePaid:String?
+    open var priceSales:String?
+    open var sharesOwned:String?
+    open var shortRatio:String?
+    open var stockExchange:String?
+    open var symbol:String?
+    open var threeMonthChartModule:BigBoardChartDataModule?
+    open var tickerTrend:String?
+    open var tradeDate:String?
+    open var twoHundredDayMovingAverage:String?
+    open var volume:String?
+    open var yearHigh:String?
+    open var yearLow:String?
+    open var yearRange:String?
+}
+```
+
+### Retrieving a RSS Feed for a Stock
+
+```swift
+import BigBoard
+
+_ = BigBoard.rssFeedForStockWithSymbol(symbol: "GOOG", success: { (feed) in
+    // Do something with the RSS feed
+}, failure: { (error) in
+    print(error)
+})
+
+```
+
+This will return the 25 most recent news items for the provided stock symbol 
+
+### Retrieving a RSS Feed for Multiple Stock Symbols
+
+```swift
+import BigBoard
+
+_ = BigBoard.rssFeedForStocksWithSymbols(symbols: ["GOOG", "AAPL"], success: { (feed) in
+    // Do something with the feed
+}, failure: { (error) in
+    print(error)
+})
+```
+
+This will return the 25 most recent news items altogether for the provided stock symbols. If you want the 25 most recent items for each stock symbol, you will need to use the singular function above for each stock symnol.
+
+RSS feeds have the following properties:
+
+```swift
+open class BigBoardRSSFeed: Mappable {
+    open var title:String?
+    open var link:String?
+    open var author:String?
+    open var description:String?
+    open var imageLink:String?
+    open var items:[BigBoardRSSFeedItem]?
+}
+```
+
+RSS feed items have the following properties:
+
+```swift
+open class BigBoardRSSFeedItem: Mappable {
+    open var title:String?
+    open var link:String?
+    open var guid:String?
+    open var publicationDate:Date?
+    open var author:String?
+    open var thumbnailLink:String?
+    open var description:String?
+    open var content:String?
+}
+```
+
+### Retrieving Historical Data for a Stock
+
+```swift
+import BigBoard
+
+let range = BigBoardHistoricalDateRange(startDate: Date() - 3.days, endDate: Date())
+_ = stock.mapHistoricalDataWithRange(dateRange: range, success: {
+    // The historicalData property is now mapped to the stock with data from the given dataRange
+}, failure: { (error) in
+    print(error)
+})
+```
+
+There are currently four different ways to retrieve historical data:
+
+```swift
+class BigBoardStock : Mappable {
+     open func mapHistoricalDataWithRange(dateRange:BigBoardHistoricalDateRange, success: (() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest?
+     open func mapHistoricalDataWithFiveDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? 
+     open func mapHistoricalDataWithTenDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? 
+     open func mapHistoricalDataWithThirtyDayRange(_ success:(() -> Void)?, failure:@escaping (BigBoardError) -> Void) -> DataRequest? 
 }
 ```
 
@@ -183,13 +264,13 @@ There are currently seven different ways to retrieve chart data:
 
 ```swift
 class BigBoardStock : Mappable {
-    public func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
-    public func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapOneDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapFiveDayChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapOneMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapThreeMonthChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapOneYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapFiveYearChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
+    open func mapLifetimeChartDataModule(success:(() -> Void)?, failure:(BigBoardError) -> Void) -> Request?
 }
 ```
 Example:
@@ -214,12 +295,12 @@ class BigBoardChartDataModule: Mappable {
 }
 
 class BigBoardChartDataModulePoint: Mappable {
-    public var date:NSDate!
-    public var close:Double!
-    public var high:Double!
-    public var low:Double!
-    public var open:Double!
-    public var volume:Int!
+    open var date:NSDate!
+    open var close:Double!
+    open var high:Double!
+    open var low:Double!
+    open var open:Double!
+    open var volume:Int!
 }
 ```
 
@@ -269,12 +350,12 @@ Search result stocks have the following properties:
 
 ```swift
 class BigBoardSearchResultStock: Mappable {
-    public var symbol:String?
-    public var name:String?
-    public var exch:String?
-    public var type:String?
-    public var exchDisp:String?
-    public var typeDisp:String?
+    open var symbol:String?
+    open var name:String?
+    open var exch:String?
+    open var type:String?
+    open var exchDisp:String?
+    open var typeDisp:String?
 }
 
 ```
