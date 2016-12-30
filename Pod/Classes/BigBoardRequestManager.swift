@@ -27,6 +27,8 @@ class BigBoardRequestManager: NSObject {
         get {
             if _manager == nil {
                 let configuration = URLSessionConfiguration.background(withIdentifier: "(NSBundle.mainBundle().bundleIdentifier).background")
+                configuration.timeoutIntervalForRequest = 30.0   // How long to wait on server's response
+                configuration.timeoutIntervalForResource = 30.0  // How long to wait for client to make request
                 _manager = Alamofire.SessionManager(configuration: configuration)
                 _manager!.startRequestsImmediately = true
             }
