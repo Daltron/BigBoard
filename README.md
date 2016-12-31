@@ -360,6 +360,17 @@ class BigBoardSearchResultStock: Mappable {
 
 ```
 
+### Handling Errors
+
+BigBoardError objects have a type and error message to help determine what kind of error occurred.
+
+```swift
+open class BigBoardError: NSObject {
+    private(set) open var type:BigBoardErrorType!
+    private(set) open var errorMessage:String!
+}
+```
+
 ### Usage Information and Limits
 
 
