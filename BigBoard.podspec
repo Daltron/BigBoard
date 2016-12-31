@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = "BigBoard"
-    s.version          = "1.1.3"
+    s.version          = "1.1.4"
     s.summary          = "An Elegant Financial Markets Library Written in Swift"
 
 # This description is used to generate tags and improve search results.
