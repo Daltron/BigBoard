@@ -71,7 +71,7 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail()
         }) { (error) in
             self.validationExpectation.fulfill()
-            XCTAssert(true)
+            XCTAssert(error.type == BigBoardErrorType.InvalidStockSymbol)
         }
         
         waitForRequestToFinish()
@@ -84,7 +84,7 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail()
         }) { (error) in
             self.validationExpectation.fulfill()
-            XCTAssert(true)
+            XCTAssert(error.type == BigBoardErrorType.InvalidStockSymbol)
         }
         
         waitForRequestToFinish()
@@ -97,7 +97,7 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail()
         }) { (error) in
             self.validationExpectation.fulfill()
-            XCTAssert(true)
+            XCTAssert(error.type == BigBoardErrorType.InvalidStockSymbol)
         }
         
         waitForRequestToFinish()
@@ -110,7 +110,7 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail()
         }) { (error) in
             self.validationExpectation.fulfill()
-            XCTAssert(true)
+            XCTAssert(error.type == BigBoardErrorType.InvalidStockSymbol)
         }
         
         waitForRequestToFinish()
@@ -145,8 +145,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
         }, failure: { (error) in
             self.validationExpectation.fulfill()
-            if error.description == BigBoardErrorMessage.MappingFutureDate.rawValue {
-                XCTAssert(true)
+            if error.errorMessage == BigBoardErrorMessage.MappingFutureDate.rawValue {
+                XCTAssert(error.type == BigBoardErrorType.MappingFutureDate)
             } else {
                 XCTFail("The wrong error message was passed back.")
             }
@@ -164,8 +164,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
         }, failure: { (error) in
             self.validationExpectation.fulfill()
-            if error.description == BigBoardErrorMessage.StartDateGreaterThanEndDate.rawValue {
-                XCTAssert(true)
+            if error.errorMessage == BigBoardErrorMessage.StartDateGreaterThanEndDate.rawValue {
+                XCTAssert(error.type == BigBoardErrorType.StartDateGreaterThanEndDate)
             } else {
                 XCTFail("The wrong error message was passed back.")
             }
@@ -185,8 +185,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
             }, failure: { (error) in
                 self.validationExpectation.fulfill()
-                if error.description == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
-                    XCTAssert(true)
+                if error.errorMessage == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
+                    XCTAssert(error.type == BigBoardErrorType.StockMarketIsClosedInGivenDateRange)
                 } else {
                     XCTFail("The wrong error message was passed back.")
                 }
@@ -206,8 +206,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
             }, failure: { (error) in
                 self.validationExpectation.fulfill()
-                if error.description == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
-                    XCTAssert(true)
+                if error.errorMessage == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
+                    XCTAssert(error.type == BigBoardErrorType.StockMarketIsClosedInGivenDateRange)
                 } else {
                     XCTFail("The wrong error message was passed back.")
                 }
@@ -227,8 +227,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
             }, failure: { (error) in
                 self.validationExpectation.fulfill()
-                if error.description == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
-                    XCTAssert(true)
+                if error.errorMessage == BigBoardErrorMessage.StockMarketIsClosedInGivenDateRange.rawValue {
+                    XCTAssert(error.type == BigBoardErrorType.StockMarketIsClosedInGivenDateRange)
                 } else {
                     XCTFail("The wrong error message was passed back.")
                 }
@@ -247,8 +247,8 @@ class BigBoardMainClassTests: XCTestCase {
             XCTFail("This test should have failed.")
             }, failure: { (error) in
                 self.validationExpectation.fulfill()
-                if error.description == BigBoardErrorMessage.StockDoesNotExist.rawValue {
-                    XCTAssert(true)
+                if error.errorMessage == BigBoardErrorMessage.StockDoesNotExist.rawValue {
+                    XCTAssert(error.type == BigBoardErrorType.InvalidStockSymbol)
                 } else {
                     print(error.description)
                     XCTFail("The wrong error message was passed back.")
