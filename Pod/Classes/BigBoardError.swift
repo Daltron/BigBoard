@@ -42,8 +42,8 @@ open class BigBoardError: NSObject {
         return "\(ERROR_PREFIX) \(errorMessage!)"
     }
     
-    private(set) var type:BigBoardErrorType!
-    private(set) var errorMessage:String!
+    private(set) open var type:BigBoardErrorType!
+    private(set) open var errorMessage:String!
     
     init(invalidSymbol:String) {
         super.init()
