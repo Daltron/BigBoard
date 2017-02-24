@@ -221,7 +221,7 @@ open class BigBoardStock: Mappable {
     /*  Determines wether or not the stock is real. Even if an incorrect stock symbol is provided to Yahoo's API,
         it will return a stock object that seems real but has nearly all null values. Checking the name allows us to know if the
         stock actually exists.
-        See Example: http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('FAKESTOCK')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
+        See Example: https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%20IN%20('FAKESTOCK')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
     */
     
     open func isReal() -> Bool {

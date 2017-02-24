@@ -26,7 +26,7 @@ private enum BigBoardQueryType : String {
 class BigBoardUrlCreator: NSObject {
 
     // MARK: Base YQL URL Strings
-    fileprivate static let YQL_URL_PREFIX:String = "http://query.yahooapis.com/v1/public/yql?q="
+    fileprivate static let YQL_URL_PREFIX:String = "https://query.yahooapis.com/v1/public/yql?q="
     fileprivate static let YQL_URL_SUFFIX:String = "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
     
     
@@ -101,7 +101,7 @@ class BigBoardUrlCreator: NSObject {
     */
     
     class func urlForChartDataModuleWithSymbol(symbol:String, range:BigBoardChartDataModuleRange) -> String {
-        return "http://chartapi.finance.yahoo.com/instrument/1.0/\(symbol)/chartdata;type=quote;range=\(range.rawValue)/json?callback=BigBoard"
+        return "https://chartapi.finance.yahoo.com/instrument/1.0/\(symbol)/chartdata;type=quote;range=\(range.rawValue)/json?callback=BigBoard"
     }
     
     
@@ -110,7 +110,7 @@ class BigBoardUrlCreator: NSObject {
     */
     
     class func urlForAutoCompleteSearch(searchTerm:String) -> String {
-        return "http://autoc.finance.yahoo.com/autoc?query=\(percentEscapedQuery(query: searchTerm))&region=2&lang=en"
+        return "https://autoc.finance.yahoo.com/autoc?query=\(percentEscapedQuery(query: searchTerm))&region=2&lang=en"
     }
     
     /*
@@ -131,7 +131,7 @@ class BigBoardUrlCreator: NSObject {
             }
         }
         
-        return "http://chart.finance.yahoo.com/z?s=\(stock.symbol!)&t=\(timelineInMonths)m&q=l&l=on&z=s&p=\(trendlines.componentsJoined(by: ","))"
+        return "https://chart.finance.yahoo.com/z?s=\(stock.symbol!)&t=\(timelineInMonths)m&q=l&l=on&z=s&p=\(trendlines.componentsJoined(by: ","))"
     }
     
     class func urlForRSSFeed(symbol:String) -> String {
@@ -140,7 +140,7 @@ class BigBoardUrlCreator: NSObject {
     
     class func urlForRSSFeed(symbols:[String]) -> String {
         let symbolsString = NSMutableArray(array: symbols).componentsJoined(by: ",")
-        return "https://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
+        return "httpss://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
     }
     
     /*  Returns a url string that is percent escaped encoded
