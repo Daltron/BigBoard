@@ -140,7 +140,7 @@ class BigBoardUrlCreator: NSObject {
     
     class func urlForRSSFeed(symbols:[String]) -> String {
         let symbolsString = NSMutableArray(array: symbols).componentsJoined(by: ",")
-        return "httpss://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
+        return "https://feeds.finance.yahoo.com/rss/2.0/headline?s=\(symbolsString)&region=US&lang=en-US&format=json"
     }
     
     /*  Returns a url string that is percent escaped encoded
