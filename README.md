@@ -1,14 +1,14 @@
 ![BigBoard](https://raw.githubusercontent.com/Daltron/BigBoard/master/Assets/bigboard.png?token=AJPY9yZ_ZB8ao_xZziL0Wcl_-aqFB-PZks5XSN7HwA%3D%3D)
 
-# Notice
-
-As of May 20th, 2017, it appears that Yahoo is dropping support for a few features that BigBoard supports or there is an outage on their end causing a few features to receive a `502 Timeout` response code each time a request is made. I'll be checking frequently to see if something changes. Until then, unforunately, there isn't anything I can do to fix these problems.
-
 [![CI Status](http://img.shields.io/travis/Daltron/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
 [![Version](https://img.shields.io/cocoapods/v/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift-3.0-4BC51D.svg?style=flat" alt="Language: Swift" /></a>
 [![License](https://img.shields.io/cocoapods/l/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
 [![Platform](https://img.shields.io/cocoapods/p/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
+
+# Notice
+
+As of May 20th, 2017, it appears that Yahoo is dropping support for a few features that BigBoard supports or there is an outage on their end causing a few features to receive a `502 Timeout` response code each time a request is made. I'll be checking frequently to see if something changes. Until then, unforunately, there isn't anything I can do to fix these problems.
 
 ## Updated for Swift 3
 BigBoard is an elegant financial markets library for iOS written in Swift. Under the hood, BigBoard makes requests to Yahoo Finance API's. Those requests are then processed and clean, friendly, and easy to use objects are returned. The goal of BigBoard is to take the learning curve out of the Yahoo Finance API's and centralize all finanical market data into one core library.
