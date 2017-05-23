@@ -1,5 +1,8 @@
 ![BigBoard](https://raw.githubusercontent.com/Daltron/BigBoard/master/Assets/bigboard.png?token=AJPY9yZ_ZB8ao_xZziL0Wcl_-aqFB-PZks5XSN7HwA%3D%3D)
 
+# Notice
+
+As of May 20th, 2017, it appears that Yahoo is dropping support for a few features that BigBoard supports or there is an outage on their end causing a few features to receive a `502 Timeout` response code each time a request is made. I'll be checking frequently to see if something changes. Until then, unforunately, there isn't anything I can do to fix these problems.
 
 [![CI Status](http://img.shields.io/travis/Daltron/BigBoard.svg?style=flat)](https://travis-ci.org/Dalton/BigBoard)
 [![Version](https://img.shields.io/cocoapods/v/BigBoard.svg?style=flat)](http://cocoapods.org/pods/BigBoard)
