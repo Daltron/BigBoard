@@ -29,7 +29,7 @@ BigBoard is an elegant financial markets library for iOS written in Swift. Under
 
     s.source_files = 'Pod/Classes/**/*'
 
-    s.platform = :ios
+    s.osx.deployment_target = '10.11'
     s.ios.deployment_target = '9.0'
 
     s.dependency 'AlamofireObjectMapper', '~> 4.0'
