@@ -16,6 +16,10 @@
  
 */
 
+// UIKit is only available in iOS, not on OSX.
+// Do not import this file if platform is OSX
+
+#if os(iOS)
 import UIKit
 import Alamofire
 import AlamofireImage
@@ -52,3 +56,4 @@ public extension UIImageView {
         }
     }
 }
+#endif
