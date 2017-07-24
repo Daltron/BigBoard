@@ -32,7 +32,7 @@ BigBoard is an elegant financial markets library for iOS written in Swift. Under
  
 ## Requirements
 
- - iOS 9.0+
+ - iOS 9.0+, macOS 10.11+
  - xCode 8
 
 ## Installation
